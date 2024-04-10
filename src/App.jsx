@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <header className="App-header">
-        <h1>ZSchool ROI Calculator</h1>
+        <h1>Zschool ROI Calculator</h1>
       </header>
       <main>
         <ROICalculator onCalculate={handleROICalculation} />
