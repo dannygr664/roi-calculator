@@ -38,7 +38,7 @@ function ROICalculator({ onCalculate }) {
     <form onSubmit={handleSubmit}>
       <div>
         <label htmlFor="professional-development-investment">
-          Initial Investment ($):{" "}
+          Initial Investment in Professional Development ($):{" "}
         </label>
         <input
           type="number"
