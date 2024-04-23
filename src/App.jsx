@@ -3,10 +3,10 @@ import "./App.css";
 import ROICalculator from "./components/ROICalculator.jsx";
 
 function App() {
-  const [roi, setRoi] = useState("");
+  const [returnValue, setReturnValue] = useState("");
 
-  const handleROICalculation = (calculatedROI) => {
-    setRoi(calculatedROI);
+  const handleReturnValueCalculation = (calculatedReturnValue) => {
+    setReturnValue(calculatedReturnValue);
   };
 
   return (
@@ -15,10 +15,10 @@ function App() {
         <h1>Zschool ROI Calculator</h1>
       </header>
       <main>
-        <ROICalculator onCalculate={handleROICalculation} />
-        {roi && (
+        <ROICalculator onCalculate={handleReturnValueCalculation} />
+        {returnValue && (
           <div>
-            <h2>Calculated ROI: {roi}%</h2>
+            <h2>Calculated Return: ${returnValue}</h2>
           </div>
         )}
       </main>

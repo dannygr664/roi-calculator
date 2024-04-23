@@ -3,26 +3,21 @@ import PropTypes from "prop-types";
 
 function ROICalculator({ onCalculate }) {
   const [investment, setInvestment] = useState("");
-  const [returnValue, setReturnValue] = useState("");
+  const ROI = 415; // annualized ROI as a percentage
 
   const handleInvestmentChange = (e) => {
     setInvestment(e.target.value);
   };
 
-  const handleReturnValueChange = (e) => {
-    setReturnValue(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const investmentNum = parseFloat(investment);
-    const returnValueNum = parseFloat(returnValue);
 
-    if (!isNaN(investmentNum) && !isNaN(returnValueNum) && investmentNum > 0) {
-      const roi = ((returnValueNum - investmentNum) / investmentNum) * 100;
-      onCalculate(roi.toFixed(2));
+    if (!isNaN(investmentNum) && investmentNum > 0) {
+      const returnValue = (investmentNum * ROI) / 100;
+      onCalculate(returnValue.toFixed(2));
     } else {
-      alert("Please enter valid numbers for both investment and return value.");
+      alert("Please enter a valid number for investment");
     }
   };
 
@@ -37,16 +32,7 @@ function ROICalculator({ onCalculate }) {
           onChange={handleInvestmentChange}
         />
       </div>
-      <div>
-        <label htmlFor="return-value">Return Value ($): </label>
-        <input
-          type="number"
-          id="return-value"
-          value={returnValue}
-          onChange={handleReturnValueChange}
-        />
-      </div>
-      <button type="submit">Calculate ROI</button>
+      <button type="submit">Calculate Return</button>
     </form>
   );
 }
