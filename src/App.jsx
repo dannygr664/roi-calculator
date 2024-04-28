@@ -13,7 +13,7 @@ function App() {
     <>
       <header className="App-header">
         <img src="images/zschool-logo.png" alt="Zschool logo"></img>
-        <h1>Zschool ROI Calculator</h1>
+        <h1>ROI Calculator</h1>
       </header>
       <main>
         <ROICalculator onCalculate={handleReturnValueCalculation} />
