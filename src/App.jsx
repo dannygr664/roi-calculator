@@ -3,10 +3,25 @@ import "./App.css";
 import ROICalculator from "./components/ROICalculator.jsx";
 
 function App() {
-  const [returnValue, setReturnValue] = useState("");
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
 
-  const handleReturnValueCalculation = (calculatedReturnValue) => {
-    setReturnValue(calculatedReturnValue);
+  const [threeMonthReturnValue, setThreeMonthReturnValue] = useState("");
+  const [threeMonthReturnValueAnnualized, setThreeMonthReturnValueAnnualized] =
+    useState("");
+  const [annualReturnValue, setAnnualReturnValue] = useState("");
+
+  const handleReturnValueCalculation = (
+    calculatedThreeMonthReturnValue,
+    calculatedThreeMonthReturnValueAnnualized,
+    calculatedAnnualReturnValue
+  ) => {
+    setThreeMonthReturnValue(numberWithCommas(calculatedThreeMonthReturnValue));
+    setThreeMonthReturnValueAnnualized(
+      numberWithCommas(calculatedThreeMonthReturnValueAnnualized)
+    );
+    setAnnualReturnValue(numberWithCommas(calculatedAnnualReturnValue));
   };
 
   return (
@@ -17,9 +32,14 @@ function App() {
       </header>
       <main>
         <ROICalculator onCalculate={handleReturnValueCalculation} />
-        {returnValue && (
+        {threeMonthReturnValue && (
           <div>
-            <h2>Calculated Return: ${returnValue}</h2>
+            <h2>Calculated Return (3 months): ${threeMonthReturnValue}</h2>
+            <h2>
+              Calculated Return (3 months – Annualized): $
+              {threeMonthReturnValueAnnualized}
+            </h2>
+            <h2>Calculated Return (1 year): ${annualReturnValue}</h2>
           </div>
         )}
       </main>
