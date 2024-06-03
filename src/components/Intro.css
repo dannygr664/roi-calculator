@@ -25,9 +25,12 @@ form {
 .form-row {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  margin-right: 250px;
+  gap: 200px;
   margin-bottom: 17px;
+}
+
+.form-element {
+  width: 200px;
 }
 
 label {
