@@ -48,7 +48,7 @@ function Intro() {
                     IT & Cybersecurity Leadership Teams
                   </option>
                   <option value="mentorCertificateProgram">
-                    Mentor Certificate PRogram
+                    Mentor Certificate Program
                   </option>
                   <option value="strategicAi">Strategic AI</option>
                   <option value="strategicAiForHealthcareProfessionals">
