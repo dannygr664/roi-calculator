@@ -18,6 +18,7 @@ header {
   justify-content: flex-start;
   padding: 20px;
   background-color: #ffffff;
+  margin-bottom: 100px;
 }
 
 #logo {
@@ -25,26 +26,29 @@ header {
 }
 
 main {
+  margin-left: 95px;
+  width: 90%;
+}
+
+.intro {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
-  width: 90%;
-  max-width: 1200px;
-  margin-left: 95px;
 }
 
-.intro {
+.intro-and-form {
   flex: 1;
   padding-right: 20px;
 }
 
-.intro h1 {
+main h1 {
   font-size: 64px;
   font-weight: bold;
+  line-height: 0;
 }
 
-.intro p {
+.intro-and-form p {
   font-size: 20px;
   color: #828282;
   margin-bottom: 20px;
@@ -60,7 +64,8 @@ form {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-right: 150px;
+  margin-right: 250px;
+  margin-bottom: 17px;
 }
 
 label {
@@ -68,18 +73,66 @@ label {
   margin-top: 10px;
 }
 
-select,
-input[type="number"] {
+.custom-select {
+  position: relative;
+  display: inline-block;
   width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
 }
 
-select option {
-  background-color: #ffffff;
+.custom-select select {
+  display: none; /* Hide the original select element */
+}
+
+.custom-select::before {
+  content: ""; /* Unicode for down arrow */
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.custom-select select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  width: 100%;
+  height: 40px; /* Custom height */
+  padding: 0 20px;
+  font-size: 16px; /* Custom font size */
+  color: #828282;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-select::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 10px; /* Width of the arrow image */
+  height: 10px; /* Height of the arrow image */
+  background: url("images/arrow-down.png") no-repeat center center;
+  background-size: contain;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.custom-select select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 0 20px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #828282;
 }
 
 aside {
@@ -92,7 +145,6 @@ aside {
 .intro-image {
   width: 100%;
   max-width: 500px; /* Adjust as needed */
-  border-radius: 10px; /* Optional: Rounded corners */
 }
 
 a {
