@@ -1,5 +1,34 @@
 import "./Intro.css";
 
+function toCamelCase(str) {
+  return str
+    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    })
+    .replace(/\s+/g, "");
+}
+
+const COURSES = [
+  "Big Data",
+  "Customer Experience 1",
+  "Customer Experience 2",
+  "Design Thinking",
+  "Digital Marketing",
+  "Engineering Leadership",
+  "Executive Education Advisor Training",
+  "Generative AI & Valuation",
+  "Green Technologies and AI",
+  "Instructor Certificate Program",
+  "IT & Cybersecurity Leadership Teams",
+  "Mentor Certificate Program",
+  "Strategic AI",
+  "Strategic AI for Healthcare Professionals",
+  "Strategic AI for HR Professionals",
+  "Strategic AI in Sales",
+  "Transformation Leadership",
+  "Women in Leadership",
+];
+
 function Intro() {
   return (
     <section className="intro">
@@ -20,50 +49,11 @@ function Intro() {
               <div className="custom-select">
                 <select id="course" name="course">
                   <option value="">Select</option>
-                  <option value="bigData">Big Data</option>
-                  <option value="customerExperience1">
-                    Customer Experience 1
-                  </option>
-                  <option value="customerExperience2">
-                    Customer Experience 2
-                  </option>
-                  <option value="designThinking">Design Thinking</option>
-                  <option value="digitalMarketing">Digital Marketing</option>
-                  <option value="engineeringLeadership">
-                    Engineering Leadership
-                  </option>
-                  <option value="executiveEducationAdvisorTraining">
-                    Executive Education Advisor Training
-                  </option>
-                  <option value="generativeAiAndValuation">
-                    Generative AI & Valuation
-                  </option>
-                  <option value="greenTechnologiesAndAi">
-                    Green Technologies and AI
-                  </option>
-                  <option value="instructorCertificateProgram">
-                    Instructor Certificate Program
-                  </option>
-                  <option value="itAndCybersecurityLeadershipTeams">
-                    IT & Cybersecurity Leadership Teams
-                  </option>
-                  <option value="mentorCertificateProgram">
-                    Mentor Certificate Program
-                  </option>
-                  <option value="strategicAi">Strategic AI</option>
-                  <option value="strategicAiForHealthcareProfessionals">
-                    Strategic AI for Healthcare Professionals
-                  </option>
-                  <option value="strategicAiForHrProfessionals">
-                    Strategic AI for HR Professionals
-                  </option>
-                  <option value="strategicAiInSales">
-                    Strategic AI in Sales
-                  </option>
-                  <option value="transformationLeadership">
-                    Transformation Leadership
-                  </option>
-                  <option value="womenInLeadership">Women in Leadership</option>
+                  {COURSES.map((course, index) => (
+                    <option key={index} value={toCamelCase(course)}>
+                      {course}
+                    </option>
+                  ))}
                 </select>
               </div>
             </div>
