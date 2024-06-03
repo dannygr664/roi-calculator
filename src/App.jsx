@@ -27,21 +27,23 @@ function App() {
   return (
     <>
       <header className="App-header">
-        <img src="images/zschool-logo.png" alt="Zschool logo"></img>
+        <img id="logo" src="images/zschool-logo.png" alt="Zschool logo"></img>
       </header>
       <main>
-        <h1>ROI Calculator</h1>
-        <ROICalculator onCalculate={handleReturnValueCalculation} />
-        {threeMonthReturnValue && (
-          <div>
-            <h2>Calculated Return (3 months): ${threeMonthReturnValue}</h2>
-            <h2>
-              Calculated Return (3 months – Annualized): $
-              {threeMonthReturnValueAnnualized}
-            </h2>
-            <h2>Calculated Return (1 year): ${annualReturnValue}</h2>
-          </div>
-        )}
+        <div id="intro">
+          <h1>ROI Calculator</h1>
+          <ROICalculator onCalculate={handleReturnValueCalculation} />
+          {threeMonthReturnValue && (
+            <div>
+              <h2>Calculated Return (3 months): ${threeMonthReturnValue}</h2>
+              <h2>
+                Calculated Return (3 months – Annualized): $
+                {threeMonthReturnValueAnnualized}
+              </h2>
+              <h2>Calculated Return (1 year): ${annualReturnValue}</h2>
+            </div>
+          )}
+        </div>
       </main>
     </>
   );
