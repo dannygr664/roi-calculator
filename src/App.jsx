@@ -40,7 +40,7 @@ function App() {
             Begin by selecting your course of interest, your company’s industry,
             and the number of employees you wish to enroll.
           </p>
-          <ROICalculator onCalculate={handleReturnValueCalculation} />
+          {/* <ROICalculator onCalculate={handleReturnValueCalculation} />
           {threeMonthReturnValue && (
             <div>
               <h2>Calculated Return (3 months): ${threeMonthReturnValue}</h2>
@@ -50,8 +50,35 @@ function App() {
               </h2>
               <h2>Calculated Return (1 year): ${annualReturnValue}</h2>
             </div>
-          )}
+          )} */}
+          <form>
+            <div className="form-row">
+              <div className="form-element">
+                <label htmlFor="course">Course</label>
+                <select id="course" name="course">
+                  <option value="">Select</option>
+                </select>
+              </div>
+
+              <div className="form-element">
+                <label htmlFor="industry">Industry</label>
+                <select id="industry" name="industry">
+                  <option value="">Select</option>
+                </select>
+              </div>
+            </div>
+
+            <label htmlFor="employees">Number of Employees</label>
+            <input type="number" id="employees" name="employees" value="0" />
+          </form>
         </section>
+        <aside>
+          <img
+            src="images/roi-intro.jpg"
+            alt="ROI Calculator Intro"
+            className="intro-image"
+          />
+        </aside>
       </main>
     </>
   );
