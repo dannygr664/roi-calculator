@@ -30,8 +30,16 @@ function App() {
         <img id="logo" src="images/zschool-logo.png" alt="Zschool logo"></img>
       </header>
       <main>
-        <div id="intro">
+        <section className="intro">
           <h1>ROI Calculator</h1>
+          <p>
+            This tool will calculate your estimated return on investment
+            following Zschool training, using various metrics.
+          </p>
+          <p>
+            Begin by selecting your course of interest, your company’s industry,
+            and the number of employees you wish to enroll.
+          </p>
           <ROICalculator onCalculate={handleReturnValueCalculation} />
           {threeMonthReturnValue && (
             <div>
@@ -43,7 +51,7 @@ function App() {
               <h2>Calculated Return (1 year): ${annualReturnValue}</h2>
             </div>
           )}
-        </div>
+        </section>
       </main>
     </>
   );
