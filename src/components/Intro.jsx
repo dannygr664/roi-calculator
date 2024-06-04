@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import CustomSelect from "./CustomSelect";
 
 import "./Intro.css";
@@ -46,6 +48,22 @@ const INDUSTRIES = [
 ];
 
 function Intro() {
+  const [selectedCourse, setSelectedCourse] = useState("");
+  const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [numberOfEmployees, setNumberOfEmployees] = useState("0");
+
+  const handleCourseChange = (event) => {
+    setSelectedCourse(event.target.value);
+  };
+
+  const handleIndustryChange = (event) => {
+    setSelectedIndustry(event.target.value);
+  };
+
+  const handleNumberOfEmployeesChange = (event) => {
+    setNumberOfEmployees(event.target.value);
+  };
+
   return (
     <section className="intro">
       <section className="intro-and-form">
@@ -62,18 +80,34 @@ function Intro() {
           <div className="form-row">
             <div className="form-element">
               <label htmlFor="course">Course</label>
-              <CustomSelect tag="course" options={COURSES} />
+              <CustomSelect
+                tag="course"
+                options={COURSES}
+                value={selectedCourse}
+                onChange={handleCourseChange}
+              />
             </div>
 
             <div className="form-element">
               <label htmlFor="industry">Industry</label>
-              <CustomSelect tag="industry" options={INDUSTRIES} />
+              <CustomSelect
+                tag="industry"
+                options={INDUSTRIES}
+                value={selectedIndustry}
+                onChange={handleIndustryChange}
+              />
             </div>
           </div>
 
           <div className="form-element">
             <label htmlFor="employees">Number of Employees</label>
-            <input type="number" id="employees" name="employees" value="0" />
+            <input
+              type="number"
+              id="employees"
+              name="employees"
+              value={numberOfEmployees}
+              onChange={handleNumberOfEmployeesChange}
+            />
           </div>
         </form>
       </section>

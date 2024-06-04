@@ -10,10 +10,10 @@ function toCamelCase(str) {
     .replace(/\s+/g, "");
 }
 
-function CustomSelect({ tag, options }) {
+function CustomSelect({ tag, options, value, onChange }) {
   return (
     <div className="custom-select">
-      <select id={tag} name={tag}>
+      <select id={tag} name={tag} value={value} onChange={onChange}>
         <option value="">Select</option>
         {options.map((option, index) => (
           <option key={index} value={toCamelCase(option)}>
@@ -28,6 +28,8 @@ function CustomSelect({ tag, options }) {
 CustomSelect.propTypes = {
   tag: PropTypes.string.isRequired,
   options: PropTypes.array.isRequired,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default CustomSelect;
