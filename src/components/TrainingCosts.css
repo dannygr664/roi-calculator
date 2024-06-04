@@ -43,15 +43,3 @@ button {
 .output-display input {
   width: 40%;
 }
-
-aside {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-#training-costs-image {
-  width: 100%;
-  max-width: 500px; /* Adjust as needed */
-}

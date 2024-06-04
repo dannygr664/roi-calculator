@@ -26,7 +26,7 @@ function TrainingCosts() {
         <img
           src="images/roi-training-costs.jpg"
           alt="ROI Calculator Intro"
-          id="training-costs-image"
+          className="aside-img"
         />
       </aside>
     </section>

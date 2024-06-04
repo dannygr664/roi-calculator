@@ -48,15 +48,3 @@ input[type="number"] {
   color: #828282;
   font-size: 16px;
 }
-
-aside {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.intro-image {
-  width: 100%;
-  max-width: 500px; /* Adjust as needed */
-}

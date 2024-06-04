@@ -1,1 +1,11 @@
+aside {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.aside-img {
+  width: 100%;
+  max-width: 500px; /* Adjust as needed */
+}
