@@ -23,6 +23,28 @@ const COURSES = [
   "Women in Leadership",
 ];
 
+const INDUSTRIES = [
+  "Advertising and Marketing",
+  "Aerospace",
+  "Agriculture",
+  "Computer and Technology",
+  "Construction",
+  "Education",
+  "Energy",
+  "Entertainment",
+  "Fashion",
+  "Finance and Economic",
+  "Food and Beverage",
+  "Healthcare",
+  "Hospitality",
+  "Manufacturing",
+  "Media and News",
+  "Mining",
+  "Pharmaceutical",
+  "Telecommunication",
+  "Transportation",
+];
+
 function Intro() {
   return (
     <section className="intro">
@@ -45,11 +67,7 @@ function Intro() {
 
             <div className="form-element">
               <label htmlFor="industry">Industry</label>
-              <div className="custom-select">
-                <select id="industry" name="industry">
-                  <option value="">Select</option>
-                </select>
-              </div>
+              <CustomSelect tag="industry" options={INDUSTRIES} />
             </div>
           </div>
 
