@@ -1,4 +1,4 @@
-import { useState } from "react";
+import PropTypes from "prop-types";
 
 import CustomSelect from "./CustomSelect";
 
@@ -47,11 +47,14 @@ const INDUSTRIES = [
   "Transportation",
 ];
 
-function Intro() {
-  const [selectedCourse, setSelectedCourse] = useState("");
-  const [selectedIndustry, setSelectedIndustry] = useState("");
-  const [numberOfEmployees, setNumberOfEmployees] = useState("0");
-
+function Intro({
+  selectedCourse,
+  setSelectedCourse,
+  selectedIndustry,
+  setSelectedIndustry,
+  numberOfEmployees,
+  setNumberOfEmployees,
+}) {
   const handleCourseChange = (event) => {
     setSelectedCourse(event.target.value);
   };
@@ -121,5 +124,14 @@ function Intro() {
     </section>
   );
 }
+
+Intro.propTypes = {
+  selectedCourse: PropTypes.string.isRequired,
+  setSelectedCourse: PropTypes.func.isRequired,
+  selectedIndustry: PropTypes.string.isRequired,
+  setSelectedIndustry: PropTypes.func.isRequired,
+  numberOfEmployees: PropTypes.string.isRequired,
+  setNumberOfEmployees: PropTypes.func.isRequired,
+};
 
 export default Intro;
