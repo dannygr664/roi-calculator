@@ -2,8 +2,8 @@ import "./TrainingCosts.css";
 
 function TrainingCosts() {
   return (
-    <section id="training-costs-container">
-      <section id="training-costs-form-container">
+    <section className="panel-container">
+      <section className="form-container">
         <h2>Training Costs</h2>
         <p>
           Training Costs take into account the cost of the program, the average
