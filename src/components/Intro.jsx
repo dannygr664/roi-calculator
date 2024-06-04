@@ -1,51 +1,18 @@
 import PropTypes from "prop-types";
 
 import CustomSelect from "./CustomSelect";
+import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "../constants";
 
 import "./Intro.css";
 
-const COURSES = [
-  "Big Data",
-  "Customer Experience 1",
-  "Customer Experience 2",
-  "Design Thinking",
-  "Digital Marketing",
-  "Engineering Leadership",
-  "Executive Education Advisor Training",
-  "Generative AI & Valuation",
-  "Green Technologies and AI",
-  "Instructor Certificate Program",
-  "IT & Cybersecurity Leadership Teams",
-  "Mentor Certificate Program",
-  "Strategic AI",
-  "Strategic AI for Healthcare Professionals",
-  "Strategic AI for HR Professionals",
-  "Strategic AI in Sales",
-  "Transformation Leadership",
-  "Women in Leadership",
-];
+function getNamesAndValues(obj) {
+  const namesAndValues = [];
+  for (const property in obj) {
+    namesAndValues.push({ name: obj[property].name, value: property });
+  }
 
-const INDUSTRIES = [
-  "Advertising and Marketing",
-  "Aerospace",
-  "Agriculture",
-  "Computer and Technology",
-  "Construction",
-  "Education",
-  "Energy",
-  "Entertainment",
-  "Fashion",
-  "Finance and Economic",
-  "Food and Beverage",
-  "Healthcare",
-  "Hospitality",
-  "Manufacturing",
-  "Media and News",
-  "Mining",
-  "Pharmaceutical",
-  "Telecommunication",
-  "Transportation",
-];
+  return namesAndValues;
+}
 
 function Intro({
   selectedCourse,
@@ -85,7 +52,7 @@ function Intro({
               <label htmlFor="course">Course</label>
               <CustomSelect
                 tag="course"
-                options={Object.keys(COURSES_TO_METADATA)}
+                options={getNamesAndValues(COURSES_TO_METADATA)}
                 value={selectedCourse}
                 onChange={handleCourseChange}
               />
@@ -95,7 +62,7 @@ function Intro({
               <label htmlFor="industry">Industry</label>
               <CustomSelect
                 tag="industry"
-                options={Object.keys(INDUSTRIES_TO_METADATA)}
+                options={getNamesAndValues(INDUSTRIES_TO_METADATA)}
                 value={selectedIndustry}
                 onChange={handleIndustryChange}
               />

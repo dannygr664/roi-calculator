@@ -19,7 +19,7 @@ function TrainingCosts({ calculateTrainingCosts }) {
         </p>
         <button
           type="submit"
-          onClick={() => setTrainingCosts(calculateTrainingCosts())}
+          onClick={() => setTrainingCosts(calculateTrainingCosts().toString())}
         >
           Calculate Training Costs
         </button>
@@ -42,10 +42,8 @@ function TrainingCosts({ calculateTrainingCosts }) {
   );
 }
 
-OutputDisplay.propTypes = {
-  tag: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  outputValue: PropTypes.string.isRequired,
+TrainingCosts.propTypes = {
+  calculateTrainingCosts: PropTypes.func.isRequired,
 };
 
 export default TrainingCosts;
