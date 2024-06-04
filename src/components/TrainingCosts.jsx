@@ -1,3 +1,5 @@
+import OutputDisplay from "./OutputDisplay";
+
 import "./TrainingCosts.css";
 
 function TrainingCosts() {
@@ -12,14 +14,7 @@ function TrainingCosts() {
         </p>
         <button type="submit">Calculate Training Costs</button>
         <div className="output-display">
-          <label htmlFor="training-costs">Training Costs</label>
-          <input
-            type="number"
-            id="training-costs"
-            name="training-costs"
-            value="0"
-            readOnly
-          />
+          <OutputDisplay tag="training-costs" label="Training Costs" />
         </div>
       </section>
       <aside>
