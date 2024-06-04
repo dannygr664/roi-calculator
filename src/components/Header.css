@@ -2,11 +2,11 @@ header {
   width: 100%;
   display: flex;
   justify-content: flex-start;
-  padding: 20px;
   background-color: #ffffff;
   margin-bottom: 100px;
 }
 
 #logo {
   width: 140px;
+  padding: 20px;
 }
