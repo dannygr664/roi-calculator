@@ -1,14 +1,11 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 import OutputDisplay from "./OutputDisplay";
 
 import "./TrainingCosts.css";
 
-function calculateTrainingCosts() {
-  return 1;
-}
-
-function TrainingCosts() {
+function TrainingCosts({ calculateTrainingCosts }) {
   const [trainingCosts, setTrainingCosts] = useState("0");
 
   return (
@@ -44,5 +41,11 @@ function TrainingCosts() {
     </section>
   );
 }
+
+OutputDisplay.propTypes = {
+  tag: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  outputValue: PropTypes.string.isRequired,
+};
 
 export default TrainingCosts;

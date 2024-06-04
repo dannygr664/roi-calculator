@@ -85,7 +85,7 @@ function Intro({
               <label htmlFor="course">Course</label>
               <CustomSelect
                 tag="course"
-                options={COURSES}
+                options={Object.keys(COURSES_TO_METADATA)}
                 value={selectedCourse}
                 onChange={handleCourseChange}
               />
@@ -95,7 +95,7 @@ function Intro({
               <label htmlFor="industry">Industry</label>
               <CustomSelect
                 tag="industry"
-                options={INDUSTRIES}
+                options={Object.keys(INDUSTRIES_TO_METADATA)}
                 value={selectedIndustry}
                 onChange={handleIndustryChange}
               />
