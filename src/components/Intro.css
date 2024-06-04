@@ -25,8 +25,13 @@ form {
 .form-row {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 80px;
   margin-bottom: 17px;
+}
+
+.form-element {
+  display: flex;
+  flex-direction: column;
 }
 
 label {
@@ -35,8 +40,8 @@ label {
 }
 
 input[type="number"] {
-  width: 100%;
   padding: 0 20px;
+  width: 300px;
   height: 40px;
   border: 1px solid #ccc;
   border-radius: 5px;
