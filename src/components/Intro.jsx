@@ -1,12 +1,6 @@
-import "./Intro.css";
+import CustomSelect from "./CustomSelect";
 
-function toCamelCase(str) {
-  return str
-    .replace(/(?:^\w|[A-Z]|\b\w)/g, function (word, index) {
-      return index === 0 ? word.toLowerCase() : word.toUpperCase();
-    })
-    .replace(/\s+/g, "");
-}
+import "./Intro.css";
 
 const COURSES = [
   "Big Data",
@@ -46,16 +40,7 @@ function Intro() {
           <div className="form-row">
             <div className="form-element">
               <label htmlFor="course">Course</label>
-              <div className="custom-select">
-                <select id="course" name="course">
-                  <option value="">Select</option>
-                  {COURSES.map((course, index) => (
-                    <option key={index} value={toCamelCase(course)}>
-                      {course}
-                    </option>
-                  ))}
-                </select>
-              </div>
+              <CustomSelect tag="course" options={COURSES} />
             </div>
 
             <div className="form-element">
