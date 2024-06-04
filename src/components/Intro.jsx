@@ -79,7 +79,7 @@ function Intro({
           and the number of employees you wish to enroll.
         </p>
 
-        <form>
+        <div id="form-container">
           <div className="form-row">
             <div className="form-element">
               <label htmlFor="course">Course</label>
@@ -112,7 +112,7 @@ function Intro({
               onChange={handleNumberOfEmployeesChange}
             />
           </div>
-        </form>
+        </div>
       </section>
       <aside>
         <img
