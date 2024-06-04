@@ -1,8 +1,16 @@
+import { useState } from "react";
+
 import OutputDisplay from "./OutputDisplay";
 
 import "./TrainingCosts.css";
 
+function calculateTrainingCosts() {
+  return 1;
+}
+
 function TrainingCosts() {
+  const [trainingCosts, setTrainingCosts] = useState("0");
+
   return (
     <section className="panel-container">
       <section className="form-container">
@@ -12,9 +20,18 @@ function TrainingCosts() {
           hourly wage per employee in the given industry, and the number of
           hours needed to complete the program.
         </p>
-        <button type="submit">Calculate Training Costs</button>
+        <button
+          type="submit"
+          onClick={() => setTrainingCosts(calculateTrainingCosts())}
+        >
+          Calculate Training Costs
+        </button>
         <div className="output-display">
-          <OutputDisplay tag="training-costs" label="Training Costs" />
+          <OutputDisplay
+            tag="training-costs"
+            label="Training Costs"
+            outputValue={trainingCosts}
+          />
         </div>
       </section>
       <aside>
