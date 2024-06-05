@@ -18,8 +18,16 @@ function App() {
     setOpenSection(openSection === sectionNumber ? null : sectionNumber);
   };
 
+  const areInputsValid = () => {
+    if (!selectedCourse || !selectedIndustry || numberOfEmployees < 0) {
+      return false;
+    } else {
+      return true;
+    }
+  };
+
   const calculateTrainingCosts = () => {
-    if (!selectedCourse || !selectedIndustry) {
+    if (!areInputsValid()) {
       return 0;
     }
 
@@ -36,7 +44,7 @@ function App() {
   };
 
   const calculateTraineeSatisfaction = () => {
-    if (!selectedCourse || !selectedIndustry) {
+    if (!areInputsValid()) {
       return 0;
     }
 
