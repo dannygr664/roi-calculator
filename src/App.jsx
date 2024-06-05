@@ -63,6 +63,14 @@ function App() {
     return (postAssessmentScore - preAssessmentScore) / preAssessmentScore;
   };
 
+  const calculateWorkplaceBehaviorROI = () => {
+    if (!areInputsValid()) {
+      return 0;
+    }
+
+    return COURSES_TO_METADATA[selectedCourse].behavioralAsessmentScore;
+  };
+
   const calculatorSections = [
     {
       title: "Training Costs",
