@@ -3,9 +3,9 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
 import TrainingCosts from "./components/TrainingCosts";
+import ROICalculationPanel from "./components/ROICalculationPanel";
 import "./App.css";
 import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "./constants";
-import TraineeSatisfaction from "./components/TraineeSatisfaction";
 
 function App() {
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -61,8 +61,13 @@ function App() {
     {
       title: "Trainee Satisfaction",
       content: (
-        <TraineeSatisfaction
-          calculateTraineeSatisfaction={calculateTraineeSatisfaction}
+        <ROICalculationPanel
+          name="Trainee Satisfaction"
+          tag="trainee-satisfaction"
+          description="This metric uses survey scores from the given course to measure ROI as
+          a function of Trainee Satisfaction."
+          asideImageFilePath="images/roi-trainee-satisfaction.jpg"
+          calculateROI={calculateTraineeSatisfaction}
           calculateTrainingCosts={calculateTrainingCosts}
         />
       ),
