@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import Header from "./components/Header";
 import Intro from "./components/Intro";
-import Divider from "./components/Divider";
 import TrainingCosts from "./components/TrainingCosts";
 import "./App.css";
 import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "./constants";
@@ -85,7 +84,6 @@ function App() {
             setNumberOfEmployees={setNumberOfEmployees}
           />
         </section>
-        <Divider />
         {calculatorSections.map((section, index) => (
           <div key={index}>
             <div
