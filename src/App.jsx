@@ -51,6 +51,18 @@ function App() {
     return COURSES_TO_METADATA[selectedCourse].satisfactionSurveyScore;
   };
 
+  const calculateLearningROI = () => {
+    if (!areInputsValid()) {
+      return 0;
+    }
+
+    const preAssessmentScore =
+      COURSES_TO_METADATA[selectedCourse].preAssessmentScore;
+    const postAssessmentScore =
+      COURSES_TO_METADATA[selectedCourse].postAssessmentScore;
+    return (postAssessmentScore - preAssessmentScore) / preAssessmentScore;
+  };
+
   const calculatorSections = [
     {
       title: "Training Costs",
