@@ -68,7 +68,7 @@ function App() {
       return 0;
     }
 
-    return COURSES_TO_METADATA[selectedCourse].behavioralAsessmentScore;
+    return COURSES_TO_METADATA[selectedCourse].behavioralAssessmentScore;
   };
 
   const calculatorSections = [
@@ -102,6 +102,20 @@ function App() {
           ROI as a function of Learning."
           asideImageFilePath="images/roi-learning.jpg"
           calculateROI={calculateLearningROI}
+          calculateTrainingCosts={calculateTrainingCosts}
+        />
+      ),
+    },
+    {
+      title: "Workplace Behavior",
+      content: (
+        <ROICalculationPanel
+          name="Workplace Behavior"
+          tag="workplace-behavior"
+          description="This metric uses data gathered from managers observing employees to 
+          measure ROI as a function of improvements in Workplace Behavior."
+          asideImageFilePath="images/roi-workplace-behavior.jpg"
+          calculateROI={calculateWorkplaceBehaviorROI}
           calculateTrainingCosts={calculateTrainingCosts}
         />
       ),
