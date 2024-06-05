@@ -12,6 +12,12 @@ function App() {
   const [selectedIndustry, setSelectedIndustry] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
 
+  const [openSection, setOpenSection] = useState(null);
+
+  const toggleSection = (sectionNumber) => {
+    setOpenSection(openSection === sectionNumber ? null : sectionNumber);
+  };
+
   const calculateTrainingCosts = () => {
     if (!selectedCourse || !selectedIndustry) {
       return 0;
@@ -45,10 +51,14 @@ function App() {
           />
         </section>
         <Divider />
-        <section className="content">
-          <TrainingCosts calculateTrainingCosts={calculateTrainingCosts} />
-        </section>
-        <Divider />
+        <div className="section-header" onClick={() => toggleSection(1)}>
+          <h2>{openSection === 1 ? "–" : "+"} Training Costs</h2>
+        </div>
+        {openSection === 1 && (
+          <section className="content">
+            <TrainingCosts calculateTrainingCosts={calculateTrainingCosts} />
+          </section>
+        )}
       </main>
     </>
   );
