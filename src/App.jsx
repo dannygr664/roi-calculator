@@ -6,6 +6,7 @@ import Divider from "./components/Divider";
 import TrainingCosts from "./components/TrainingCosts";
 import "./App.css";
 import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "./constants";
+import TraineeSatisfaction from "./components/TraineeSatisfaction";
 
 function App() {
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -35,11 +36,36 @@ function App() {
     );
   };
 
+  const calculateTraineeSatisfaction = () => {
+    if (!selectedCourse || !selectedIndustry) {
+      return 0;
+    }
+
+    const costOfCourse = COURSES_TO_METADATA[selectedCourse].cost;
+    const averageHourlyWage =
+      INDUSTRIES_TO_METADATA[selectedIndustry].averageHourlyWage;
+    const hoursToCompleteCourse =
+      COURSES_TO_METADATA[selectedCourse].hoursToComplete;
+
+    return (
+      (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
+      parseInt(numberOfEmployees, 10)
+    );
+  };
+
   const calculatorSections = [
     {
       title: "Training Costs",
       content: (
         <TrainingCosts calculateTrainingCosts={calculateTrainingCosts} />
+      ),
+    },
+    {
+      title: "Trainee Satisfaction",
+      content: (
+        <TraineeSatisfaction
+          calculateTraineeSatisfaction={calculateTraineeSatisfaction}
+        />
       ),
     },
   ];
