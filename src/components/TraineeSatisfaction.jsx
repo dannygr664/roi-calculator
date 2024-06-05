@@ -24,10 +24,10 @@ function TraineeSatisfaction({
   return (
     <section className="panel-container">
       <section className="form-container">
-        <h2>Trainee Satisfaction</h2>
+        <h2>ROI: Trainee Satisfaction</h2>
         <p>
-          This metric uses survey scores from the given course to measure
-          Trainee Satisfaction.
+          This metric uses survey scores from the given course to measure ROI as
+          a function of Trainee Satisfaction.
         </p>
         <button
           type="submit"
@@ -36,7 +36,7 @@ function TraineeSatisfaction({
             setPercentageReturn(calculatePercentageReturn().toString());
           }}
         >
-          Calculate Trainee Satisfaction
+          Calculate Trainee Satisfaction ROI
         </button>
         <div className="output-display">
           <OutputDisplay
