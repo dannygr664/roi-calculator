@@ -27,6 +27,7 @@ function TrainingCosts({ calculateTrainingCosts }) {
           <OutputDisplay
             tag="training-costs"
             label="Training Costs"
+            format="currency"
             outputValue={trainingCosts}
           />
         </div>
