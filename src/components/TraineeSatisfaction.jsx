@@ -40,7 +40,7 @@ function TraineeSatisfaction({
         </button>
         <div className="output-display">
           <OutputDisplay
-            tag="training-costs"
+            tag="trainee-satisfaction-net-return"
             label="Net Return"
             format="currency"
             outputValue={netReturn}
