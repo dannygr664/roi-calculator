@@ -63,6 +63,7 @@ function App() {
       content: (
         <TraineeSatisfaction
           calculateTraineeSatisfaction={calculateTraineeSatisfaction}
+          calculateTrainingCosts={calculateTrainingCosts}
         />
       ),
     },

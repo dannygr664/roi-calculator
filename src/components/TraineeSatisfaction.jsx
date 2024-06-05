@@ -5,8 +5,16 @@ import OutputDisplay from "./OutputDisplay";
 
 import "./TraineeSatisfaction.css";
 
-function TraineeSatisfaction({ calculateTraineeSatisfaction }) {
-  const [traineeSatisfaction, setTraineeSatisfaction] = useState("0");
+function TraineeSatisfaction({
+  calculateTraineeSatisfaction,
+  calculateTrainingCosts,
+}) {
+  const [netReturn, setNetReturn] = useState("0");
+
+  const calculateNetReturn = () => {
+    const trainingCosts = calculateTrainingCosts();
+    return trainingCosts * (1 + calculateTraineeSatisfaction()) - trainingCosts;
+  };
 
   return (
     <section className="panel-container">
@@ -18,9 +26,7 @@ function TraineeSatisfaction({ calculateTraineeSatisfaction }) {
         </p>
         <button
           type="submit"
-          onClick={() =>
-            setTraineeSatisfaction(calculateTraineeSatisfaction().toString())
-          }
+          onClick={() => setNetReturn(calculateNetReturn().toString())}
         >
           Calculate Trainee Satisfaction
         </button>
@@ -29,7 +35,7 @@ function TraineeSatisfaction({ calculateTraineeSatisfaction }) {
             tag="training-costs"
             label="Net Return"
             format="currency"
-            outputValue={traineeSatisfaction}
+            outputValue={netReturn}
           />
         </div>
       </section>
@@ -46,6 +52,7 @@ function TraineeSatisfaction({ calculateTraineeSatisfaction }) {
 
 TraineeSatisfaction.propTypes = {
   calculateTraineeSatisfaction: PropTypes.func.isRequired,
+  calculateTrainingCosts: PropTypes.func.isRequired,
 };
 
 export default TraineeSatisfaction;
