@@ -10,10 +10,15 @@ function TraineeSatisfaction({
   calculateTrainingCosts,
 }) {
   const [netReturn, setNetReturn] = useState("0");
+  const [percentageReturn, setPercentageReturn] = useState("0");
 
   const calculateNetReturn = () => {
     const trainingCosts = calculateTrainingCosts();
     return trainingCosts * (1 + calculateTraineeSatisfaction()) - trainingCosts;
+  };
+
+  const calculatePercentageReturn = () => {
+    return calculateTraineeSatisfaction() * 100;
   };
 
   return (
@@ -26,7 +31,10 @@ function TraineeSatisfaction({
         </p>
         <button
           type="submit"
-          onClick={() => setNetReturn(calculateNetReturn().toString())}
+          onClick={() => {
+            setNetReturn(calculateNetReturn().toString());
+            setPercentageReturn(calculatePercentageReturn().toString());
+          }}
         >
           Calculate Trainee Satisfaction
         </button>
@@ -36,6 +44,14 @@ function TraineeSatisfaction({
             label="Net Return"
             format="currency"
             outputValue={netReturn}
+          />
+        </div>
+        <div className="output-display">
+          <OutputDisplay
+            tag="trainee-satisfaction-percentage-return"
+            label="% Return"
+            format="percentage"
+            outputValue={percentageReturn}
           />
         </div>
       </section>
