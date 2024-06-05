@@ -6,6 +6,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   customerExperience1: {
     name: "Customer Experience 1",
@@ -14,6 +15,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   customerExperience2: {
     name: "Customer Experience 2",
@@ -22,6 +24,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   designThinking: {
     name: "Design Thinking",
@@ -30,6 +33,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   digitalMarketing: {
     name: "Digital Marketing",
@@ -38,6 +42,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   engineeringLeadership: {
     name: "Engineering Leadership",
@@ -46,6 +51,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   executiveEducationAdvisorTraining: {
     name: "Executive Education Advisor Training",
@@ -54,6 +60,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   generateAiAndValuation: {
     name: "Generative AI & Valuation",
@@ -62,6 +69,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   greenTechnologiesAndAi: {
     name: "Green Technologies and AI",
@@ -70,6 +78,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   instructorCertificateProgram: {
     name: "Instructor Certificate Program",
@@ -78,6 +87,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   itCybersecurityLeadershipTeams: {
     name: "IT & Cybersecurity Leadership Teams",
@@ -86,6 +96,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   mentorCertificateProgram: {
     name: "Mentor Certificate Program",
@@ -94,6 +105,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   strategicAi: {
     name: "Strategic AI",
@@ -102,6 +114,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   strategicAiForHealthcareProfessionals: {
     name: "Strategic AI for Healthcare Professionals",
@@ -110,6 +123,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   strategicAiForHrProfessionals: {
     name: "Strategic AI for HR Professionals",
@@ -118,6 +132,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   strategicAiInSales: {
     name: "Strategic AI in Sales",
@@ -126,6 +141,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   transformationLeadership: {
     name: "Transformation Leadership",
@@ -134,6 +150,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
   womenInLeadership: {
     name: "Women in Leadership",
@@ -142,6 +159,7 @@ export const COURSES_TO_METADATA = {
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
+    behavioralAssessmentScore: 0.7,
   },
 };
 
