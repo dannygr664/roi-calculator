@@ -35,6 +35,15 @@ function App() {
     );
   };
 
+  const calculatorSections = [
+    {
+      title: "Training Costs",
+      content: (
+        <TrainingCosts calculateTrainingCosts={calculateTrainingCosts} />
+      ),
+    },
+  ];
+
   return (
     <>
       <Header />
@@ -51,14 +60,21 @@ function App() {
           />
         </section>
         <Divider />
-        <div className="section-header" onClick={() => toggleSection(1)}>
-          <h2>{openSection === 1 ? "–" : "+"} Training Costs</h2>
-        </div>
-        {openSection === 1 && (
-          <section className="content">
-            <TrainingCosts calculateTrainingCosts={calculateTrainingCosts} />
-          </section>
-        )}
+        {calculatorSections.map((section, index) => (
+          <div key={index}>
+            <div
+              className="section-header"
+              onClick={() => toggleSection(index)}
+            >
+              <h2>
+                {openSection === index ? "–" : "+"} {section.title}
+              </h2>
+            </div>
+            {openSection === index && (
+              <section className="content">{section.content}</section>
+            )}
+          </div>
+        ))}
       </main>
     </>
   );
