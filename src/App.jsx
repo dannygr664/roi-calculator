@@ -12,7 +12,7 @@ function App() {
   const [selectedIndustry, setSelectedIndustry] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
 
-  function calculateTrainingCosts() {
+  const calculateTrainingCosts = () => {
     if (!selectedCourse || !selectedIndustry) {
       return 0;
     }
@@ -27,7 +27,7 @@ function App() {
       (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
       parseInt(numberOfEmployees, 10)
     );
-  }
+  };
 
   return (
     <>
