@@ -3,10 +3,17 @@ import PropTypes from "prop-types";
 import "./OutputDisplay.css";
 
 function OutputDisplay({ tag, label, outputValue }) {
+  const formatCurrency = (value) => {
+    return new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+    }).format(value);
+  };
+
   return (
     <>
       <label htmlFor={tag}>{label}</label>
-      <input type="number" id={tag} name={tag} value={outputValue} readOnly />
+      <input id={tag} name={tag} value={formatCurrency(outputValue)} readOnly />
     </>
   );
 }
