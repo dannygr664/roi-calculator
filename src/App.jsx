@@ -84,6 +84,20 @@ function App() {
         />
       ),
     },
+    {
+      title: "Learning",
+      content: (
+        <ROICalculationPanel
+          name="Learning"
+          tag="learning"
+          description="This metric uses pre-assessment and post-assesment scores to measure 
+          ROI as a function of Learning."
+          asideImageFilePath="images/roi-learning.jpg"
+          calculateROI={calculateLearningROI}
+          calculateTrainingCosts={calculateTrainingCosts}
+        />
+      ),
+    },
   ];
 
   return (
