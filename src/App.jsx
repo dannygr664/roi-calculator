@@ -48,16 +48,7 @@ function App() {
       return 0;
     }
 
-    const costOfCourse = COURSES_TO_METADATA[selectedCourse].cost;
-    const averageHourlyWage =
-      INDUSTRIES_TO_METADATA[selectedIndustry].averageHourlyWage;
-    const hoursToCompleteCourse =
-      COURSES_TO_METADATA[selectedCourse].hoursToComplete;
-
-    return (
-      (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
-      parseInt(numberOfEmployees, 10)
-    );
+    return COURSES_TO_METADATA[selectedCourse].satisfactionSurveyScore;
   };
 
   const calculatorSections = [
