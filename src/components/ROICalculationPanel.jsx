@@ -17,8 +17,7 @@ function ROICalculationPanel({
   const [percentageReturn, setPercentageReturn] = useState("0");
 
   const calculateNetReturn = () => {
-    const trainingCosts = calculateTrainingCosts();
-    return trainingCosts * (1 + calculateROI()) - trainingCosts;
+    return calculateTrainingCosts() * calculateROI();
   };
 
   const calculatePercentageReturn = () => {
