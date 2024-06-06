@@ -5,6 +5,8 @@ import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "../constants";
 
 import "./Intro.css";
 
+import roiIntroImgUrl from "../../images/roi-intro.jpg";
+
 function getNamesAndValues(obj) {
   const namesAndValues = [];
   for (const property in obj) {
@@ -83,7 +85,7 @@ function Intro({
       </section>
       <aside>
         <img
-          src="./images/roi-intro.jpg"
+          src={roiIntroImgUrl}
           alt="ROI Calculator Intro"
           className="aside-img"
         />

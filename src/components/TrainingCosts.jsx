@@ -5,6 +5,8 @@ import OutputDisplay from "./OutputDisplay";
 
 import "./TrainingCosts.css";
 
+import roiTrainingCostsImgUrl from "../../images/roi-training-costs.jpg";
+
 function TrainingCosts({ calculateTrainingCosts }) {
   const [trainingCosts, setTrainingCosts] = useState("0");
 
@@ -34,7 +36,7 @@ function TrainingCosts({ calculateTrainingCosts }) {
       </section>
       <aside>
         <img
-          src="./images/roi-training-costs.jpg"
+          src={roiTrainingCostsImgUrl}
           alt="ROI Calculator Intro"
           className="aside-img"
         />

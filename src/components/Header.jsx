@@ -1,9 +1,11 @@
 import "./Header.css";
 
+import logoImgUrl from "../../images/zschool-logo.png";
+
 function Header() {
   return (
     <header className="App-header">
-      <img id="logo" src="./images/zschool-logo.png" alt="Zschool logo"></img>
+      <img id="logo" src={logoImgUrl} alt="Zschool logo"></img>
     </header>
   );
 }
