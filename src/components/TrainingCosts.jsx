@@ -34,7 +34,7 @@ function TrainingCosts({ calculateTrainingCosts }) {
       </section>
       <aside>
         <img
-          src="images/roi-training-costs.jpg"
+          src="./images/roi-training-costs.jpg"
           alt="ROI Calculator Intro"
           className="aside-img"
         />

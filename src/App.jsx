@@ -86,7 +86,7 @@ function App() {
           tag="trainee-satisfaction"
           description="This metric uses survey scores from the given course to measure ROI as
           a function of Trainee Satisfaction."
-          asideImageFilePath="images/roi-trainee-satisfaction.jpg"
+          asideImageFilePath="./images/roi-trainee-satisfaction.jpg"
           calculateROI={calculateTraineeSatisfaction}
           calculateTrainingCosts={calculateTrainingCosts}
         />
@@ -100,7 +100,7 @@ function App() {
           tag="learning"
           description="This metric uses pre-assessment and post-assesment scores to measure 
           ROI as a function of Learning."
-          asideImageFilePath="images/roi-learning.jpg"
+          asideImageFilePath="./images/roi-learning.jpg"
           calculateROI={calculateLearningROI}
           calculateTrainingCosts={calculateTrainingCosts}
         />
@@ -114,7 +114,7 @@ function App() {
           tag="workplace-behavior"
           description="This metric uses data gathered from managers observing employees to 
           measure ROI as a function of improvements in Workplace Behavior."
-          asideImageFilePath="images/roi-workplace-behavior.jpg"
+          asideImageFilePath="./images/roi-workplace-behavior.jpg"
           calculateROI={calculateWorkplaceBehaviorROI}
           calculateTrainingCosts={calculateTrainingCosts}
         />
