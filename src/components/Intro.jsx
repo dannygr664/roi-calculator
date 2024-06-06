@@ -83,7 +83,7 @@ function Intro({
       </section>
       <aside>
         <img
-          src="images/roi-intro.jpg"
+          src="./images/roi-intro.jpg"
           alt="ROI Calculator Intro"
           className="aside-img"
         />
