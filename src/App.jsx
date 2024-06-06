@@ -7,6 +7,10 @@ import ROICalculationPanel from "./components/ROICalculationPanel";
 import "./App.css";
 import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "./constants";
 
+import roiTraineeSatisfactionImgUrl from "../images/roi-trainee-satisfaction.jpg";
+import roiLearningImgUrl from "../images/roi-learning.jpg";
+import roiWorkplaceBehaviorImgUrl from "../images/roi-workplace-behavior.jpg";
+
 function App() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedIndustry, setSelectedIndustry] = useState("");
@@ -86,7 +90,7 @@ function App() {
           tag="trainee-satisfaction"
           description="This metric uses survey scores from the given course to measure ROI as
           a function of Trainee Satisfaction."
-          asideImageFilePath="./images/roi-trainee-satisfaction.jpg"
+          asideImageFilePath={roiTraineeSatisfactionImgUrl}
           calculateROI={calculateTraineeSatisfaction}
           calculateTrainingCosts={calculateTrainingCosts}
         />
@@ -100,7 +104,7 @@ function App() {
           tag="learning"
           description="This metric uses pre-assessment and post-assesment scores to measure 
           ROI as a function of Learning."
-          asideImageFilePath="./images/roi-learning.jpg"
+          asideImageFilePath={roiLearningImgUrl}
           calculateROI={calculateLearningROI}
           calculateTrainingCosts={calculateTrainingCosts}
         />
@@ -114,7 +118,7 @@ function App() {
           tag="workplace-behavior"
           description="This metric uses data gathered from managers observing employees to 
           measure ROI as a function of improvements in Workplace Behavior."
-          asideImageFilePath="./images/roi-workplace-behavior.jpg"
+          asideImageFilePath={roiWorkplaceBehaviorImgUrl}
           calculateROI={calculateWorkplaceBehaviorROI}
           calculateTrainingCosts={calculateTrainingCosts}
         />
