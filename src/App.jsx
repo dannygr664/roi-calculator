@@ -32,8 +32,9 @@ function App() {
     if (
       !selectedCourse ||
       !selectedCreditOption ||
-      numberOfEmployees < 0 ||
-      cost < 0 ||
+      parseInt(numberOfEmployees, 10) < 0 ||
+      parseFloat(cost) < 0 ||
+      isNaN(parseFloat(cost)) ||
       !selectedIndustry
     ) {
       return false;
