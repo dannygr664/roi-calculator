@@ -106,14 +106,16 @@ function Intro({
             </div>
           </div>
 
-          <div className="form-element">
-            <label htmlFor="industry">Your Company&apos;s Industry</label>
-            <CustomSelect
-              tag="industry"
-              options={getNamesAndValues(INDUSTRIES_TO_METADATA)}
-              value={selectedIndustry}
-              onChange={handleIndustryChange}
-            />
+          <div className="form-row">
+            <div className="form-element">
+              <label htmlFor="industry">Your Company&apos;s Industry</label>
+              <CustomSelect
+                tag="industry"
+                options={getNamesAndValues(INDUSTRIES_TO_METADATA)}
+                value={selectedIndustry}
+                onChange={handleIndustryChange}
+              />
+            </div>
           </div>
         </div>
       </section>
