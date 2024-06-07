@@ -13,8 +13,10 @@ import roiWorkplaceBehaviorImgUrl from "../images/roi-workplace-behavior.jpg";
 
 function App() {
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [selectedCreditOption, setSelectedCreditOption] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
+  const [cost, setCost] = useState("0");
+  const [selectedIndustry, setSelectedIndustry] = useState("");
 
   const [openSection, setOpenSection] = useState(null);
 
@@ -135,10 +137,14 @@ function App() {
           <Intro
             selectedCourse={selectedCourse}
             setSelectedCourse={setSelectedCourse}
-            selectedIndustry={selectedIndustry}
-            setSelectedIndustry={setSelectedIndustry}
+            selectedCreditOption={selectedCreditOption}
+            setSelectedCreditOption={setSelectedCreditOption}
             numberOfEmployees={numberOfEmployees}
             setNumberOfEmployees={setNumberOfEmployees}
+            cost={cost}
+            setCost={setCost}
+            selectedIndustry={selectedIndustry}
+            setSelectedIndustry={setSelectedIndustry}
           />
         </section>
         {calculatorSections.map((section, index) => (

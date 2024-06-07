@@ -163,6 +163,21 @@ export const COURSES_TO_METADATA = {
   },
 };
 
+export const CREDIT_OPTIONS_TO_METADATA = {
+  nonCredit: {
+    name: "Non-Credit",
+    hoursToComplete: 32,
+  },
+  sixtyHour: {
+    name: "For-Credit: 60 Hours",
+    hoursToComplete: 60,
+  },
+  ninetyHour: {
+    name: "For-Credit: 90 Hours",
+    hoursToComplete: 90,
+  },
+};
+
 export const INDUSTRIES_TO_METADATA = {
   advertisingAndMarketing: {
     name: "Advertising and Marketing",
