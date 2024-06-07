@@ -143,29 +143,38 @@ export const CREDIT_OPTIONS_TO_METADATA = {
 };
 
 export const INDUSTRIES_TO_METADATA = {
-  advertisingAndMarketing: {
-    name: "Advertising and Marketing",
+  aerospaceAndDefense: { name: "Aerospace & Defense", averageHourlyWage: 10 },
+  biotechnology: { name: "Biotechnology", averageHourlyWage: 10 },
+  businessServices: {
+    name: "Business Services",
     averageHourlyWage: 10,
   },
-  aerospace: { name: "Aerospace", averageHourlyWage: 10 },
-  agriculture: { name: "Agriculture", averageHourlyWage: 10 },
-  computerAndTechnology: {
-    name: "Computer and Technology",
-    averageHourlyWage: 10,
-  },
+  chemicals: { name: "Chemicals", averageHourlyWage: 10 },
   construction: { name: "Construction", averageHourlyWage: 10 },
-  education: { name: "Education", averageHourlyWage: 10 },
-  energy: { name: "Energy", averageHourlyWage: 10 },
+  eduGovtAndNonprofit: {
+    name: "Edu., Gov't. & Nonprofit",
+    averageHourlyWage: 10,
+  },
+  energyAndUtilities: { name: "Energy & Utilities", averageHourlyWage: 10 },
   entertainment: { name: "Entertainment", averageHourlyWage: 10 },
   fashion: { name: "Fashion", averageHourlyWage: 10 },
-  financeAndEconomic: { name: "Finance and Economic", averageHourlyWage: 10 },
-  foodAndBeverage: { name: "Food and Beverage", averageHourlyWage: 10 },
+  financialServices: { name: "Financial Services", averageHourlyWage: 10 },
   healthcare: { name: "Healthcare", averageHourlyWage: 10 },
-  hospitality: { name: "Hospitality", averageHourlyWage: 10 },
-  manufacturing: { name: "Manufacturing", averageHourlyWage: 10 },
-  mediaAndNews: { name: "Media and News", averageHourlyWage: 10 },
-  mining: { name: "Mining", averageHourlyWage: 10 },
-  pharmaceutical: { name: "Pharmaceutical", averageHourlyWage: 10 },
-  telecommunication: { name: "Telecommunication", averageHourlyWage: 10 },
+  hospitalityAndLeisure: {
+    name: "Hospitality & Leisure",
+    averageHourlyWage: 10,
+  },
+  insurance: { name: "Insurance", averageHourlyWage: 10 },
+  internet: { name: "Internet", averageHourlyWage: 10 },
+  media: { name: "Media", averageHourlyWage: 10 },
+  mfgDurable: { name: "MFG Durable", averageHourlyWage: 10 },
+  mfgNondurable: { name: "MFG Nondurable", averageHourlyWage: 10 },
+  pharmaceuticals: { name: "Pharmaceuticals", averageHourlyWage: 10 },
+  retailAndWholesale: { name: "Retail & Wholesale", averageHourlyWage: 10 },
+  softwareAndNetworking: {
+    name: "Software & Networking",
+    averageHourlyWage: 10,
+  },
+  telecom: { name: "Telecom", averageHourlyWage: 10 },
   transportation: { name: "Transportation", averageHourlyWage: 10 },
 };
