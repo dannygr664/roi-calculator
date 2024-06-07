@@ -1,8 +1,6 @@
 export const COURSES_TO_METADATA = {
   bigData: {
     name: "Big Data",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -10,8 +8,6 @@ export const COURSES_TO_METADATA = {
   },
   customerExperience1: {
     name: "Customer Experience 1",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -19,8 +15,6 @@ export const COURSES_TO_METADATA = {
   },
   customerExperience2: {
     name: "Customer Experience 2",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -28,8 +22,6 @@ export const COURSES_TO_METADATA = {
   },
   designThinking: {
     name: "Design Thinking",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -37,8 +29,6 @@ export const COURSES_TO_METADATA = {
   },
   digitalMarketing: {
     name: "Digital Marketing",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -46,8 +36,6 @@ export const COURSES_TO_METADATA = {
   },
   engineeringLeadership: {
     name: "Engineering Leadership",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -55,8 +43,6 @@ export const COURSES_TO_METADATA = {
   },
   executiveEducationAdvisorTraining: {
     name: "Executive Education Advisor Training",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -64,8 +50,6 @@ export const COURSES_TO_METADATA = {
   },
   generateAiAndValuation: {
     name: "Generative AI & Valuation",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -73,8 +57,6 @@ export const COURSES_TO_METADATA = {
   },
   greenTechnologiesAndAi: {
     name: "Green Technologies and AI",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -82,8 +64,6 @@ export const COURSES_TO_METADATA = {
   },
   instructorCertificateProgram: {
     name: "Instructor Certificate Program",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -91,8 +71,6 @@ export const COURSES_TO_METADATA = {
   },
   itCybersecurityLeadershipTeams: {
     name: "IT & Cybersecurity Leadership Teams",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -100,8 +78,6 @@ export const COURSES_TO_METADATA = {
   },
   mentorCertificateProgram: {
     name: "Mentor Certificate Program",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -109,8 +85,6 @@ export const COURSES_TO_METADATA = {
   },
   strategicAi: {
     name: "Strategic AI",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -118,8 +92,6 @@ export const COURSES_TO_METADATA = {
   },
   strategicAiForHealthcareProfessionals: {
     name: "Strategic AI for Healthcare Professionals",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -127,8 +99,6 @@ export const COURSES_TO_METADATA = {
   },
   strategicAiForHrProfessionals: {
     name: "Strategic AI for HR Professionals",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -136,8 +106,6 @@ export const COURSES_TO_METADATA = {
   },
   strategicAiInSales: {
     name: "Strategic AI in Sales",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -145,8 +113,6 @@ export const COURSES_TO_METADATA = {
   },
   transformationLeadership: {
     name: "Transformation Leadership",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,
@@ -154,8 +120,6 @@ export const COURSES_TO_METADATA = {
   },
   womenInLeadership: {
     name: "Women in Leadership",
-    cost: 1000,
-    hoursToComplete: 10,
     satisfactionSurveyScore: 0.5,
     preAssessmentScore: 0.3,
     postAssessmentScore: 0.8,

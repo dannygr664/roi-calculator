@@ -5,7 +5,11 @@ import Intro from "./components/Intro";
 import TrainingCosts from "./components/TrainingCosts";
 import ROICalculationPanel from "./components/ROICalculationPanel";
 import "./App.css";
-import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "./constants";
+import {
+  COURSES_TO_METADATA,
+  CREDIT_OPTIONS_TO_METADATA,
+  INDUSTRIES_TO_METADATA,
+} from "./constants";
 
 import roiTraineeSatisfactionImgUrl from "../images/roi-trainee-satisfaction.jpg";
 import roiLearningImgUrl from "../images/roi-learning.jpg";
@@ -25,7 +29,13 @@ function App() {
   };
 
   const areInputsValid = () => {
-    if (!selectedCourse || !selectedIndustry || numberOfEmployees < 0) {
+    if (
+      !selectedCourse ||
+      !selectedCreditOption ||
+      numberOfEmployees < 0 ||
+      cost < 0 ||
+      !selectedIndustry
+    ) {
       return false;
     } else {
       return true;
@@ -37,11 +47,11 @@ function App() {
       return 0;
     }
 
-    const costOfCourse = COURSES_TO_METADATA[selectedCourse].cost;
+    const costOfCourse = parseFloat(cost);
     const averageHourlyWage =
       INDUSTRIES_TO_METADATA[selectedIndustry].averageHourlyWage;
     const hoursToCompleteCourse =
-      COURSES_TO_METADATA[selectedCourse].hoursToComplete;
+      CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
 
     return (
       (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
