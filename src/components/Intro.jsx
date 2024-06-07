@@ -106,7 +106,7 @@ function Intro({
               <ErrorMessage message={errors.numberOfEmployees} />
             </div>
             <div className="form-element">
-              <label htmlFor="cost">Cost per Employee</label>
+              <label htmlFor="cost">Cost per Employee ($)</label>
               <input
                 type="number"
                 id="cost"
@@ -130,7 +130,9 @@ function Intro({
               <ErrorMessage message={errors.selectedIndustry} />
             </div>
             <div className="form-element">
-              <label htmlFor="hourly-wage">Average Hourly Employee Wage</label>
+              <label htmlFor="hourly-wage">
+                Average Hourly Employee Wage ($)
+              </label>
               <input
                 type="number"
                 id="hourly-wage"

@@ -42,14 +42,15 @@ function App() {
     )
       newErrors.numberOfEmployees = "Please enter a valid number of employees";
     if (isNaN(parseFloat(cost)) || parseFloat(cost) < 0)
-      newErrors.cost = "Please enter a valid cost";
+      newErrors.cost = "Please enter a valid cost, without commas";
     if (!selectedIndustry)
       newErrors.selectedIndustry = "Please select an industry";
     if (
       isNaN(parseFloat(averageHourlyWage)) ||
       parseFloat(averageHourlyWage) < 0
     )
-      newErrors.averageHourlyWage = "Please enter a valid hourly wage";
+      newErrors.averageHourlyWage =
+        "Please enter a valid hourly wag, without commas";
 
     return newErrors;
   };
