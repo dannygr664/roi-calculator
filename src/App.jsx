@@ -5,7 +5,11 @@ import Intro from "./components/Intro";
 import TrainingCosts from "./components/TrainingCosts";
 import ROICalculationPanel from "./components/ROICalculationPanel";
 import "./App.css";
-import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "./constants";
+import {
+  COURSES_TO_METADATA,
+  CREDIT_OPTIONS_TO_METADATA,
+  INDUSTRIES_TO_METADATA,
+} from "./constants";
 
 import roiTraineeSatisfactionImgUrl from "../images/roi-trainee-satisfaction.jpg";
 import roiLearningImgUrl from "../images/roi-learning.jpg";
@@ -13,8 +17,13 @@ import roiWorkplaceBehaviorImgUrl from "../images/roi-workplace-behavior.jpg";
 
 function App() {
   const [selectedCourse, setSelectedCourse] = useState("");
-  const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [selectedCreditOption, setSelectedCreditOption] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
+  const [cost, setCost] = useState("0");
+  const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [averageHourlyWage, setAverageHourlyWage] = useState("0");
+
+  const [errors, setErrors] = useState({});
 
   const [openSection, setOpenSection] = useState(null);
 
@@ -22,10 +31,37 @@ function App() {
     setOpenSection(openSection === sectionNumber ? null : sectionNumber);
   };
 
+  const getValidationErrors = () => {
+    const newErrors = {};
+    if (!selectedCourse) newErrors.selectedCourse = "Please select a course";
+    if (!selectedCreditOption)
+      newErrors.selectedCreditOption = "Please select a credit option";
+    if (
+      isNaN(parseInt(numberOfEmployees, 10)) ||
+      parseInt(numberOfEmployees, 10) < 0
+    )
+      newErrors.numberOfEmployees = "Please enter a valid number of employees";
+    if (isNaN(parseFloat(cost)) || parseFloat(cost) < 0)
+      newErrors.cost = "Please enter a valid cost";
+    if (!selectedIndustry)
+      newErrors.selectedIndustry = "Please select an industry";
+    if (
+      isNaN(parseFloat(averageHourlyWage)) ||
+      parseFloat(averageHourlyWage) < 0
+    )
+      newErrors.averageHourlyWage = "Please enter a valid hourly wage";
+
+    return newErrors;
+  };
+
   const areInputsValid = () => {
-    if (!selectedCourse || !selectedIndustry || numberOfEmployees < 0) {
+    const validationErrors = getValidationErrors();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return false;
     } else {
+      setErrors({});
       return true;
     }
   };
@@ -35,11 +71,9 @@ function App() {
       return 0;
     }
 
-    const costOfCourse = COURSES_TO_METADATA[selectedCourse].cost;
-    const averageHourlyWage =
-      INDUSTRIES_TO_METADATA[selectedIndustry].averageHourlyWage;
+    const costOfCourse = parseFloat(cost);
     const hoursToCompleteCourse =
-      COURSES_TO_METADATA[selectedCourse].hoursToComplete;
+      CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
 
     return (
       (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
@@ -135,10 +169,17 @@ function App() {
           <Intro
             selectedCourse={selectedCourse}
             setSelectedCourse={setSelectedCourse}
-            selectedIndustry={selectedIndustry}
-            setSelectedIndustry={setSelectedIndustry}
+            selectedCreditOption={selectedCreditOption}
+            setSelectedCreditOption={setSelectedCreditOption}
             numberOfEmployees={numberOfEmployees}
             setNumberOfEmployees={setNumberOfEmployees}
+            cost={cost}
+            setCost={setCost}
+            selectedIndustry={selectedIndustry}
+            setSelectedIndustry={setSelectedIndustry}
+            averageHourlyWage={averageHourlyWage}
+            setAverageHourlyWage={setAverageHourlyWage}
+            errors={errors}
           />
         </section>
         {calculatorSections.map((section, index) => (

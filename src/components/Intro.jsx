@@ -1,7 +1,12 @@
 import PropTypes from "prop-types";
 
 import CustomSelect from "./CustomSelect";
-import { COURSES_TO_METADATA, INDUSTRIES_TO_METADATA } from "../constants";
+import ErrorMessage from "./ErrorMessage";
+import {
+  COURSES_TO_METADATA,
+  CREDIT_OPTIONS_TO_METADATA,
+  INDUSTRIES_TO_METADATA,
+} from "../constants";
 
 import "./Intro.css";
 
@@ -19,21 +24,40 @@ function getNamesAndValues(obj) {
 function Intro({
   selectedCourse,
   setSelectedCourse,
-  selectedIndustry,
-  setSelectedIndustry,
+  selectedCreditOption,
+  setSelectedCreditOption,
   numberOfEmployees,
   setNumberOfEmployees,
+  cost,
+  setCost,
+  selectedIndustry,
+  setSelectedIndustry,
+  averageHourlyWage,
+  setAverageHourlyWage,
+  errors,
 }) {
   const handleCourseChange = (event) => {
     setSelectedCourse(event.target.value);
+  };
+
+  const handleCreditOptionChange = (event) => {
+    setSelectedCreditOption(event.target.value);
+  };
+
+  const handleNumberOfEmployeesChange = (event) => {
+    setNumberOfEmployees(event.target.value);
+  };
+
+  const handleCostChange = (event) => {
+    setCost(event.target.value);
   };
 
   const handleIndustryChange = (event) => {
     setSelectedIndustry(event.target.value);
   };
 
-  const handleNumberOfEmployeesChange = (event) => {
-    setNumberOfEmployees(event.target.value);
+  const handleAverageHourlyWageChange = (event) => {
+    setAverageHourlyWage(event.target.value);
   };
 
   return (
@@ -43,10 +67,7 @@ function Intro({
           This tool will calculate your estimated return on investment following
           Zschool training, using various metrics.
         </p>
-        <p>
-          Begin by selecting your course of interest, your company’s industry,
-          and the number of employees you wish to enroll.
-        </p>
+        <p>Begin by filling out the following fields.</p>
 
         <div id="form-container">
           <div className="form-row">
@@ -58,28 +79,67 @@ function Intro({
                 value={selectedCourse}
                 onChange={handleCourseChange}
               />
+              <ErrorMessage message={errors.selectedCourse} />
             </div>
-
             <div className="form-element">
-              <label htmlFor="industry">Industry</label>
+              <label htmlFor="credit-option">Credit Option</label>
+              <CustomSelect
+                tag="credit-option"
+                options={getNamesAndValues(CREDIT_OPTIONS_TO_METADATA)}
+                value={selectedCreditOption}
+                onChange={handleCreditOptionChange}
+              />
+              <ErrorMessage message={errors.selectedCreditOption} />
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-element">
+              <label htmlFor="employees">Number of Employees</label>
+              <input
+                type="number"
+                id="employees"
+                name="employees"
+                value={numberOfEmployees}
+                onChange={handleNumberOfEmployeesChange}
+              />
+              <ErrorMessage message={errors.numberOfEmployees} />
+            </div>
+            <div className="form-element">
+              <label htmlFor="cost">Cost per Employee</label>
+              <input
+                type="number"
+                id="cost"
+                name="cost"
+                value={cost}
+                onChange={handleCostChange}
+              />
+              <ErrorMessage message={errors.cost} />
+            </div>
+          </div>
+
+          <div className="form-row">
+            <div className="form-element">
+              <label htmlFor="industry">Your Company&apos;s Industry</label>
               <CustomSelect
                 tag="industry"
                 options={getNamesAndValues(INDUSTRIES_TO_METADATA)}
                 value={selectedIndustry}
                 onChange={handleIndustryChange}
               />
+              <ErrorMessage message={errors.selectedIndustry} />
             </div>
-          </div>
-
-          <div className="form-element">
-            <label htmlFor="employees">Number of Employees</label>
-            <input
-              type="number"
-              id="employees"
-              name="employees"
-              value={numberOfEmployees}
-              onChange={handleNumberOfEmployeesChange}
-            />
+            <div className="form-element">
+              <label htmlFor="hourly-wage">Average Hourly Employee Wage</label>
+              <input
+                type="number"
+                id="hourly-wage"
+                name="hourly-wage"
+                value={averageHourlyWage}
+                onChange={handleAverageHourlyWageChange}
+              />
+              <ErrorMessage message={errors.averageHourlyWage} />
+            </div>
           </div>
         </div>
       </section>
@@ -97,10 +157,17 @@ function Intro({
 Intro.propTypes = {
   selectedCourse: PropTypes.string.isRequired,
   setSelectedCourse: PropTypes.func.isRequired,
-  selectedIndustry: PropTypes.string.isRequired,
-  setSelectedIndustry: PropTypes.func.isRequired,
+  selectedCreditOption: PropTypes.string.isRequired,
+  setSelectedCreditOption: PropTypes.func.isRequired,
   numberOfEmployees: PropTypes.string.isRequired,
   setNumberOfEmployees: PropTypes.func.isRequired,
+  cost: PropTypes.string.isRequired,
+  setCost: PropTypes.func.isRequired,
+  selectedIndustry: PropTypes.string.isRequired,
+  setSelectedIndustry: PropTypes.func.isRequired,
+  averageHourlyWage: PropTypes.string.isRequired,
+  setAverageHourlyWage: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
 export default Intro;
