@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 
 import CustomSelect from "./CustomSelect";
+import ErrorMessage from "./ErrorMessage";
 import {
   COURSES_TO_METADATA,
   CREDIT_OPTIONS_TO_METADATA,
@@ -33,6 +34,7 @@ function Intro({
   setSelectedIndustry,
   averageHourlyWage,
   setAverageHourlyWage,
+  errors,
 }) {
   const handleCourseChange = (event) => {
     setSelectedCourse(event.target.value);
@@ -77,6 +79,7 @@ function Intro({
                 value={selectedCourse}
                 onChange={handleCourseChange}
               />
+              <ErrorMessage message={errors.selectedCourse} />
             </div>
             <div className="form-element">
               <label htmlFor="credit-option">Credit Option</label>
@@ -86,6 +89,7 @@ function Intro({
                 value={selectedCreditOption}
                 onChange={handleCreditOptionChange}
               />
+              <ErrorMessage message={errors.selectedCreditOption} />
             </div>
           </div>
 
@@ -99,6 +103,7 @@ function Intro({
                 value={numberOfEmployees}
                 onChange={handleNumberOfEmployeesChange}
               />
+              <ErrorMessage message={errors.numberOfEmployees} />
             </div>
             <div className="form-element">
               <label htmlFor="cost">Cost per Employee</label>
@@ -109,6 +114,7 @@ function Intro({
                 value={cost}
                 onChange={handleCostChange}
               />
+              <ErrorMessage message={errors.cost} />
             </div>
           </div>
 
@@ -121,18 +127,18 @@ function Intro({
                 value={selectedIndustry}
                 onChange={handleIndustryChange}
               />
+              <ErrorMessage message={errors.selectedIndustry} />
             </div>
             <div className="form-element">
-              <label htmlFor="averageHourlyWage">
-                Average Hourly Employee Wage
-              </label>
+              <label htmlFor="hourly-wage">Average Hourly Employee Wage</label>
               <input
                 type="number"
-                id="averageHourlyWage"
-                name="averageHourlyWage"
+                id="hourly-wage"
+                name="hourly-wage"
                 value={averageHourlyWage}
                 onChange={handleAverageHourlyWageChange}
               />
+              <ErrorMessage message={errors.averageHourlyWage} />
             </div>
           </div>
         </div>
@@ -161,6 +167,7 @@ Intro.propTypes = {
   setSelectedIndustry: PropTypes.func.isRequired,
   averageHourlyWage: PropTypes.string.isRequired,
   setAverageHourlyWage: PropTypes.func.isRequired,
+  errors: PropTypes.object.isRequired,
 };
 
 export default Intro;

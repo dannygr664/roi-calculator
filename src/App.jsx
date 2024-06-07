@@ -23,25 +23,45 @@ function App() {
   const [selectedIndustry, setSelectedIndustry] = useState("");
   const [averageHourlyWage, setAverageHourlyWage] = useState("0");
 
+  const [errors, setErrors] = useState({});
+
   const [openSection, setOpenSection] = useState(null);
 
   const toggleSection = (sectionNumber) => {
     setOpenSection(openSection === sectionNumber ? null : sectionNumber);
   };
 
-  const areInputsValid = () => {
+  const getValidationErrors = () => {
+    const newErrors = {};
+    if (!selectedCourse) newErrors.selectedCourse = "Please select a course";
+    if (!selectedCreditOption)
+      newErrors.selectedCreditOption = "Please select a credit option";
     if (
-      !selectedCourse ||
-      !selectedCreditOption ||
-      parseInt(numberOfEmployees, 10) < 0 ||
-      parseFloat(cost) < 0 ||
-      isNaN(parseFloat(cost)) ||
-      !selectedIndustry ||
-      parseFloat(averageHourlyWage) < 0 ||
-      isNaN(parseFloat(averageHourlyWage))
-    ) {
+      isNaN(parseInt(numberOfEmployees, 10)) ||
+      parseInt(numberOfEmployees, 10) < 0
+    )
+      newErrors.numberOfEmployees = "Please enter a valid number of employees";
+    if (isNaN(parseFloat(cost)) || parseFloat(cost) < 0)
+      newErrors.cost = "Please enter a valid cost";
+    if (!selectedIndustry)
+      newErrors.selectedIndustry = "Please select an industry";
+    if (
+      isNaN(parseFloat(averageHourlyWage)) ||
+      parseFloat(averageHourlyWage) < 0
+    )
+      newErrors.averageHourlyWage = "Please enter a valid hourly wage";
+
+    return newErrors;
+  };
+
+  const areInputsValid = () => {
+    const validationErrors = getValidationErrors();
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return false;
     } else {
+      setErrors({});
       return true;
     }
   };
@@ -159,6 +179,7 @@ function App() {
             setSelectedIndustry={setSelectedIndustry}
             averageHourlyWage={averageHourlyWage}
             setAverageHourlyWage={setAverageHourlyWage}
+            errors={errors}
           />
         </section>
         {calculatorSections.map((section, index) => (
