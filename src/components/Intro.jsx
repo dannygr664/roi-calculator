@@ -31,6 +31,8 @@ function Intro({
   setCost,
   selectedIndustry,
   setSelectedIndustry,
+  averageHourlyWage,
+  setAverageHourlyWage,
 }) {
   const handleCourseChange = (event) => {
     setSelectedCourse(event.target.value);
@@ -50,6 +52,10 @@ function Intro({
 
   const handleIndustryChange = (event) => {
     setSelectedIndustry(event.target.value);
+  };
+
+  const handleAverageHourlyWageChange = (event) => {
+    setAverageHourlyWage(event.target.value);
   };
 
   return (
@@ -116,6 +122,18 @@ function Intro({
                 onChange={handleIndustryChange}
               />
             </div>
+            <div className="form-element">
+              <label htmlFor="averageHourlyWage">
+                Average Hourly Employee Wage
+              </label>
+              <input
+                type="number"
+                id="averageHourlyWage"
+                name="averageHourlyWage"
+                value={averageHourlyWage}
+                onChange={handleAverageHourlyWageChange}
+              />
+            </div>
           </div>
         </div>
       </section>
@@ -141,6 +159,8 @@ Intro.propTypes = {
   setCost: PropTypes.func.isRequired,
   selectedIndustry: PropTypes.string.isRequired,
   setSelectedIndustry: PropTypes.func.isRequired,
+  averageHourlyWage: PropTypes.string.isRequired,
+  setAverageHourlyWage: PropTypes.func.isRequired,
 };
 
 export default Intro;

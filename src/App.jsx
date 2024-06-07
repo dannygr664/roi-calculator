@@ -21,6 +21,7 @@ function App() {
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
   const [cost, setCost] = useState("0");
   const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [averageHourlyWage, setAverageHourlyWage] = useState("0");
 
   const [openSection, setOpenSection] = useState(null);
 
@@ -35,7 +36,9 @@ function App() {
       parseInt(numberOfEmployees, 10) < 0 ||
       parseFloat(cost) < 0 ||
       isNaN(parseFloat(cost)) ||
-      !selectedIndustry
+      !selectedIndustry ||
+      parseFloat(averageHourlyWage) < 0 ||
+      isNaN(parseFloat(averageHourlyWage))
     ) {
       return false;
     } else {
@@ -49,8 +52,6 @@ function App() {
     }
 
     const costOfCourse = parseFloat(cost);
-    const averageHourlyWage =
-      INDUSTRIES_TO_METADATA[selectedIndustry].averageHourlyWage;
     const hoursToCompleteCourse =
       CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
 
@@ -156,6 +157,8 @@ function App() {
             setCost={setCost}
             selectedIndustry={selectedIndustry}
             setSelectedIndustry={setSelectedIndustry}
+            averageHourlyWage={averageHourlyWage}
+            setAverageHourlyWage={setAverageHourlyWage}
           />
         </section>
         {calculatorSections.map((section, index) => (
