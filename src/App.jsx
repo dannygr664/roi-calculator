@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 import Header from "./components/Header";
+import Wave from "./components/Wave";
 import Intro from "./components/Intro";
 import TrainingCosts from "./components/TrainingCosts";
 import ROICalculationPanel from "./components/ROICalculationPanel";
@@ -164,9 +165,9 @@ function App() {
   return (
     <>
       <Header />
+      <Wave />
       <main>
         <section className="content">
-          <h1>ROI Calculator</h1>
           <Intro
             selectedCourse={selectedCourse}
             setSelectedCourse={setSelectedCourse}
