@@ -23,6 +23,7 @@ function App() {
   const [selectedIndustry, setSelectedIndustry] = useState("");
   const [selectedWageType, setSelectedWageType] = useState("");
   const [averageWage, setAverageWage] = useState("0");
+  const [selectedRoiMetric, setSelectedRoiMetric] = useState("");
 
   const [errors, setErrors] = useState({});
 
@@ -123,43 +124,14 @@ function App() {
       ),
     },
     {
-      title: "Trainee Satisfaction",
+      title: "ROI Calculation",
       content: (
         <ROICalculationPanel
-          name="Trainee Satisfaction"
-          tag="trainee-satisfaction"
-          description="This metric uses survey scores from the given course to measure ROI as
-          a function of Trainee Satisfaction."
-          asideImageFilePath={roiTraineeSatisfactionImgUrl}
+          name="ROI Calculation"
+          tag="roi-calculation"
+          selectedRoiMetric={selectedRoiMetric}
+          setSelectedRoiMetric={setSelectedRoiMetric}
           calculateROI={calculateTraineeSatisfaction}
-          calculateTrainingCosts={calculateTrainingCosts}
-        />
-      ),
-    },
-    {
-      title: "Learning",
-      content: (
-        <ROICalculationPanel
-          name="Learning"
-          tag="learning"
-          description="This metric uses pre-assessment and post-assesment scores to measure 
-          ROI as a function of Learning."
-          asideImageFilePath={roiLearningImgUrl}
-          calculateROI={calculateLearningROI}
-          calculateTrainingCosts={calculateTrainingCosts}
-        />
-      ),
-    },
-    {
-      title: "Workplace Behavior",
-      content: (
-        <ROICalculationPanel
-          name="Workplace Behavior"
-          tag="workplace-behavior"
-          description="This metric uses data gathered from managers observing employees to 
-          measure ROI as a function of improvements in Workplace Behavior."
-          asideImageFilePath={roiWorkplaceBehaviorImgUrl}
-          calculateROI={calculateWorkplaceBehaviorROI}
           calculateTrainingCosts={calculateTrainingCosts}
         />
       ),

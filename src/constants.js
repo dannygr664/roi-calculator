@@ -151,6 +151,18 @@ export const WAGE_TYPES = {
   },
 };
 
+export const ROI_METRICS = {
+  learning: {
+    name: "Learning",
+  },
+  traineeSatisfaction: {
+    name: "Trainee Satisfaction",
+  },
+  workplaceBehavior: {
+    name: "Workplace Behavior",
+  },
+};
+
 export const INDUSTRIES_TO_METADATA = {
   aerospaceAndDefense: { name: "Aerospace & Defense", averageWage: 10 },
   biotechnology: { name: "Biotechnology", averageWage: 10 },

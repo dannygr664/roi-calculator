@@ -45,8 +45,12 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 500px;
 }
 
-p {
+p,
+ul,
+ol,
+li {
   font-size: 1em;
+  color: var(--dark-gray-text-color);
   margin: 0;
 }
 
