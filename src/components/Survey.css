@@ -1,0 +1,32 @@
+.survey {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 30px 200px;
+}
+
+.survey-questions {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 50px;
+}
+
+.survey-question {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.survey-question p {
+  font-weight: bold;
+}
+
+.survey-answer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  font-weight: normal;
+  font-size: 1em;
+}

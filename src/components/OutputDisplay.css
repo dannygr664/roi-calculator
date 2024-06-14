@@ -12,6 +12,7 @@ label[id$="return"] {
 
 .output-display label {
   font-size: 1.01em;
+  margin-top: 10px;
 }
 
 .output-display input {

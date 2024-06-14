@@ -4,12 +4,14 @@ import Header from "./components/Header";
 import Wave from "./components/Wave";
 import TrainingCosts from "./components/TrainingCosts";
 import ROICalculationPanel from "./components/ROICalculationPanel";
+import Survey from "./components/Survey";
 import "./App.css";
 import {
   COURSES_TO_METADATA,
   CREDIT_OPTIONS_TO_METADATA,
   INDUSTRIES_TO_METADATA,
 } from "./constants";
+import { LEARNING_SURVEY } from "./surveys/learningSurvey";
 
 import roiTraineeSatisfactionImgUrl from "../images/roi-trainee-satisfaction.jpg";
 import roiLearningImgUrl from "../images/roi-learning.jpg";
@@ -133,6 +135,16 @@ function App() {
           setSelectedRoiMetric={setSelectedRoiMetric}
           calculateROI={calculateTraineeSatisfaction}
           calculateTrainingCosts={calculateTrainingCosts}
+        />
+      ),
+    },
+    {
+      title: "Learning Survey",
+      content: (
+        <Survey
+          title={LEARNING_SURVEY.title}
+          instructions={LEARNING_SURVEY.instructions}
+          questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
         />
       ),
     },
