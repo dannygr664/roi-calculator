@@ -1,4 +1,19 @@
+.output-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
 label[id$="return"] {
   width: 85px;
   text-align: center;
+}
+
+.output-display label {
+  font-size: 1.01em;
+}
+
+.output-display input {
+  width: 300px;
 }

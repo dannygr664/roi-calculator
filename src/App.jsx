@@ -2,7 +2,6 @@ import { useState } from "react";
 
 import Header from "./components/Header";
 import Wave from "./components/Wave";
-import Intro from "./components/Intro";
 import TrainingCosts from "./components/TrainingCosts";
 import ROICalculationPanel from "./components/ROICalculationPanel";
 import "./App.css";
@@ -22,19 +21,13 @@ function App() {
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
   const [cost, setCost] = useState("0");
   const [selectedIndustry, setSelectedIndustry] = useState("");
-  const [averageHourlyWage, setAverageHourlyWage] = useState("0");
+  const [selectedWageType, setSelectedWageType] = useState("");
+  const [averageWage, setAverageWage] = useState("0");
 
   const [errors, setErrors] = useState({});
 
-  const [openSection, setOpenSection] = useState(null);
-
-  const toggleSection = (sectionNumber) => {
-    setOpenSection(openSection === sectionNumber ? null : sectionNumber);
-  };
-
   const getValidationErrors = () => {
     const newErrors = {};
-    if (!selectedCourse) newErrors.selectedCourse = "Please select a course";
     if (!selectedCreditOption)
       newErrors.selectedCreditOption = "Please select a credit option";
     if (
@@ -46,12 +39,10 @@ function App() {
       newErrors.cost = "Please enter a valid cost, without commas";
     if (!selectedIndustry)
       newErrors.selectedIndustry = "Please select an industry";
-    if (
-      isNaN(parseFloat(averageHourlyWage)) ||
-      parseFloat(averageHourlyWage) < 0
-    )
-      newErrors.averageHourlyWage =
-        "Please enter a valid hourly wag, without commas";
+    if (!selectedWageType)
+      newErrors.selectedWageType = "Please select a wage type";
+    if (isNaN(parseFloat(averageWage)) || parseFloat(averageWage) < 0)
+      newErrors.averageWage = "Please enter a valid wage, without commas";
 
     return newErrors;
   };
@@ -78,7 +69,7 @@ function App() {
       CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
 
     return (
-      (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
+      (costOfCourse + averageWage * hoursToCompleteCourse) *
       parseInt(numberOfEmployees, 10)
     );
   };
@@ -115,7 +106,20 @@ function App() {
     {
       title: "Training Costs",
       content: (
-        <TrainingCosts calculateTrainingCosts={calculateTrainingCosts} />
+        <TrainingCosts
+          selectedCreditOption={selectedCreditOption}
+          setSelectedCreditOption={setSelectedCreditOption}
+          numberOfEmployees={numberOfEmployees}
+          setNumberOfEmployees={setNumberOfEmployees}
+          cost={cost}
+          setCost={setCost}
+          selectedWageType={selectedWageType}
+          setSelectedWageType={setSelectedWageType}
+          averageWage={averageWage}
+          setAverageWage={setAverageWage}
+          errors={errors}
+          calculateTrainingCosts={calculateTrainingCosts}
+        />
       ),
     },
     {
@@ -167,37 +171,8 @@ function App() {
       <Header />
       <Wave />
       <main>
-        <section className="content">
-          <Intro
-            selectedCourse={selectedCourse}
-            setSelectedCourse={setSelectedCourse}
-            selectedCreditOption={selectedCreditOption}
-            setSelectedCreditOption={setSelectedCreditOption}
-            numberOfEmployees={numberOfEmployees}
-            setNumberOfEmployees={setNumberOfEmployees}
-            cost={cost}
-            setCost={setCost}
-            selectedIndustry={selectedIndustry}
-            setSelectedIndustry={setSelectedIndustry}
-            averageHourlyWage={averageHourlyWage}
-            setAverageHourlyWage={setAverageHourlyWage}
-            errors={errors}
-          />
-        </section>
         {calculatorSections.map((section, index) => (
-          <div key={index}>
-            <div
-              className="section-header"
-              onClick={() => toggleSection(index)}
-            >
-              <h2>
-                {openSection === index ? "–" : "+"} {section.title}
-              </h2>
-            </div>
-            {openSection === index && (
-              <section className="content">{section.content}</section>
-            )}
-          </div>
+          <div key={index}>{section.content}</div>
         ))}
       </main>
     </>
