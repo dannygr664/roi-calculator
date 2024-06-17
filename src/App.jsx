@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Header from "./components/Header";
 import Wave from "./components/Wave";
-import TrainingCosts from "./components/TrainingCosts";
+import TrainingCostsPanel from "./components/TrainingCostsPanel";
 import ROICalculationPanel from "./components/ROICalculationPanel";
 import Survey from "./components/Survey";
 import "./App.css";
@@ -16,7 +16,7 @@ function App() {
     {
       title: "Training Costs",
       content: (
-        <TrainingCosts
+        <TrainingCostsPanel
           trainingCosts={trainingCosts}
           setTrainingCosts={setTrainingCosts}
         />

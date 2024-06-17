@@ -8,11 +8,11 @@ import CustomSelect from "./CustomSelect";
 import ErrorMessage from "./ErrorMessage";
 import OutputDisplay from "./OutputDisplay";
 
-import "./TrainingCosts.css";
+import "./TrainingCostsPanel.css";
 
 import roiTrainingCostsImgUrl from "../../images/roi-training-costs.jpg";
 
-function TrainingCosts({ trainingCosts, setTrainingCosts }) {
+function TrainingCostsPanel({ trainingCosts, setTrainingCosts }) {
   const [selectedCreditOption, setSelectedCreditOption] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
   const [cost, setCost] = useState("0");
@@ -168,9 +168,9 @@ function TrainingCosts({ trainingCosts, setTrainingCosts }) {
   );
 }
 
-TrainingCosts.propTypes = {
+TrainingCostsPanel.propTypes = {
   trainingCosts: PropTypes.string.isRequired,
   setTrainingCosts: PropTypes.func.isRequired,
 };
 
-export default TrainingCosts;
+export default TrainingCostsPanel;
