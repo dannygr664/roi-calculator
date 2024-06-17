@@ -12,7 +12,11 @@ import "./TrainingCostsPanel.css";
 
 import roiTrainingCostsImgUrl from "../../images/roi-training-costs.jpg";
 
-function TrainingCostsPanel({ trainingCosts, setTrainingCosts }) {
+function TrainingCostsPanel({
+  trainingCosts,
+  setTrainingCosts,
+  setIsTrainingCostsCalculated,
+}) {
   const [selectedCreditOption, setSelectedCreditOption] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
   const [cost, setCost] = useState("0");
@@ -67,6 +71,8 @@ function TrainingCostsPanel({ trainingCosts, setTrainingCosts }) {
     const costOfCourse = parseFloat(cost);
     const hoursToCompleteCourse =
       CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
+
+    setIsTrainingCostsCalculated(true);
 
     return (
       (costOfCourse + averageWage * hoursToCompleteCourse) *
@@ -171,6 +177,7 @@ function TrainingCostsPanel({ trainingCosts, setTrainingCosts }) {
 TrainingCostsPanel.propTypes = {
   trainingCosts: PropTypes.string.isRequired,
   setTrainingCosts: PropTypes.func.isRequired,
+  setIsTrainingCostsCalculated: PropTypes.func.isRequired,
 };
 
 export default TrainingCostsPanel;

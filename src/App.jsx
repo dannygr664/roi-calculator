@@ -10,6 +10,8 @@ import { LEARNING_SURVEY } from "./surveys/learningSurvey";
 
 function App() {
   const [trainingCosts, setTrainingCosts] = useState("0");
+  const [isTrainingCostsCalculated, setIsTrainingCostsCalculated] =
+    useState(false);
   const [selectedRoiMetric, setSelectedRoiMetric] = useState("");
 
   const calculatorSections = [
@@ -19,6 +21,7 @@ function App() {
         <TrainingCostsPanel
           trainingCosts={trainingCosts}
           setTrainingCosts={setTrainingCosts}
+          setIsTrainingCostsCalculated={setIsTrainingCostsCalculated}
         />
       ),
     },
