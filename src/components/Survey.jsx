@@ -1,7 +1,7 @@
 import { useState, useId } from "react";
 import PropTypes from "prop-types";
 
-import { getNamesAndValues } from "../utilities";
+import { getNamesAndValues, areInputsValid } from "../utilities";
 import { ROLES } from "../constants";
 
 import CustomSelect from "./CustomSelect";
@@ -53,6 +53,12 @@ function Survey({ title, instructions, questionsAndAnswers }) {
     if (!otherRole) newErrors.otherRole = "Please enter a role";
 
     return newErrors;
+  };
+
+  const showResults = () => {
+    if (!areInputsValid(getValidationErrors, setErrors)) {
+      return;
+    }
   };
 
   return (
@@ -121,6 +127,9 @@ function Survey({ title, instructions, questionsAndAnswers }) {
           )}
         </div>
       </div>
+      <button type="submit" onClick={() => showResults()}>
+        Get Results & Calculate ROI
+      </button>
     </div>
   );
 }
