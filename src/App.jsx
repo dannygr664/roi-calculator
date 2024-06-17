@@ -14,46 +14,25 @@ function App() {
     useState(false);
   const [selectedRoiMetric, setSelectedRoiMetric] = useState("");
 
-  const calculatorSections = [
-    {
-      title: "Training Costs",
-      content: (
-        <TrainingCostsPanel
-          trainingCosts={trainingCosts}
-          setTrainingCosts={setTrainingCosts}
-          setIsTrainingCostsCalculated={setIsTrainingCostsCalculated}
-        />
-      ),
-    },
-    {
-      title: "ROI Calculation",
-      content: (
-        <ROICalculationPanel
-          selectedRoiMetric={selectedRoiMetric}
-          setSelectedRoiMetric={setSelectedRoiMetric}
-        />
-      ),
-    },
-    {
-      title: "Learning Survey",
-      content: (
-        <Survey
-          title={LEARNING_SURVEY.title}
-          instructions={LEARNING_SURVEY.instructions}
-          questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
-        />
-      ),
-    },
-  ];
-
   return (
     <>
       <Header />
       <Wave />
       <main>
-        {calculatorSections.map((section, index) => (
-          <div key={index}>{section.content}</div>
-        ))}
+        <TrainingCostsPanel
+          trainingCosts={trainingCosts}
+          setTrainingCosts={setTrainingCosts}
+          setIsTrainingCostsCalculated={setIsTrainingCostsCalculated}
+        />
+        <ROICalculationPanel
+          selectedRoiMetric={selectedRoiMetric}
+          setSelectedRoiMetric={setSelectedRoiMetric}
+        />
+        <Survey
+          title={LEARNING_SURVEY.title}
+          instructions={LEARNING_SURVEY.instructions}
+          questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
+        />
       </main>
     </>
   );
