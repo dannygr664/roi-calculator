@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import Wave from "./components/Wave";
 import TrainingCostsPanel from "./components/TrainingCostsPanel";
 import ROICalculationPanel from "./components/ROICalculationPanel";
-import Survey from "./components/Survey";
+import ROICalculationSurvey from "./components/ROICalculationSurvey";
 import "./App.css";
 import { LEARNING_SURVEY } from "./surveys/learningSurvey";
 
@@ -31,7 +31,7 @@ function App() {
           />
         )}
         {selectedRoiMetric && (
-          <Survey
+          <ROICalculationSurvey
             title={LEARNING_SURVEY.title}
             instructions={LEARNING_SURVEY.instructions}
             questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
