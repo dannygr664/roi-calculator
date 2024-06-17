@@ -154,14 +154,12 @@ function TrainingCostsPanel({
           Calculate Training Costs
         </button>
 
-        <div className="output-display">
-          <OutputDisplay
-            tag="training-costs"
-            label="Training Costs"
-            format="currency"
-            outputValue={trainingCosts}
-          />
-        </div>
+        <OutputDisplay
+          tag="training-costs"
+          label="Training Costs"
+          format="currency"
+          outputValue={trainingCosts}
+        />
       </section>
       <aside>
         <img
