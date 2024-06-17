@@ -13,10 +13,6 @@ import {
 } from "./constants";
 import { LEARNING_SURVEY } from "./surveys/learningSurvey";
 
-import roiTraineeSatisfactionImgUrl from "../images/roi-trainee-satisfaction.jpg";
-import roiLearningImgUrl from "../images/roi-learning.jpg";
-import roiWorkplaceBehaviorImgUrl from "../images/roi-workplace-behavior.jpg";
-
 function App() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [selectedCreditOption, setSelectedCreditOption] = useState("");
@@ -129,12 +125,8 @@ function App() {
       title: "ROI Calculation",
       content: (
         <ROICalculationPanel
-          name="ROI Calculation"
-          tag="roi-calculation"
           selectedRoiMetric={selectedRoiMetric}
           setSelectedRoiMetric={setSelectedRoiMetric}
-          calculateROI={calculateTraineeSatisfaction}
-          calculateTrainingCosts={calculateTrainingCosts}
         />
       ),
     },

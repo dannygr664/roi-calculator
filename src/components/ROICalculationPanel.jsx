@@ -1,37 +1,17 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { getNamesAndValues } from "../utilities";
 import { ROI_METRICS } from "../constants";
 
 import CustomSelect from "./CustomSelect";
-import OutputDisplay from "./OutputDisplay";
 
 import "./ROICalculationPanel.css";
 
-import roiCalculationImgUrl from "../../images/roi-intro.jpg";
+import roiCalculationImgUrl from "../../images/roi-calculator.jpg";
 
-function ROICalculationPanel({
-  name,
-  tag,
-  selectedRoiMetric,
-  setSelectedRoiMetric,
-  calculateROI,
-  calculateTrainingCosts,
-}) {
-  const [netReturn, setNetReturn] = useState("0");
-  const [percentageReturn, setPercentageReturn] = useState("0");
-
+function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
   const handleRoiMetricChange = (event) => {
     setSelectedRoiMetric(event.target.value);
-  };
-
-  const calculateNetReturn = () => {
-    return calculateTrainingCosts() * calculateROI();
-  };
-
-  const calculatePercentageReturn = () => {
-    return calculateROI() * 100;
   };
 
   return (
@@ -73,46 +53,21 @@ function ROICalculationPanel({
             onChange={handleRoiMetricChange}
           />
         </div>
-        <button
-          type="submit"
-          onClick={() => {
-            setNetReturn(calculateNetReturn().toString());
-            setPercentageReturn(calculatePercentageReturn().toString());
-          }}
-        >
-          Calculate {name} ROI
-        </button>
-        <div className="output-display">
-          <OutputDisplay
-            tag={tag + "-net-return"}
-            label="Net Return"
-            format="currency"
-            outputValue={netReturn}
-          />
-        </div>
-        <div className="output-display">
-          <OutputDisplay
-            tag={tag + "-percentage-return"}
-            label="% Return"
-            format="percentage"
-            outputValue={percentageReturn}
-          />
-        </div>
       </section>
       <aside>
-        <img src={roiCalculationImgUrl} alt={name} className="aside-img" />
+        <img
+          src={roiCalculationImgUrl}
+          alt="ROI Calculator"
+          className="aside-img"
+        />
       </aside>
     </section>
   );
 }
 
 ROICalculationPanel.propTypes = {
-  name: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
   selectedRoiMetric: PropTypes.string.isRequired,
   setSelectedRoiMetric: PropTypes.func.isRequired,
-  calculateROI: PropTypes.func.isRequired,
-  calculateTrainingCosts: PropTypes.func.isRequired,
 };
 
 export default ROICalculationPanel;
