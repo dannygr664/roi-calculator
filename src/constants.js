@@ -163,6 +163,18 @@ export const ROI_METRICS = {
   },
 };
 
+export const ROLES = {
+  hrProfessional: {
+    name: "HR Professional",
+  },
+  employee: {
+    name: "Employee",
+  },
+  other: {
+    name: "Other",
+  },
+};
+
 export const INDUSTRIES_TO_METADATA = {
   aerospaceAndDefense: { name: "Aerospace & Defense", averageWage: 10 },
   biotechnology: { name: "Biotechnology", averageWage: 10 },
