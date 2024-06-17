@@ -24,15 +24,19 @@ function App() {
           setTrainingCosts={setTrainingCosts}
           setIsTrainingCostsCalculated={setIsTrainingCostsCalculated}
         />
-        <ROICalculationPanel
-          selectedRoiMetric={selectedRoiMetric}
-          setSelectedRoiMetric={setSelectedRoiMetric}
-        />
-        <Survey
-          title={LEARNING_SURVEY.title}
-          instructions={LEARNING_SURVEY.instructions}
-          questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
-        />
+        {isTrainingCostsCalculated && (
+          <ROICalculationPanel
+            selectedRoiMetric={selectedRoiMetric}
+            setSelectedRoiMetric={setSelectedRoiMetric}
+          />
+        )}
+        {selectedRoiMetric && (
+          <Survey
+            title={LEARNING_SURVEY.title}
+            instructions={LEARNING_SURVEY.instructions}
+            questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
+          />
+        )}
       </main>
     </>
   );
