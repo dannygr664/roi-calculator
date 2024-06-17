@@ -133,7 +133,7 @@ function TrainingCostsPanel({
             value={selectedWageType}
             onChange={handleWageTypeChange}
           />
-          <ErrorMessage message={errors.wageType} />
+          <ErrorMessage message={errors.selectedWageType} />
         </div>
         <div className="form-element">
           <label htmlFor="wage"></label>
