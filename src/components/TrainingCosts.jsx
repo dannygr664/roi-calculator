@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { getNamesAndValues } from "../utilities";
+import { getNamesAndValues, areInputsValid } from "../utilities";
 import { CREDIT_OPTIONS_TO_METADATA, WAGE_TYPES } from "../constants";
 
 import CustomSelect from "./CustomSelect";
@@ -12,21 +12,13 @@ import "./TrainingCosts.css";
 
 import roiTrainingCostsImgUrl from "../../images/roi-training-costs.jpg";
 
-function TrainingCosts({
-  selectedCreditOption,
-  setSelectedCreditOption,
-  numberOfEmployees,
-  setNumberOfEmployees,
-  cost,
-  setCost,
-  selectedWageType,
-  setSelectedWageType,
-  averageWage,
-  setAverageWage,
-  errors,
-  calculateTrainingCosts,
-}) {
-  const [trainingCosts, setTrainingCosts] = useState("0");
+function TrainingCosts({ trainingCosts, setTrainingCosts }) {
+  const [selectedCreditOption, setSelectedCreditOption] = useState("");
+  const [numberOfEmployees, setNumberOfEmployees] = useState("0");
+  const [cost, setCost] = useState("0");
+  const [selectedWageType, setSelectedWageType] = useState("");
+  const [averageWage, setAverageWage] = useState("0");
+  const [errors, setErrors] = useState({});
 
   const handleCreditOptionChange = (event) => {
     setSelectedCreditOption(event.target.value);
@@ -46,6 +38,40 @@ function TrainingCosts({
 
   const handleAverageWageChange = (event) => {
     setAverageWage(event.target.value);
+  };
+
+  const getValidationErrors = () => {
+    const newErrors = {};
+    if (!selectedCreditOption)
+      newErrors.selectedCreditOption = "Please select a credit option";
+    if (
+      isNaN(parseInt(numberOfEmployees, 10)) ||
+      parseInt(numberOfEmployees, 10) < 0
+    )
+      newErrors.numberOfEmployees = "Please enter a valid number of employees";
+    if (isNaN(parseFloat(cost)) || parseFloat(cost) < 0)
+      newErrors.cost = "Please enter a valid cost, without commas";
+    if (!selectedWageType)
+      newErrors.selectedWageType = "Please select a wage type";
+    if (isNaN(parseFloat(averageWage)) || parseFloat(averageWage) < 0)
+      newErrors.averageWage = "Please enter a valid wage, without commas";
+
+    return newErrors;
+  };
+
+  const calculateTrainingCosts = () => {
+    if (!areInputsValid(getValidationErrors, setErrors)) {
+      return 0;
+    }
+
+    const costOfCourse = parseFloat(cost);
+    const hoursToCompleteCourse =
+      CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
+
+    return (
+      (costOfCourse + averageWage * hoursToCompleteCourse) *
+      parseInt(numberOfEmployees, 10)
+    );
   };
 
   return (
@@ -143,18 +169,8 @@ function TrainingCosts({
 }
 
 TrainingCosts.propTypes = {
-  selectedCreditOption: PropTypes.string.isRequired,
-  setSelectedCreditOption: PropTypes.func.isRequired,
-  numberOfEmployees: PropTypes.string.isRequired,
-  setNumberOfEmployees: PropTypes.func.isRequired,
-  cost: PropTypes.string.isRequired,
-  setCost: PropTypes.func.isRequired,
-  selectedWageType: PropTypes.string.isRequired,
-  setSelectedWageType: PropTypes.func.isRequired,
-  averageWage: PropTypes.string.isRequired,
-  setAverageWage: PropTypes.func.isRequired,
-  errors: PropTypes.object.isRequired,
-  calculateTrainingCosts: PropTypes.func.isRequired,
+  trainingCosts: PropTypes.string.isRequired,
+  setTrainingCosts: PropTypes.func.isRequired,
 };
 
 export default TrainingCosts;
