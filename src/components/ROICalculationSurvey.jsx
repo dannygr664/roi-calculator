@@ -116,9 +116,6 @@ function ROICalculationSurvey({
 
     const scoreBucketName = getScoreBucketName();
 
-    console.log(surveyScore);
-    console.log(scoreBucketName);
-
     setResultDescription(resultDescriptions[scoreBucketName]);
     if (feedbackIntros) {
       setFeedbackIntro(feedbackIntros[scoreBucketName]);
