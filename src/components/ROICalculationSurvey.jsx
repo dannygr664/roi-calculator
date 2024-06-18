@@ -26,6 +26,8 @@ function ROICalculationSurvey({
   const [netReturn, setNetReturn] = useState("0");
   const [percentageReturn, setPercentageReturn] = useState("0");
 
+  const [areResultsVisible, setAreResultsVisible] = useState(false);
+
   const getValidationErrors = () => {
     const newErrors = {};
 
@@ -76,6 +78,7 @@ function ROICalculationSurvey({
 
   const showResults = () => {
     if (!areInputsValid(getValidationErrors, setErrors)) {
+      setAreResultsVisible(false);
       return;
     }
 
@@ -85,6 +88,7 @@ function ROICalculationSurvey({
 
     setNetReturn(netReturn.toString());
     setPercentageReturn(percentageReturn.toString());
+    setAreResultsVisible(true);
   };
 
   return (
