@@ -1,0 +1,17 @@
+.roi-calculation-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submit-feedback-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.submit-confirmation {
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+}

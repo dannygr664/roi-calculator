@@ -12,7 +12,7 @@ label[id^="percentage"] {
 }
 
 .output-display label {
-  font-size: 1.01em;
+  font-size: 16px;
   margin-top: 10px;
 }
 

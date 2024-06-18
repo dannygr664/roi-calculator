@@ -25,6 +25,12 @@ h3 {
   margin: 0;
 }
 
+h4 {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 0;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
@@ -112,6 +118,18 @@ button {
 
 button:hover {
   background-color: #808080;
+}
+
+textarea {
+  padding: 0 10px;
+  height: 200px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  color: #828282;
+  font-size: 16px;
+  box-sizing: border-box;
+  resize: none;
 }
 
 .section-header {

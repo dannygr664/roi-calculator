@@ -6,6 +6,7 @@ import { areInputsValid, scale } from "../utilities";
 import SurveyIntro from "./SurveyIntro";
 import SurveyQuestions from "./SurveyQuestions";
 import OutputDisplay from "./OutputDisplay";
+import ROICalculationResults from "./ROICalculationResults";
 
 import "./ROICalculationSurvey.css";
 
@@ -14,6 +15,9 @@ function ROICalculationSurvey({
   instructions,
   questionsAndAnswers,
   trainingCosts,
+  resultDescriptions,
+  feedbackIntros,
+  hrRecommendations,
 }) {
   const surveyId = useId();
 
@@ -23,9 +27,13 @@ function ROICalculationSurvey({
   const [otherRole, setOtherRole] = useState("");
   const [errors, setErrors] = useState({});
 
+  const [surveyScore, setSurveyScore] = useState(0);
   const [netReturn, setNetReturn] = useState("0");
   const [percentageReturn, setPercentageReturn] = useState("0");
 
+  const [resultDescription, setResultDescription] = useState("");
+  const [feedbackIntro, setFeedbackIntro] = useState("");
+  const [hrRecommendation, setHrRecommendation] = useState("");
   const [areResultsVisible, setAreResultsVisible] = useState(false);
 
   const getValidationErrors = () => {
@@ -65,7 +73,7 @@ function ROICalculationSurvey({
       }
     });
 
-    return rawScore / numQuestionsIncludedInScore;
+    return Math.round((rawScore / numQuestionsIncludedInScore) * 10) / 10;
   };
 
   const calculatePercentageReturn = (surveyScore) => {
@@ -74,6 +82,22 @@ function ROICalculationSurvey({
 
   const calculateNetReturn = (percentageReturn) => {
     return (1 + percentageReturn / 100) * parseFloat(trainingCosts);
+  };
+
+  const getScoreBucketName = () => {
+    if (4.5 <= surveyScore && surveyScore <= 5.0) {
+      return "highest";
+    } else if (3.5 <= surveyScore && surveyScore < 4.5) {
+      return "high";
+    } else if (2.5 <= surveyScore && surveyScore < 3.5) {
+      return "average";
+    } else if (1.5 <= surveyScore && surveyScore < 2.5) {
+      return "low";
+    } else if (1.0 <= surveyScore && surveyScore < 1.5) {
+      return "lowest";
+    } else {
+      throw new RangeError("Survey score is out of range");
+    }
   };
 
   const showResults = () => {
@@ -86,8 +110,21 @@ function ROICalculationSurvey({
     const percentageReturn = calculatePercentageReturn(surveyScore);
     const netReturn = calculateNetReturn(percentageReturn);
 
+    setSurveyScore(surveyScore);
     setNetReturn(netReturn.toString());
     setPercentageReturn(percentageReturn.toString());
+
+    const scoreBucketName = getScoreBucketName();
+
+    console.log(surveyScore);
+    console.log(scoreBucketName);
+
+    setResultDescription(resultDescriptions[scoreBucketName]);
+    if (feedbackIntros) {
+      setFeedbackIntro(feedbackIntros[scoreBucketName]);
+    }
+    setHrRecommendation(hrRecommendations[scoreBucketName]);
+
     setAreResultsVisible(true);
   };
 
@@ -124,6 +161,17 @@ function ROICalculationSurvey({
         format="percentage"
         outputValue={percentageReturn}
       />
+
+      {areResultsVisible && (
+        <ROICalculationResults
+          surveyId={surveyId}
+          surveyScore={surveyScore}
+          resultDescription={resultDescription}
+          feedbackIntro={feedbackIntro}
+          selectedRole={selectedRole}
+          hrRecommendation={hrRecommendation}
+        />
+      )}
     </div>
   );
 }
@@ -138,6 +186,9 @@ ROICalculationSurvey.propTypes = {
     })
   ).isRequired,
   trainingCosts: PropTypes.string.isRequired,
+  resultDescriptions: PropTypes.objectOf(PropTypes.string).isRequired,
+  feedbackIntros: PropTypes.objectOf(PropTypes.string),
+  hrRecommendations: PropTypes.objectOf(PropTypes.string).isRequired,
 };
 
 export default ROICalculationSurvey;

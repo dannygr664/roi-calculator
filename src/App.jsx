@@ -36,6 +36,9 @@ function App() {
             instructions={LEARNING_SURVEY.instructions}
             questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
             trainingCosts={trainingCosts}
+            resultDescriptions={LEARNING_SURVEY.resultDescriptions}
+            feedbackIntros={LEARNING_SURVEY.feedbackIntros}
+            hrRecommendations={LEARNING_SURVEY.hrRecommendations}
           />
         )}
       </main>
