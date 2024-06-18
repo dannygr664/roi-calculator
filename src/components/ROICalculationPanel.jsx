@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 
-import { getNamesAndValues } from "../utilities";
 import { ROI_METRICS } from "../constants";
 
 import CustomSelect from "./CustomSelect";
@@ -10,10 +9,6 @@ import "./ROICalculationPanel.css";
 import roiCalculationImgUrl from "../../images/roi-calculator.jpg";
 
 function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
-  const handleRoiMetricChange = (event) => {
-    setSelectedRoiMetric(event.target.value);
-  };
-
   return (
     <section className="panel-container" id="roi-calculation-panel">
       <section className="form-container">
@@ -47,10 +42,9 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
         <div className="form-element">
           <label htmlFor="roi-metric">ROI Metric</label>
           <CustomSelect
-            tag="roi-metric"
-            options={getNamesAndValues(ROI_METRICS)}
-            value={selectedRoiMetric}
-            onChange={handleRoiMetricChange}
+            options={ROI_METRICS}
+            selectedOption={selectedRoiMetric}
+            setSelectedOption={setSelectedRoiMetric}
           />
         </div>
       </section>

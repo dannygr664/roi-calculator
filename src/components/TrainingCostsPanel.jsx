@@ -1,8 +1,12 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { getNamesAndValues, areInputsValid } from "../utilities";
-import { CREDIT_OPTIONS_TO_METADATA, WAGE_TYPES } from "../constants";
+import { areInputsValid } from "../utilities";
+import {
+  CREDIT_OPTIONS,
+  CREDIT_OPTIONS_TO_METADATA,
+  WAGE_TYPES,
+} from "../constants";
 
 import CustomSelect from "./CustomSelect";
 import ErrorMessage from "./ErrorMessage";
@@ -24,20 +28,12 @@ function TrainingCostsPanel({
   const [averageWage, setAverageWage] = useState("0");
   const [errors, setErrors] = useState({});
 
-  const handleCreditOptionChange = (event) => {
-    setSelectedCreditOption(event.target.value);
-  };
-
   const handleNumberOfEmployeesChange = (event) => {
     setNumberOfEmployees(event.target.value);
   };
 
   const handleCostChange = (event) => {
     setCost(event.target.value);
-  };
-
-  const handleWageTypeChange = (event) => {
-    setSelectedWageType(event.target.value);
   };
 
   const handleAverageWageChange = (event) => {
@@ -94,10 +90,9 @@ function TrainingCostsPanel({
         <div className="form-element">
           <label htmlFor="credit-option">Credit Option</label>
           <CustomSelect
-            tag="credit-option"
-            options={getNamesAndValues(CREDIT_OPTIONS_TO_METADATA)}
-            value={selectedCreditOption}
-            onChange={handleCreditOptionChange}
+            options={CREDIT_OPTIONS}
+            selectedOption={selectedCreditOption}
+            setSelectedOption={setSelectedCreditOption}
           />
           <ErrorMessage message={errors.selectedCreditOption} />
         </div>
@@ -129,10 +124,9 @@ function TrainingCostsPanel({
         <div className="form-element">
           <label htmlFor="wage-type">Average Employee Wage ($)</label>
           <CustomSelect
-            tag="wage-type"
-            options={getNamesAndValues(WAGE_TYPES)}
-            value={selectedWageType}
-            onChange={handleWageTypeChange}
+            options={WAGE_TYPES}
+            selectedOption={selectedWageType}
+            setSelectedOption={setSelectedWageType}
           />
           <ErrorMessage message={errors.selectedWageType} />
         </div>

@@ -46,9 +46,9 @@ function ROICalculationSurvey({
     });
 
     if (!selectedRole) newErrors.selectedRole = "Please select a role";
-    if (selectedRole === "employee" && !employeeJobTitle)
+    if (selectedRole === "Employee" && !employeeJobTitle)
       newErrors.employeeJobTitle = "Please enter a job title";
-    if (selectedRole === "other" && !otherRole)
+    if (selectedRole === "Other" && !otherRole)
       newErrors.otherRole = "Please enter a role";
 
     return newErrors;

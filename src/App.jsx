@@ -32,7 +32,7 @@ function App() {
             setSelectedRoiMetric={setSelectedRoiMetric}
           />
         )}
-        {isTrainingCostsCalculated && selectedRoiMetric === "learning" && (
+        {isTrainingCostsCalculated && selectedRoiMetric === "Learning" && (
           <ROICalculationSurvey
             title={LEARNING_SURVEY.title}
             instructions={LEARNING_SURVEY.instructions}
@@ -44,7 +44,7 @@ function App() {
           />
         )}
         {isTrainingCostsCalculated &&
-          selectedRoiMetric === "traineeSatisfaction" && (
+          selectedRoiMetric === "Trainee Satisfaction" && (
             <ROICalculationSurvey
               title={TRAINEE_SATISFACTION_SURVEY.title}
               instructions={TRAINEE_SATISFACTION_SURVEY.instructions}
@@ -60,7 +60,7 @@ function App() {
             />
           )}
         {isTrainingCostsCalculated &&
-          selectedRoiMetric === "workplaceBehavior" && (
+          selectedRoiMetric === "Workplace Behavior" && (
             <ROICalculationSurvey
               title={WORKPLACE_BEHAVIOR_SURVEY.title}
               instructions={WORKPLACE_BEHAVIOR_SURVEY.instructions}

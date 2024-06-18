@@ -127,53 +127,33 @@ export const COURSES_TO_METADATA = {
   },
 };
 
+export const CREDIT_OPTIONS = [
+  "Non-Credit",
+  "For-Credit: 60 Hours",
+  "For-Credit: 90 Hours",
+];
+
 export const CREDIT_OPTIONS_TO_METADATA = {
-  nonCredit: {
-    name: "Non-Credit",
+  "Non-Credit": {
     hoursToComplete: 32,
   },
-  sixtyHour: {
-    name: "For-Credit: 60 Hours",
+  "For-Credit: 60 Hours": {
     hoursToComplete: 60,
   },
-  ninetyHour: {
-    name: "For-Credit: 90 Hours",
+  "For-Credit: 90 Hours": {
     hoursToComplete: 90,
   },
 };
 
-export const WAGE_TYPES = {
-  hourly: {
-    name: "Hourly",
-  },
-  annual: {
-    name: "Annual",
-  },
-};
+export const WAGE_TYPES = ["Hourly", "Annual"];
 
-export const ROI_METRICS = {
-  learning: {
-    name: "Learning",
-  },
-  traineeSatisfaction: {
-    name: "Trainee Satisfaction",
-  },
-  workplaceBehavior: {
-    name: "Workplace Behavior",
-  },
-};
+export const ROI_METRICS = [
+  "Learning",
+  "Trainee Satisfaction",
+  "Workplace Behavior",
+];
 
-export const ROLES = {
-  hrProfessional: {
-    name: "HR Professional",
-  },
-  employee: {
-    name: "Employee",
-  },
-  other: {
-    name: "Other",
-  },
-};
+export const ROLES = ["HR Professional", "Employee", "Other"];
 
 export const INDUSTRIES_TO_METADATA = {
   aerospaceAndDefense: { name: "Aerospace & Defense", averageWage: 10 },

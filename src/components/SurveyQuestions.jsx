@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 
-import { getNamesAndValues } from "../utilities";
 import { ROLES } from "../constants";
 
 import CustomSelect from "./CustomSelect";
@@ -26,10 +25,6 @@ function SurveyQuestions({
       ...prevAnswers,
       [questionIndex]: answerIndex,
     }));
-  };
-
-  const handleRoleChange = (event) => {
-    setSelectedRole(event.target.value);
   };
 
   const handleEmployeeJobTitleChange = (event) => {
@@ -67,13 +62,12 @@ function SurveyQuestions({
           What best describes you?
         </label>
         <CustomSelect
-          tag={`role-${surveyId}`}
-          options={getNamesAndValues(ROLES)}
-          value={selectedRole}
-          onChange={handleRoleChange}
+          options={ROLES}
+          selectedOption={selectedRole}
+          setSelectedOption={setSelectedRole}
         />
         <ErrorMessage message={errors.selectedRole} />
-        {selectedRole === "employee" && (
+        {selectedRole === "Employee" && (
           <>
             <input
               id={`employee-job-title-${surveyId}`}
@@ -85,7 +79,7 @@ function SurveyQuestions({
             <ErrorMessage message={errors.employeeJobTitle} />
           </>
         )}
-        {selectedRole === "other" && (
+        {selectedRole === "Other" && (
           <>
             <input
               id={`other-role-${surveyId}`}

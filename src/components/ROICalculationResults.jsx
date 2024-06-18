@@ -75,7 +75,7 @@ function ROICalculationResults({
           )}
         </>
       )}
-      {selectedRole === "hrProfessional" && (
+      {selectedRole === "HR Professional" && (
         <p>
           <b>Recommendation for Human Resources: </b>
           {hrRecommendation}
