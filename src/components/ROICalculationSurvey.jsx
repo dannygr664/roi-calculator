@@ -103,9 +103,11 @@ function ROICalculationSurvey({
         setOtherRole={setOtherRole}
         errors={errors}
       />
+
       <button type="submit" onClick={() => showResults()}>
         Get Results & Calculate ROI
       </button>
+
       <OutputDisplay
         tag={`net-return-${surveyId}`}
         label="Net Return"
