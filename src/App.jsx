@@ -30,7 +30,7 @@ function App() {
             setSelectedRoiMetric={setSelectedRoiMetric}
           />
         )}
-        {selectedRoiMetric && (
+        {isTrainingCostsCalculated && selectedRoiMetric && (
           <ROICalculationSurvey
             title={LEARNING_SURVEY.title}
             instructions={LEARNING_SURVEY.instructions}

@@ -65,6 +65,7 @@ function TrainingCostsPanel({
 
   const calculateTrainingCosts = () => {
     if (!areInputsValid(getValidationErrors, setErrors)) {
+      setIsTrainingCostsCalculated(false);
       return 0;
     }
 
