@@ -1,14 +1,20 @@
 import { useState, useId } from "react";
 import PropTypes from "prop-types";
 
-import { areInputsValid } from "../utilities";
+import { areInputsValid, scale } from "../utilities";
 
 import SurveyIntro from "./SurveyIntro";
 import SurveyQuestions from "./SurveyQuestions";
+import OutputDisplay from "./OutputDisplay";
 
 import "./ROICalculationSurvey.css";
 
-function Survey({ title, instructions, questionsAndAnswers }) {
+function ROICalculationSurvey({
+  title,
+  instructions,
+  questionsAndAnswers,
+  trainingCosts,
+}) {
   const surveyId = useId();
 
   const [selectedAnswers, setSelectedAnswers] = useState({});
@@ -16,6 +22,9 @@ function Survey({ title, instructions, questionsAndAnswers }) {
   const [employeeJobTitle, setEmployeeJobTitle] = useState("");
   const [otherRole, setOtherRole] = useState("");
   const [errors, setErrors] = useState({});
+
+  const [netReturn, setNetReturn] = useState("0");
+  const [percentageReturn, setPercentageReturn] = useState("0");
 
   const getValidationErrors = () => {
     const newErrors = {};
@@ -27,17 +36,55 @@ function Survey({ title, instructions, questionsAndAnswers }) {
     });
 
     if (!selectedRole) newErrors.selectedRole = "Please select a role";
-    if (!employeeJobTitle)
+    if (selectedRole === "employee" && !employeeJobTitle)
       newErrors.employeeJobTitle = "Please enter a job title";
-    if (!otherRole) newErrors.otherRole = "Please enter a role";
+    if (selectedRole === "other" && !otherRole)
+      newErrors.otherRole = "Please enter a role";
 
     return newErrors;
+  };
+
+  const isQuestionIncluded = (questionAndAnswers) => {
+    return questionAndAnswers.answers.length === 5;
+  };
+
+  const scoreQuestion = (questionIndex) => {
+    return selectedAnswers[questionIndex] + 1;
+  };
+
+  const calculateSurveyScore = () => {
+    let rawScore = 0;
+    let numQuestionsIncludedInScore = 0;
+
+    questionsAndAnswers.forEach((questionAndAnswers, questionIndex) => {
+      if (isQuestionIncluded(questionAndAnswers)) {
+        rawScore += scoreQuestion(questionIndex);
+        numQuestionsIncludedInScore++;
+      }
+    });
+
+    return rawScore / numQuestionsIncludedInScore;
+  };
+
+  const calculatePercentageReturn = (surveyScore) => {
+    return scale(surveyScore, 1, 5, -100, 100);
+  };
+
+  const calculateNetReturn = (percentageReturn) => {
+    return (1 + percentageReturn / 100) * parseFloat(trainingCosts);
   };
 
   const showResults = () => {
     if (!areInputsValid(getValidationErrors, setErrors)) {
       return;
     }
+
+    const surveyScore = calculateSurveyScore();
+    const percentageReturn = calculatePercentageReturn(surveyScore);
+    const netReturn = calculateNetReturn(percentageReturn);
+
+    setNetReturn(netReturn.toString());
+    setPercentageReturn(percentageReturn.toString());
   };
 
   return (
@@ -59,11 +106,23 @@ function Survey({ title, instructions, questionsAndAnswers }) {
       <button type="submit" onClick={() => showResults()}>
         Get Results & Calculate ROI
       </button>
+      <OutputDisplay
+        tag={`net-return-${surveyId}`}
+        label="Net Return"
+        format="currency"
+        outputValue={netReturn}
+      />
+      <OutputDisplay
+        tag={`percentage-return-${surveyId}`}
+        label="% Return"
+        format="percentage"
+        outputValue={percentageReturn}
+      />
     </div>
   );
 }
 
-Survey.propTypes = {
+ROICalculationSurvey.propTypes = {
   title: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
   questionsAndAnswers: PropTypes.arrayOf(
@@ -72,6 +131,7 @@ Survey.propTypes = {
       answers: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
     })
   ).isRequired,
+  trainingCosts: PropTypes.string.isRequired,
 };
 
-export default Survey;
+export default ROICalculationSurvey;

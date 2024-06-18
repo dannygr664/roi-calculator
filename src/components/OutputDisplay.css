@@ -5,7 +5,8 @@
   gap: 20px;
 }
 
-label[id$="return"] {
+label[id^="net"],
+label[id^="percentage"] {
   width: 85px;
   text-align: center;
 }
