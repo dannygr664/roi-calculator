@@ -52,7 +52,7 @@ function CourseRecommendationsResults({ surveyId, results }) {
         pursuit of upskilling and training.
       </p>
 
-      <ul>
+      <ul className="course-recommendations">
         <li>
           <b>Zschool Course: </b>
           &quot;{results.zschoolCourse.name}&quot;
@@ -75,7 +75,7 @@ function CourseRecommendationsResults({ surveyId, results }) {
           </ul>
         </li>
         <li>
-          <b>Peronsalized Course: </b>
+          <b>Personalized Course: </b>
           &quot;{results.personalizedCourse.name}&quot;
           <ul>
             <li>
