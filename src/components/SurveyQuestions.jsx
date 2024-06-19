@@ -38,13 +38,20 @@ function SurveyQuestions({
   return (
     <div className="survey-questions">
       {questionsAndAnswers.map(({ question, answers }, questionIndex) => (
-        <div key={questionIndex} className="survey-question">
+        <div
+          key={`survey${surveyId}-q${questionIndex}`}
+          id={`survey${surveyId}-q${questionIndex}`}
+          className="survey-question"
+        >
           <p>
             {questionIndex + 1}. {question}
           </p>
           <ErrorMessage message={errors[`question-${questionIndex}`]} />
           {answers.map((answer, answerIndex) => (
-            <label key={answerIndex} className="survey-answer">
+            <label
+              key={`survey${surveyId}-q${questionIndex}-a${answerIndex}`}
+              className="survey-answer"
+            >
               <input
                 type="radio"
                 name={"question-" + questionIndex}
@@ -57,8 +64,8 @@ function SurveyQuestions({
           ))}
         </div>
       ))}
-      <div className="survey-question">
-        <label htmlFor={`role-${surveyId}`} className="role-label">
+      <div id={`survey${surveyId}-role`} className="survey-question">
+        <label htmlFor={`survey${surveyId}-role`} className="role-label">
           What best describes you?
         </label>
         <CustomSelect
@@ -70,7 +77,7 @@ function SurveyQuestions({
         {selectedRole === "Employee" && (
           <>
             <input
-              id={`employee-job-title-${surveyId}`}
+              id={`survey${surveyId}-employee-job-title`}
               name="role"
               placeholder="Job title"
               value={employeeJobTitle}
@@ -82,7 +89,7 @@ function SurveyQuestions({
         {selectedRole === "Other" && (
           <>
             <input
-              id={`other-role-${surveyId}`}
+              id={`survey${surveyId}-other-role`}
               name="role"
               value={otherRole}
               onChange={handleOtherRoleChange}

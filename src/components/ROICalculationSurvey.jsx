@@ -1,4 +1,4 @@
-import { useState, useId } from "react";
+import { useState, useId, useRef } from "react";
 import PropTypes from "prop-types";
 
 import { areInputsValid, scale } from "../utilities";
@@ -20,6 +20,7 @@ function ROICalculationSurvey({
   hrRecommendations,
 }) {
   const surveyId = useId();
+  const firstErrorRef = useRef(null);
 
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [selectedRole, setSelectedRole] = useState("");
@@ -42,14 +43,38 @@ function ROICalculationSurvey({
     questionsAndAnswers.forEach((_, questionIndex) => {
       if (selectedAnswers[questionIndex] === undefined) {
         newErrors[`question-${questionIndex}`] = "Please select an answer";
+        if (!firstErrorRef.current) {
+          firstErrorRef.current = document.getElementById(
+            `survey${surveyId}-q${questionIndex}`
+          );
+        }
       }
     });
 
-    if (!selectedRole) newErrors.selectedRole = "Please select a role";
-    if (selectedRole === "Employee" && !employeeJobTitle)
+    if (!selectedRole) {
+      newErrors.selectedRole = "Please select a role";
+      if (!firstErrorRef.current) {
+        firstErrorRef.current = document.getElementById(
+          `survey${surveyId}-role`
+        );
+      }
+    }
+    if (selectedRole === "Employee" && !employeeJobTitle) {
       newErrors.employeeJobTitle = "Please enter a job title";
-    if (selectedRole === "Other" && !otherRole)
+      if (!firstErrorRef.current) {
+        firstErrorRef.current = document.getElementById(
+          `survey${surveyId}-employee-job-title`
+        );
+      }
+    }
+    if (selectedRole === "Other" && !otherRole) {
       newErrors.otherRole = "Please enter a role";
+      if (!firstErrorRef.current) {
+        firstErrorRef.current = document.getElementById(
+          `survey${surveyId}-other-role`
+        );
+      }
+    }
 
     return newErrors;
   };
@@ -101,7 +126,12 @@ function ROICalculationSurvey({
   };
 
   const showResults = () => {
+    firstErrorRef.current = null; // Reset the ref before validation
+
     if (!areInputsValid(getValidationErrors, setErrors)) {
+      if (firstErrorRef.current) {
+        firstErrorRef.current.scrollIntoView({ behavior: "smooth" });
+      }
       setAreResultsVisible(false);
       return;
     }
