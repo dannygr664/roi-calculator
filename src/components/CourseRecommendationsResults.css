@@ -4,6 +4,12 @@
   gap: 20px;
 }
 
+.course-recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .submit-name-and-email-form {
   display: flex;
   flex-direction: column;
