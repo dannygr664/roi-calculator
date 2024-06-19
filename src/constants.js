@@ -1,7 +1,14 @@
 import { LEARNING_SURVEY } from "./surveys/roiCalculationSurveys/learningSurvey";
 import { TRAINEE_SATISFACTION_SURVEY } from "./surveys/roiCalculationSurveys/traineeSatisfactionSurvey";
 import { WORKPLACE_BEHAVIOR_SURVEY } from "./surveys/roiCalculationSurveys/workplaceBehaviorSurvey";
+
 import { BANKING_AND_FINANCE_SURVEY } from "./surveys/courseRecommendationSurveys/bankingAndFinanceSurvey";
+import { ENTERTAINMENT_SURVEY } from "./surveys/courseRecommendationSurveys/entertainmentSurvey";
+import { FOOD_AND_BEVERAGE_SURVEY } from "./surveys/courseRecommendationSurveys/foodAndBeverageSurvey";
+import { HEALTHCARE_SURVEY } from "./surveys/courseRecommendationSurveys/healthcareSurvey";
+import { HUMAN_RESOURCES_SURVEY } from "./surveys/courseRecommendationSurveys/humanResourcesSurvey";
+import { MANUFACTURING_SURVEY } from "./surveys/courseRecommendationSurveys/manufacturingSurvey";
+import { RETAIL_SURVEY } from "./surveys/courseRecommendationSurveys/retailSurvey";
 
 export const COURSES_TO_METADATA = {
   bigData: {
@@ -178,4 +185,10 @@ export const INDUSTRIES = [
 
 export const INDUSTRIES_TO_SURVEYS = {
   "Banking & Finance": BANKING_AND_FINANCE_SURVEY,
+  Entertainment: ENTERTAINMENT_SURVEY,
+  "Food & Beverage": FOOD_AND_BEVERAGE_SURVEY,
+  Healthcare: HEALTHCARE_SURVEY,
+  "Human Resources": HUMAN_RESOURCES_SURVEY,
+  Manufacturing: MANUFACTURING_SURVEY,
+  Retail: RETAIL_SURVEY,
 };
