@@ -1,3 +1,8 @@
+import { LEARNING_SURVEY } from "./surveys/roiCalculationSurveys/learningSurvey";
+import { TRAINEE_SATISFACTION_SURVEY } from "./surveys/roiCalculationSurveys/traineeSatisfactionSurvey";
+import { WORKPLACE_BEHAVIOR_SURVEY } from "./surveys/roiCalculationSurveys/workplaceBehaviorSurvey";
+import { BANKING_AND_FINANCE_SURVEY } from "./surveys/courseRecommendationSurveys/bankingAndFinanceSurvey";
+
 export const COURSES_TO_METADATA = {
   bigData: {
     name: "Big Data",
@@ -153,41 +158,24 @@ export const ROI_METRICS = [
   "Workplace Behavior",
 ];
 
+export const ROI_METRICS_TO_SURVEYS = {
+  Learning: LEARNING_SURVEY,
+  "Trainee Satisfaction": TRAINEE_SATISFACTION_SURVEY,
+  "Workplace Behavior": WORKPLACE_BEHAVIOR_SURVEY,
+};
+
 export const ROLES = ["HR Professional", "Employee", "Other"];
 
-export const INDUSTRIES_TO_METADATA = {
-  aerospaceAndDefense: { name: "Aerospace & Defense", averageWage: 10 },
-  biotechnology: { name: "Biotechnology", averageWage: 10 },
-  businessServices: {
-    name: "Business Services",
-    averageWage: 10,
-  },
-  chemicals: { name: "Chemicals", averageWage: 10 },
-  construction: { name: "Construction", averageWage: 10 },
-  eduGovtAndNonprofit: {
-    name: "Edu., Gov't. & Nonprofit",
-    averageWage: 10,
-  },
-  energyAndUtilities: { name: "Energy & Utilities", averageWage: 10 },
-  entertainment: { name: "Entertainment", averageWage: 10 },
-  fashion: { name: "Fashion", averageWage: 10 },
-  financialServices: { name: "Financial Services", averageWage: 10 },
-  healthcare: { name: "Healthcare", averageWage: 10 },
-  hospitalityAndLeisure: {
-    name: "Hospitality & Leisure",
-    averageWage: 10,
-  },
-  insurance: { name: "Insurance", averageWage: 10 },
-  internet: { name: "Internet", averageWage: 10 },
-  media: { name: "Media", averageWage: 10 },
-  mfgDurable: { name: "MFG Durable", averageWage: 10 },
-  mfgNondurable: { name: "MFG Nondurable", averageWage: 10 },
-  pharmaceuticals: { name: "Pharmaceuticals", averageWage: 10 },
-  retailAndWholesale: { name: "Retail & Wholesale", averageWage: 10 },
-  softwareAndNetworking: {
-    name: "Software & Networking",
-    averageWage: 10,
-  },
-  telecom: { name: "Telecom", averageWage: 10 },
-  transportation: { name: "Transportation", averageWage: 10 },
+export const INDUSTRIES = [
+  "Banking & Finance",
+  "Entertainment",
+  "Food & Beverage",
+  "Healthcare",
+  "Human Resources",
+  "Manufacturing",
+  "Retail",
+];
+
+export const INDUSTRIES_TO_SURVEYS = {
+  "Banking & Finance": BANKING_AND_FINANCE_SURVEY,
 };

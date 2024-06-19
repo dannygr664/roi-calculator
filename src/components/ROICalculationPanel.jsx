@@ -27,7 +27,7 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
             with the program
           </li>
           <li>
-            <b>Workplace Behavior</b> Measures how training translates to
+            <b>Workplace Behavior:</b> Measures how training translates to
             behavior in the workplace
           </li>
         </ul>

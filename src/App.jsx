@@ -5,16 +5,23 @@ import Wave from "./components/Wave";
 import TrainingCostsPanel from "./components/TrainingCostsPanel";
 import ROICalculationPanel from "./components/ROICalculationPanel";
 import ROICalculationSurvey from "./components/ROICalculationSurvey";
+import CourseRecommendationsPanel from "./components/CourseRecommendationsPanel";
+import CourseRecommendationsSurvey from "./components/CourseRecommendationsSurvey";
 import "./App.css";
-import { LEARNING_SURVEY } from "./surveys/learningSurvey";
-import { TRAINEE_SATISFACTION_SURVEY } from "./surveys/traineeSatisfactionSurvey";
-import { WORKPLACE_BEHAVIOR_SURVEY } from "./surveys/workplaceBehaviorSurvey";
+
+import {
+  ROI_METRICS,
+  ROI_METRICS_TO_SURVEYS,
+  INDUSTRIES,
+  INDUSTRIES_TO_SURVEYS,
+} from "./constants.js";
 
 function App() {
   const [trainingCosts, setTrainingCosts] = useState("0");
   const [isTrainingCostsCalculated, setIsTrainingCostsCalculated] =
     useState(false);
   const [selectedRoiMetric, setSelectedRoiMetric] = useState("");
+  const [selectedIndustry, setSelectedIndustry] = useState("");
 
   return (
     <>
@@ -32,47 +39,44 @@ function App() {
             setSelectedRoiMetric={setSelectedRoiMetric}
           />
         )}
-        {isTrainingCostsCalculated && selectedRoiMetric === "Learning" && (
-          <ROICalculationSurvey
-            title={LEARNING_SURVEY.title}
-            instructions={LEARNING_SURVEY.instructions}
-            questionsAndAnswers={LEARNING_SURVEY.questionsAndAnswers}
-            trainingCosts={trainingCosts}
-            resultDescriptions={LEARNING_SURVEY.resultDescriptions}
-            feedbackIntros={LEARNING_SURVEY.feedbackIntros}
-            hrRecommendations={LEARNING_SURVEY.hrRecommendations}
+        {!selectedRoiMetric && <div className="whitespace"></div>}
+        {ROI_METRICS.map((roiMetric) => {
+          const survey = ROI_METRICS_TO_SURVEYS[roiMetric];
+          return (
+            isTrainingCostsCalculated &&
+            selectedRoiMetric === roiMetric && (
+              <ROICalculationSurvey
+                title={survey.title}
+                instructions={survey.instructions}
+                questionsAndAnswers={survey.questionsAndAnswers}
+                trainingCosts={trainingCosts}
+                resultDescriptions={survey.resultDescriptions}
+                feedbackIntros={survey.feedbackIntros}
+                hrRecommendations={survey.hrRecommendations}
+              />
+            )
+          );
+        })}
+        {isTrainingCostsCalculated && (
+          <CourseRecommendationsPanel
+            selectedIndustry={selectedIndustry}
+            setSelectedIndustry={setSelectedIndustry}
           />
         )}
-        {isTrainingCostsCalculated &&
-          selectedRoiMetric === "Trainee Satisfaction" && (
-            <ROICalculationSurvey
-              title={TRAINEE_SATISFACTION_SURVEY.title}
-              instructions={TRAINEE_SATISFACTION_SURVEY.instructions}
-              questionsAndAnswers={
-                TRAINEE_SATISFACTION_SURVEY.questionsAndAnswers
-              }
-              trainingCosts={trainingCosts}
-              resultDescriptions={
-                TRAINEE_SATISFACTION_SURVEY.resultDescriptions
-              }
-              feedbackIntros={TRAINEE_SATISFACTION_SURVEY.feedbackIntros}
-              hrRecommendations={TRAINEE_SATISFACTION_SURVEY.hrRecommendations}
-            />
-          )}
-        {isTrainingCostsCalculated &&
-          selectedRoiMetric === "Workplace Behavior" && (
-            <ROICalculationSurvey
-              title={WORKPLACE_BEHAVIOR_SURVEY.title}
-              instructions={WORKPLACE_BEHAVIOR_SURVEY.instructions}
-              questionsAndAnswers={
-                WORKPLACE_BEHAVIOR_SURVEY.questionsAndAnswers
-              }
-              trainingCosts={trainingCosts}
-              resultDescriptions={WORKPLACE_BEHAVIOR_SURVEY.resultDescriptions}
-              feedbackIntros={WORKPLACE_BEHAVIOR_SURVEY.feedbackIntros}
-              hrRecommendations={WORKPLACE_BEHAVIOR_SURVEY.hrRecommendations}
-            />
-          )}
+        {INDUSTRIES.map((industry) => {
+          const survey = INDUSTRIES_TO_SURVEYS[industry];
+          return (
+            isTrainingCostsCalculated &&
+            selectedIndustry === industry && (
+              <CourseRecommendationsSurvey
+                title={survey.title}
+                instructions={survey.instructions}
+                questionsAndAnswers={survey.questionsAndAnswers}
+                results={survey.results}
+              />
+            )
+          );
+        })}
       </main>
     </>
   );

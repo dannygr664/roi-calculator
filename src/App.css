@@ -120,6 +120,10 @@ button:hover {
   background-color: #808080;
 }
 
+.form-element {
+  width: 500px;
+}
+
 textarea {
   padding: 0 10px;
   height: 200px;
@@ -141,6 +145,10 @@ textarea {
   border: solid white 1px;
 }
 
+div.whitespace {
+  height: 10px;
+}
+
 main {
-  margin-bottom: 0 0 200px 0;
+  margin-bottom: 10px;
 }
