@@ -3,8 +3,11 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color: #213547;
+  color: #000000;
   background-color: #ffffff;
+
+  --dark-gray-text-color: #242424;
+  --gray-background: #d9d9d9;
 
   margin: 0;
   padding: 0;

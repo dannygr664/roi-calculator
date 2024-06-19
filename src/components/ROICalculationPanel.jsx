@@ -1,64 +1,57 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 
-import OutputDisplay from "./OutputDisplay";
+import { ROI_METRICS } from "../constants";
+
+import CustomSelect from "./CustomSelect";
 
 import "./ROICalculationPanel.css";
 
-function ROICalculationPanel({
-  name,
-  tag,
-  description,
-  asideImageFilePath,
-  calculateROI,
-  calculateTrainingCosts,
-}) {
-  const [netReturn, setNetReturn] = useState("0");
-  const [percentageReturn, setPercentageReturn] = useState("0");
+import roiCalculationImgUrl from "../../images/roi-calculator.jpg";
 
-  const calculateNetReturn = () => {
-    return calculateTrainingCosts() * calculateROI();
-  };
-
-  const calculatePercentageReturn = () => {
-    return calculateROI() * 100;
-  };
-
+function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
   return (
-    <section className="panel-container">
+    <section className="panel-container" id="roi-calculation-panel">
       <section className="form-container">
-        <h2>ROI: {name}</h2>
-        <p>{description}</p>
-        <button
-          type="submit"
-          onClick={() => {
-            setNetReturn(calculateNetReturn().toString());
-            setPercentageReturn(calculatePercentageReturn().toString());
-          }}
-        >
-          Calculate {name} ROI
-        </button>
-        <div className="output-display">
-          <OutputDisplay
-            tag={tag + "-net-return"}
-            label="Net Return"
-            format="currency"
-            outputValue={netReturn}
-          />
-        </div>
-        <div className="output-display">
-          <OutputDisplay
-            tag={tag + "-percentage-return"}
-            label="% Return"
-            format="percentage"
-            outputValue={percentageReturn}
+        <h2>ROI Calculation</h2>
+        <p>
+          Here, we will calculate return on investment. The following metrics
+          may be used for the calculation:
+        </p>
+        <ul>
+          <li>
+            <b>Learning:</b> Measures how conducive the program was to learning,
+            as well as improvements in skills and job performance
+          </li>
+          <li>
+            <b>Trainee Satisfaction:</b> Measures how satisfied trainees were
+            with the program
+          </li>
+          <li>
+            <b>Workplace Behavior:</b> Measures how training translates to
+            behavior in the workplace
+          </li>
+        </ul>
+        <p>
+          <b>Instructions:</b>
+        </p>
+        <ol>
+          <li>Select the metric you would like to use.</li>
+          <li>Fill out the accompanying survey.</li>
+          <li>Click &quot;Get Results &amp; Calculate ROI&quot;</li>
+        </ol>
+        <div className="form-element">
+          <label htmlFor="roi-metric">ROI Metric</label>
+          <CustomSelect
+            options={ROI_METRICS}
+            selectedOption={selectedRoiMetric}
+            setSelectedOption={setSelectedRoiMetric}
           />
         </div>
       </section>
       <aside>
         <img
-          src={asideImageFilePath}
-          alt={"ROI " + name}
+          src={roiCalculationImgUrl}
+          alt="ROI Calculator"
           className="aside-img"
         />
       </aside>
@@ -67,12 +60,8 @@ function ROICalculationPanel({
 }
 
 ROICalculationPanel.propTypes = {
-  name: PropTypes.string.isRequired,
-  tag: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  asideImageFilePath: PropTypes.string.isRequired,
-  calculateROI: PropTypes.func.isRequired,
-  calculateTrainingCosts: PropTypes.func.isRequired,
+  selectedRoiMetric: PropTypes.string.isRequired,
+  setSelectedRoiMetric: PropTypes.func.isRequired,
 };
 
 export default ROICalculationPanel;

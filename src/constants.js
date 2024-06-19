@@ -1,3 +1,15 @@
+import { LEARNING_SURVEY } from "./surveys/roiCalculationSurveys/learningSurvey";
+import { TRAINEE_SATISFACTION_SURVEY } from "./surveys/roiCalculationSurveys/traineeSatisfactionSurvey";
+import { WORKPLACE_BEHAVIOR_SURVEY } from "./surveys/roiCalculationSurveys/workplaceBehaviorSurvey";
+
+import { BANKING_AND_FINANCE_SURVEY } from "./surveys/courseRecommendationSurveys/bankingAndFinanceSurvey";
+import { ENTERTAINMENT_SURVEY } from "./surveys/courseRecommendationSurveys/entertainmentSurvey";
+import { FOOD_AND_BEVERAGE_SURVEY } from "./surveys/courseRecommendationSurveys/foodAndBeverageSurvey";
+import { HEALTHCARE_SURVEY } from "./surveys/courseRecommendationSurveys/healthcareSurvey";
+import { HUMAN_RESOURCES_SURVEY } from "./surveys/courseRecommendationSurveys/humanResourcesSurvey";
+import { MANUFACTURING_SURVEY } from "./surveys/courseRecommendationSurveys/manufacturingSurvey";
+import { RETAIL_SURVEY } from "./surveys/courseRecommendationSurveys/retailSurvey";
+
 export const COURSES_TO_METADATA = {
   bigData: {
     name: "Big Data",
@@ -127,54 +139,56 @@ export const COURSES_TO_METADATA = {
   },
 };
 
+export const CREDIT_OPTIONS = [
+  "Non-Credit",
+  "For-Credit: 60 Hours",
+  "For-Credit: 90 Hours",
+];
+
 export const CREDIT_OPTIONS_TO_METADATA = {
-  nonCredit: {
-    name: "Non-Credit",
+  "Non-Credit": {
     hoursToComplete: 32,
   },
-  sixtyHour: {
-    name: "For-Credit: 60 Hours",
+  "For-Credit: 60 Hours": {
     hoursToComplete: 60,
   },
-  ninetyHour: {
-    name: "For-Credit: 90 Hours",
+  "For-Credit: 90 Hours": {
     hoursToComplete: 90,
   },
 };
 
-export const INDUSTRIES_TO_METADATA = {
-  aerospaceAndDefense: { name: "Aerospace & Defense", averageHourlyWage: 10 },
-  biotechnology: { name: "Biotechnology", averageHourlyWage: 10 },
-  businessServices: {
-    name: "Business Services",
-    averageHourlyWage: 10,
-  },
-  chemicals: { name: "Chemicals", averageHourlyWage: 10 },
-  construction: { name: "Construction", averageHourlyWage: 10 },
-  eduGovtAndNonprofit: {
-    name: "Edu., Gov't. & Nonprofit",
-    averageHourlyWage: 10,
-  },
-  energyAndUtilities: { name: "Energy & Utilities", averageHourlyWage: 10 },
-  entertainment: { name: "Entertainment", averageHourlyWage: 10 },
-  fashion: { name: "Fashion", averageHourlyWage: 10 },
-  financialServices: { name: "Financial Services", averageHourlyWage: 10 },
-  healthcare: { name: "Healthcare", averageHourlyWage: 10 },
-  hospitalityAndLeisure: {
-    name: "Hospitality & Leisure",
-    averageHourlyWage: 10,
-  },
-  insurance: { name: "Insurance", averageHourlyWage: 10 },
-  internet: { name: "Internet", averageHourlyWage: 10 },
-  media: { name: "Media", averageHourlyWage: 10 },
-  mfgDurable: { name: "MFG Durable", averageHourlyWage: 10 },
-  mfgNondurable: { name: "MFG Nondurable", averageHourlyWage: 10 },
-  pharmaceuticals: { name: "Pharmaceuticals", averageHourlyWage: 10 },
-  retailAndWholesale: { name: "Retail & Wholesale", averageHourlyWage: 10 },
-  softwareAndNetworking: {
-    name: "Software & Networking",
-    averageHourlyWage: 10,
-  },
-  telecom: { name: "Telecom", averageHourlyWage: 10 },
-  transportation: { name: "Transportation", averageHourlyWage: 10 },
+export const WAGE_TYPES = ["Hourly", "Annual"];
+
+export const ROI_METRICS = [
+  "Learning",
+  "Trainee Satisfaction",
+  "Workplace Behavior",
+];
+
+export const ROI_METRICS_TO_SURVEYS = {
+  Learning: LEARNING_SURVEY,
+  "Trainee Satisfaction": TRAINEE_SATISFACTION_SURVEY,
+  "Workplace Behavior": WORKPLACE_BEHAVIOR_SURVEY,
+};
+
+export const ROLES = ["HR Professional", "Employee", "Other"];
+
+export const INDUSTRIES = [
+  "Banking & Finance",
+  "Entertainment",
+  "Food & Beverage",
+  "Healthcare",
+  "Human Resources",
+  "Manufacturing",
+  "Retail",
+];
+
+export const INDUSTRIES_TO_SURVEYS = {
+  "Banking & Finance": BANKING_AND_FINANCE_SURVEY,
+  Entertainment: ENTERTAINMENT_SURVEY,
+  "Food & Beverage": FOOD_AND_BEVERAGE_SURVEY,
+  Healthcare: HEALTHCARE_SURVEY,
+  "Human Resources": HUMAN_RESOURCES_SURVEY,
+  Manufacturing: MANUFACTURING_SURVEY,
+  Retail: RETAIL_SURVEY,
 };

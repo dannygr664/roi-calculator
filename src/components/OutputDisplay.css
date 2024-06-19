@@ -1,4 +1,21 @@
-label[id$="return"] {
+.output-display {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
+label[id^="net"],
+label[id^="percentage"] {
   width: 85px;
   text-align: center;
+}
+
+.output-display label {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.output-display input {
+  width: 300px;
 }

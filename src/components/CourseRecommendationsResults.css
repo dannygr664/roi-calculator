@@ -1,0 +1,25 @@
+.course-recommendations-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.submit-name-and-email-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.submit-name-and-email-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.submit-confirmation {
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+}
