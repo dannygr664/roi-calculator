@@ -45,7 +45,7 @@ function ROICalculationResults({
 
   return (
     <div className="roi-calculation-results">
-      <h4>Your Result: {surveyScore.toString()}/5.0</h4>
+      <h4>Your Result: {surveyScore.toFixed(1)}/5.0</h4>
       <p>
         <b>Result: </b>
         {resultDescription}
