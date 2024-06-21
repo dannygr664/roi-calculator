@@ -18,6 +18,13 @@ label[id^="percentage"] {
   }
 }
 
+@media only screen and (max-width: 500px) {
+  label[id^="net"],
+  label[id^="percentage"] {
+    font-size: 0.75em;
+  }
+}
+
 .output-display label {
   font-size: 1em;
   margin-top: 10px;
