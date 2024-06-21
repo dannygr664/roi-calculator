@@ -91,19 +91,9 @@ function TrainingCostsPanel({
         <h2>Training Costs</h2>
         <p>
           First, we will estimate the total cost of training. Training Costs
-          take into account the cost of the program, the average wage per
-          employee, and the number of hours needed to complete the program.
+          take into account the cost of the program and the number of employees
+          registered.
         </p>
-
-        <div className="form-element">
-          <label htmlFor="credit-option">Credit Option</label>
-          <CustomSelect
-            options={CREDIT_OPTIONS}
-            selectedOption={selectedCreditOption}
-            setSelectedOption={setSelectedCreditOption}
-          />
-          <ErrorMessage message={errors.selectedCreditOption} />
-        </div>
 
         <div className="form-element">
           <label htmlFor="employees">Number of Employees</label>
@@ -127,6 +117,16 @@ function TrainingCostsPanel({
             onChange={handleCostChange}
           />
           <ErrorMessage message={errors.cost} />
+        </div>
+
+        <div className="form-element">
+          <label htmlFor="credit-option">Credit Option</label>
+          <CustomSelect
+            options={CREDIT_OPTIONS}
+            selectedOption={selectedCreditOption}
+            setSelectedOption={setSelectedCreditOption}
+          />
+          <ErrorMessage message={errors.selectedCreditOption} />
         </div>
 
         <div className="form-element">
