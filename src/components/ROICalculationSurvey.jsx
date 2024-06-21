@@ -8,6 +8,7 @@ import SurveyQuestions from "./SurveyQuestions";
 import OutputDisplay from "./OutputDisplay";
 import ROICalculationResults from "./ROICalculationResults";
 
+import "./Survey.css";
 import "./ROICalculationSurvey.css";
 
 function ROICalculationSurvey({

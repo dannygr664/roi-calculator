@@ -7,6 +7,7 @@ import SurveyIntro from "./SurveyIntro";
 import SurveyQuestions from "./SurveyQuestions";
 import CourseRecommendationsResults from "./CourseRecommendationsResults";
 
+import "./Survey.css";
 import "./CourseRecommendationsSurvey.css";
 
 function CourseRecommendationsSurvey({
