@@ -46,8 +46,15 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 10px;
   align-items: center;
   padding: 30px 100px;
+}
+
+@media only screen and (max-width: 1200px) {
+  .panel-container {
+    flex-direction: column;
+  }
 }
 
 .form-container {
