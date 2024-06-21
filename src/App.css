@@ -19,6 +19,12 @@ h2 {
   margin: 0;
 }
 
+@media only screen and (max-width: 500px) {
+  h2 {
+    font-size: 2.5em;
+  }
+}
+
 h3 {
   font-size: 2em;
   font-weight: bold;
