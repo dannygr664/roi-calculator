@@ -26,7 +26,7 @@ h3 {
 }
 
 h4 {
-  font-size: 28px;
+  font-size: 1.75em;
   font-weight: bold;
   margin: 0;
 }
@@ -73,7 +73,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #828282;
-  font-size: 16px;
+  font-size: 1em;
   box-sizing: border-box;
 }
 
@@ -107,7 +107,7 @@ input[type="radio"]:checked::before {
 button {
   background-color: #000000;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 1.25em;
   border-radius: 8px;
   width: 500px;
   height: 44px;
@@ -131,7 +131,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #828282;
-  font-size: 16px;
+  font-size: 1em;
   box-sizing: border-box;
   resize: none;
 }
