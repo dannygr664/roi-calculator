@@ -22,9 +22,11 @@ function TrainingCostsPanel({
   setTrainingCosts,
   setIsTrainingCostsCalculated,
 }) {
-  const [selectedCreditOption, setSelectedCreditOption] = useState("");
   const [numberOfEmployees, setNumberOfEmployees] = useState("0");
   const [cost, setCost] = useState("0");
+  const [includeLostProductivityCosts, setIncludeLostProductivityCosts] =
+    useState(false);
+  const [selectedCreditOption, setSelectedCreditOption] = useState("");
   const [selectedWageType, setSelectedWageType] = useState("");
   const [averageWage, setAverageWage] = useState("0");
   const [errors, setErrors] = useState({});
@@ -117,6 +119,21 @@ function TrainingCostsPanel({
             onChange={handleCostChange}
           />
           <ErrorMessage message={errors.cost} />
+        </div>
+
+        <div className="form-element checkbox-container">
+          <input
+            type="checkbox"
+            id="include-lost-productivity-costs"
+            name="include-lost-productivity-costs"
+            checked={includeLostProductivityCosts}
+            onChange={() =>
+              setIncludeLostProductivityCosts(!includeLostProductivityCosts)
+            }
+          />
+          <label htmlFor="include-lost-productivity-costs">
+            Include lost productivity costs
+          </label>
         </div>
 
         <div className="form-element">
