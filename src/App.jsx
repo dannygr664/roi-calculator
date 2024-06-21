@@ -46,6 +46,7 @@ function App() {
             isTrainingCostsCalculated &&
             selectedRoiMetric === roiMetric && (
               <ROICalculationSurvey
+                key={roiMetric}
                 title={survey.title}
                 instructions={survey.instructions}
                 questionsAndAnswers={survey.questionsAndAnswers}
@@ -69,6 +70,7 @@ function App() {
             isTrainingCostsCalculated &&
             selectedIndustry === industry && (
               <CourseRecommendationsSurvey
+                key={industry}
                 title={survey.title}
                 instructions={survey.instructions}
                 questionsAndAnswers={survey.questionsAndAnswers}
