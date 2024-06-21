@@ -5,6 +5,11 @@
   gap: 20px;
 }
 
+.output-display label {
+  font-size: 1em;
+  margin-top: 10px;
+}
+
 label[id^="net"],
 label[id^="percentage"] {
   width: 20%;
@@ -21,13 +26,8 @@ label[id^="percentage"] {
 @media only screen and (max-width: 500px) {
   label[id^="net"],
   label[id^="percentage"] {
-    font-size: 0.75em;
+    font-size: 0.9em;
   }
-}
-
-.output-display label {
-  font-size: 1em;
-  margin-top: 10px;
 }
 
 .output-display input {
