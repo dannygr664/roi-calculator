@@ -7,7 +7,7 @@
 
 label[id^="net"],
 label[id^="percentage"] {
-  width: 85px;
+  width: 50%;
   text-align: center;
 }
 
@@ -17,5 +17,5 @@ label[id^="percentage"] {
 }
 
 .output-display input {
-  width: 300px;
+  width: 50%;
 }
