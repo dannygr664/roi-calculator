@@ -140,13 +140,13 @@ export const COURSES_TO_METADATA = {
 };
 
 export const CREDIT_OPTIONS = [
-  "Non-Credit",
+  "Non-Credit: 32 Hours",
   "For-Credit: 60 Hours",
   "For-Credit: 90 Hours",
 ];
 
 export const CREDIT_OPTIONS_TO_METADATA = {
-  "Non-Credit": {
+  "Non-Credit: 32 Hours": {
     hoursToComplete: 32,
   },
   "For-Credit: 60 Hours": {
