@@ -121,19 +121,27 @@ function TrainingCostsPanel({
           <ErrorMessage message={errors.cost} />
         </div>
 
-        <div className="form-element checkbox-container">
-          <input
-            type="checkbox"
-            id="include-lost-productivity-costs"
-            name="include-lost-productivity-costs"
-            checked={includeLostProductivityCosts}
-            onChange={() =>
-              setIncludeLostProductivityCosts(!includeLostProductivityCosts)
-            }
-          />
-          <label htmlFor="include-lost-productivity-costs">
-            Include lost productivity costs
-          </label>
+        <div className="form-element">
+          <div className="checkbox-container">
+            <input
+              type="checkbox"
+              id="include-lost-productivity-costs"
+              name="include-lost-productivity-costs"
+              checked={includeLostProductivityCosts}
+              onChange={() =>
+                setIncludeLostProductivityCosts(!includeLostProductivityCosts)
+              }
+            />
+            <label htmlFor="include-lost-productivity-costs">
+              Include lost productivity costs
+            </label>
+          </div>
+
+          <p className="input-description">
+            Selecting this option will include the additional cost associated
+            with lost productivity. This is equal to the average hourly employee
+            wage multiplied by the number of hours needed to take the course.
+          </p>
         </div>
 
         <div className="form-element">
@@ -143,6 +151,10 @@ function TrainingCostsPanel({
             selectedOption={selectedCreditOption}
             setSelectedOption={setSelectedCreditOption}
           />
+          <p className="input-description">
+            This will determine the number of hours needed to complete the
+            program.
+          </p>
           <ErrorMessage message={errors.selectedCreditOption} />
         </div>
 

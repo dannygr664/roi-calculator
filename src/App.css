@@ -124,6 +124,10 @@ label {
   font-size: 0.75em;
 }
 
+p.input-description {
+  font-size: 0.75em;
+}
+
 button {
   background-color: #000000;
   color: #ffffff;
