@@ -104,6 +104,11 @@ input[type="radio"]:checked::before {
   transform: translate(-50%, -50%);
 }
 
+label {
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
 button {
   background-color: #000000;
   color: #ffffff;
