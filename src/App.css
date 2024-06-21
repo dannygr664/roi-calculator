@@ -9,7 +9,7 @@ h1 {
   color: white;
   font-size: 4em;
   font-weight: bold;
-  padding: 211.5px 100px;
+  padding: min(211.5px, 20%) min(100px, 10%);
   margin: 0;
 }
 
