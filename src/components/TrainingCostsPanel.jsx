@@ -6,6 +6,7 @@ import {
   CREDIT_OPTIONS,
   CREDIT_OPTIONS_TO_METADATA,
   WAGE_TYPES,
+  WORKING_HOURS_IN_A_YEAR,
 } from "../constants";
 
 import CustomSelect from "./CustomSelect";
@@ -71,8 +72,15 @@ function TrainingCostsPanel({
 
     setIsTrainingCostsCalculated(true);
 
+    let averageHourlyWage;
+    if (selectedWageType === "Hourly") {
+      averageHourlyWage = averageWage;
+    } else if (selectedWageType === "Annual") {
+      averageHourlyWage = averageWage / WORKING_HOURS_IN_A_YEAR;
+    }
+
     return (
-      (costOfCourse + averageWage * hoursToCompleteCourse) *
+      (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
       parseInt(numberOfEmployees, 10)
     );
   };

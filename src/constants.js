@@ -158,6 +158,7 @@ export const CREDIT_OPTIONS_TO_METADATA = {
 };
 
 export const WAGE_TYPES = ["Hourly", "Annual"];
+export const WORKING_HOURS_IN_A_YEAR = 2080;
 
 export const ROI_METRICS = [
   "Learning",
