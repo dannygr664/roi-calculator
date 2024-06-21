@@ -8,6 +8,7 @@ import SurveyQuestions from "./SurveyQuestions";
 import OutputDisplay from "./OutputDisplay";
 import ROICalculationResults from "./ROICalculationResults";
 
+import "./Survey.css";
 import "./ROICalculationSurvey.css";
 
 function ROICalculationSurvey({
@@ -158,36 +159,38 @@ function ROICalculationSurvey({
   return (
     <div className="survey">
       <SurveyIntro title={title} instructions={instructions} />
-      <SurveyQuestions
-        surveyId={surveyId}
-        questionsAndAnswers={questionsAndAnswers}
-        selectedAnswers={selectedAnswers}
-        setSelectedAnswers={setSelectedAnswers}
-        selectedRole={selectedRole}
-        setSelectedRole={setSelectedRole}
-        employeeJobTitle={employeeJobTitle}
-        setEmployeeJobTitle={setEmployeeJobTitle}
-        otherRole={otherRole}
-        setOtherRole={setOtherRole}
-        errors={errors}
-      />
+      <div className="survey-questions-submit-button-and-output-displays">
+        <SurveyQuestions
+          surveyId={surveyId}
+          questionsAndAnswers={questionsAndAnswers}
+          selectedAnswers={selectedAnswers}
+          setSelectedAnswers={setSelectedAnswers}
+          selectedRole={selectedRole}
+          setSelectedRole={setSelectedRole}
+          employeeJobTitle={employeeJobTitle}
+          setEmployeeJobTitle={setEmployeeJobTitle}
+          otherRole={otherRole}
+          setOtherRole={setOtherRole}
+          errors={errors}
+        />
 
-      <button type="submit" onClick={() => showResults()}>
-        Get Results & Calculate ROI
-      </button>
+        <button type="submit" onClick={() => showResults()}>
+          Get Results & Calculate ROI
+        </button>
 
-      <OutputDisplay
-        tag={`net-return-${surveyId}`}
-        label="Net Return"
-        format="currency"
-        outputValue={netReturn}
-      />
-      <OutputDisplay
-        tag={`percentage-return-${surveyId}`}
-        label="% Return"
-        format="percentage"
-        outputValue={percentageReturn}
-      />
+        <OutputDisplay
+          tag={`net-return-${surveyId}`}
+          label="Net Return"
+          format="currency"
+          outputValue={netReturn}
+        />
+        <OutputDisplay
+          tag={`percentage-return-${surveyId}`}
+          label="% Return"
+          format="percentage"
+          outputValue={percentageReturn}
+        />
+      </div>
 
       {areResultsVisible && (
         <ROICalculationResults

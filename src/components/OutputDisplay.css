@@ -7,15 +7,22 @@
 
 label[id^="net"],
 label[id^="percentage"] {
-  width: 85px;
+  width: 20%;
   text-align: center;
 }
 
+@media only screen and (max-width: 1260px) {
+  label[id^="net"],
+  label[id^="percentage"] {
+    width: 30%;
+  }
+}
+
 .output-display label {
-  font-size: 16px;
+  font-size: 1em;
   margin-top: 10px;
 }
 
 .output-display input {
-  width: 300px;
+  width: 50%;
 }

@@ -9,7 +9,7 @@ h1 {
   color: white;
   font-size: 4em;
   font-weight: bold;
-  padding: 211.5px 100px;
+  padding: min(211.5px, 20%) min(100px, 10%);
   margin: 0;
 }
 
@@ -22,11 +22,12 @@ h2 {
 h3 {
   font-size: 2em;
   font-weight: bold;
+  text-align: center;
   margin: 0;
 }
 
 h4 {
-  font-size: 28px;
+  font-size: 1.75em;
   font-weight: bold;
   margin: 0;
 }
@@ -46,15 +47,23 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  gap: 10px;
   align-items: center;
-  padding: 30px 100px;
+  padding: 30px 10%;
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
+}
+
+@media only screen and (max-width: 1260px) {
+  .panel-container {
+    flex-direction: column;
+  }
 }
 
 p,
@@ -73,7 +82,7 @@ input {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #828282;
-  font-size: 16px;
+  font-size: 1em;
   box-sizing: border-box;
 }
 
@@ -81,8 +90,8 @@ input[type="radio"] {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 1.25em;
+  height: 1.25em;
   border: 1px solid #000;
   border-radius: 50%;
   box-shadow: 0 1px;
@@ -94,8 +103,8 @@ input[type="radio"] {
 
 input[type="radio"]:checked::before {
   content: "";
-  width: 20px;
-  height: 20px;
+  width: 1.25em;
+  height: 1.25em;
   background-color: #000;
   border-radius: 50%;
   position: absolute;
@@ -104,12 +113,17 @@ input[type="radio"]:checked::before {
   transform: translate(-50%, -50%);
 }
 
+label {
+  font-weight: bold;
+  font-size: 0.75em;
+}
+
 button {
   background-color: #000000;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 1.25em;
   border-radius: 8px;
-  width: 500px;
+  width: 100%;
   height: 44px;
   cursor: pointer;
   border: none;
@@ -121,7 +135,7 @@ button:hover {
 }
 
 .form-element {
-  width: 500px;
+  width: 100%;
 }
 
 textarea {
@@ -131,7 +145,7 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
   color: #828282;
-  font-size: 16px;
+  font-size: 1em;
   box-sizing: border-box;
   resize: none;
 }
