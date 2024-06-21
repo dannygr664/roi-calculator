@@ -56,23 +56,25 @@ function CourseRecommendationsSurvey({
   return (
     <div className="survey">
       <SurveyIntro title={title} instructions={instructions} />
-      <SurveyQuestions
-        surveyId={surveyId}
-        questionsAndAnswers={questionsAndAnswers}
-        selectedAnswers={selectedAnswers}
-        setSelectedAnswers={setSelectedAnswers}
-        selectedRole={selectedRole}
-        setSelectedRole={setSelectedRole}
-        employeeJobTitle={employeeJobTitle}
-        setEmployeeJobTitle={setEmployeeJobTitle}
-        otherRole={otherRole}
-        setOtherRole={setOtherRole}
-        errors={errors}
-      />
+      <div className="survey-questions-submit-button-and-output-displays">
+        <SurveyQuestions
+          surveyId={surveyId}
+          questionsAndAnswers={questionsAndAnswers}
+          selectedAnswers={selectedAnswers}
+          setSelectedAnswers={setSelectedAnswers}
+          selectedRole={selectedRole}
+          setSelectedRole={setSelectedRole}
+          employeeJobTitle={employeeJobTitle}
+          setEmployeeJobTitle={setEmployeeJobTitle}
+          otherRole={otherRole}
+          setOtherRole={setOtherRole}
+          errors={errors}
+        />
 
-      <button type="submit" onClick={() => showResults()}>
-        Get Course Recommendations
-      </button>
+        <button type="submit" onClick={() => showResults()}>
+          Get Course Recommendations
+        </button>
+      </div>
 
       {areResultsVisible && (
         <CourseRecommendationsResults surveyId={surveyId} results={results} />

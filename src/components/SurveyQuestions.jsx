@@ -5,6 +5,7 @@ import { ROLES } from "../constants";
 import CustomSelect from "./CustomSelect";
 import ErrorMessage from "./ErrorMessage";
 
+import "./Survey.css";
 import "./SurveyQuestions.css";
 
 function SurveyQuestions({
