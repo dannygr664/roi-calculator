@@ -32,7 +32,8 @@ function CourseRecommendationsResults({ surveyId, results }) {
     setEmail(event.target.value);
   };
 
-  const submitNameAndEmail = () => {
+  const submitNameAndEmail = (event) => {
+    event.preventDefault();
     if (!areInputsValid(getValidationErrors, setErrors)) {
       setIsSubmitConfirmationVisible(false);
       return;
@@ -92,7 +93,10 @@ function CourseRecommendationsResults({ surveyId, results }) {
         below and a member from our team will contact you in 24 hours.
       </p>
 
-      <div className="submit-name-and-email-form">
+      <form
+        className="submit-name-and-email-form"
+        onSubmit={submitNameAndEmail}
+      >
         <div className="submit-name-and-email-container">
           <div className="form-element">
             <label htmlFor={`name-${surveyId}`}>Name</label>
@@ -117,10 +121,8 @@ function CourseRecommendationsResults({ surveyId, results }) {
           </div>
         </div>
 
-        <button type="submit" onClick={() => submitNameAndEmail()}>
-          Submit
-        </button>
-      </div>
+        <button type="submit">Submit</button>
+      </form>
       {isSubmitConfirmationVisible && (
         <p className="submit-confirmation">
           Submitted! We will be in touch soon.
