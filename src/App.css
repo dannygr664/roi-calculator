@@ -189,6 +189,12 @@ div.whitespace {
   height: 10px;
 }
 
+.submit-confirmation {
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+}
+
 main {
   margin-bottom: 10px;
 }
