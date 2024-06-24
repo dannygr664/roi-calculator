@@ -12,7 +12,7 @@ function LearnMoreForm({ surveyId }) {
     useState(false);
 
   const nameId = `survey${surveyId}-name`;
-  const emailId = `survey${surveyId}-email;`;
+  const emailId = `survey${surveyId}-email`;
 
   return (
     <Formik
