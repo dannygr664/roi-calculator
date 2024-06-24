@@ -31,8 +31,8 @@ function LearnMoreForm({ surveyId }) {
         setIsSubmitConfirmationVisible(true);
       }}
     >
-      <Form className="submit-name-and-email-form">
-        <div className="submit-name-and-email-container">
+      <Form className="learn-more-form">
+        <div className="learn-more-form-inputs-container">
           <div className="form-element">
             <FormikTextInput label="Name" name={nameId} type="text" />
           </div>
