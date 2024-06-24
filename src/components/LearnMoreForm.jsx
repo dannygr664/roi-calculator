@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Formik, Field, Form, ErrorMessage } from "formik";
+import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
+
+import FormikTextInput from "./FormikTextInput";
 
 import "./LearnMoreForm.css";
 
@@ -32,23 +34,11 @@ function LearnMoreForm({ surveyId }) {
       <Form className="submit-name-and-email-form">
         <div className="submit-name-and-email-container">
           <div className="form-element">
-            <label htmlFor={nameId}>Name</label>
-            <Field name={nameId} type="text" />
-            <ErrorMessage
-              name={nameId}
-              component="div"
-              className="error-message"
-            />
+            <FormikTextInput label="Name" name={nameId} type="text" />
           </div>
 
           <div className="form-element">
-            <label htmlFor={emailId}>Name</label>
-            <Field name={emailId} type="email" />
-            <ErrorMessage
-              name={emailId}
-              component="div"
-              className="error-message"
-            />
+            <FormikTextInput label="Email" name={emailId} type="email" />
           </div>
         </div>
 
