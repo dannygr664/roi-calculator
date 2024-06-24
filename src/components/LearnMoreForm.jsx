@@ -1,9 +1,7 @@
 import { useState } from "react";
-import { useFormik } from "formik";
+import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
-
-import ErrorMessage from "./ErrorMessage";
 
 import "./LearnMoreForm.css";
 
@@ -11,60 +9,57 @@ function LearnMoreForm({ surveyId }) {
   const [isSubmitConfirmationVisible, setIsSubmitConfirmationVisible] =
     useState(false);
 
-  const formik = useFormik({
-    initialValues: {
-      name: "",
-      email: "",
-    },
-    validationSchema: Yup.object({
-      name: Yup.string().required("Required"),
-      email: Yup.string().email("Invalid email address").required("Required"),
-    }),
-    onSubmit: (event, values) => {
-      console.log(values.name, values.email);
-      setIsSubmitConfirmationVisible(true);
-    },
-  });
+  const nameId = `survey${surveyId}-name`;
+  const emailId = `survey${surveyId}-email;`;
 
   return (
-    <form className="submit-name-and-email-form" onSubmit={formik.handleSubmit}>
-      <div className="submit-name-and-email-container">
-        <div className="form-element">
-          <label htmlFor={`survey${surveyId}-name`}>Name</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.name}
-          />
-          {formik.touched.name && <ErrorMessage message={formik.errors.name} />}
+    <Formik
+      initialValues={{
+        [nameId]: "",
+        [emailId]: "",
+      }}
+      validationSchema={Yup.object({
+        [nameId]: Yup.string().required("Required"),
+        [emailId]: Yup.string()
+          .email("Invalid email address")
+          .required("Required"),
+      })}
+      onSubmit={(values) => {
+        console.log(values[nameId], values[emailId]);
+        setIsSubmitConfirmationVisible(true);
+      }}
+    >
+      <Form className="submit-name-and-email-form">
+        <div className="submit-name-and-email-container">
+          <div className="form-element">
+            <label htmlFor={nameId}>Name</label>
+            <Field name={nameId} type="text" />
+            <ErrorMessage
+              name={nameId}
+              component="div"
+              className="error-message"
+            />
+          </div>
+
+          <div className="form-element">
+            <label htmlFor={emailId}>Name</label>
+            <Field name={emailId} type="email" />
+            <ErrorMessage
+              name={emailId}
+              component="div"
+              className="error-message"
+            />
+          </div>
         </div>
 
-        <div className="form-element">
-          <label htmlFor={`survey${surveyId}-email`}>Email</label>
-          <input
-            id="email"
-            name="email"
-            type="email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {formik.touched.email && (
-            <ErrorMessage message={formik.errors.email} />
-          )}
-        </div>
-      </div>
-
-      <button type="submit">Submit</button>
-      {isSubmitConfirmationVisible && (
-        <p className="submit-confirmation">
-          Submitted! We will be in touch soon.
-        </p>
-      )}
-    </form>
+        <button type="submit">Submit</button>
+        {isSubmitConfirmationVisible && (
+          <p className="submit-confirmation">
+            Submitted! We will be in touch soon.
+          </p>
+        )}
+      </Form>
+    </Formik>
   );
 }
 

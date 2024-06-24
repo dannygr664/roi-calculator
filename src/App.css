@@ -185,6 +185,16 @@ textarea {
   border: solid white 1px;
 }
 
+.error-message {
+  position: relative;
+  color: #ed1b24;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 10px;
+  top: 0;
+  z-index: -1;
+}
+
 div.whitespace {
   height: 10px;
 }
