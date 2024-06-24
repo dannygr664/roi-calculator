@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useFormik } from "formik";
+import * as Yup from "yup";
 import PropTypes from "prop-types";
 
 import ErrorMessage from "./ErrorMessage";
@@ -10,30 +11,15 @@ function LearnMoreForm({ surveyId }) {
   const [isSubmitConfirmationVisible, setIsSubmitConfirmationVisible] =
     useState(false);
 
-  const validate = (values) => {
-    const errors = {};
-
-    if (!values.name) {
-      errors.name = "Required";
-    }
-
-    if (!values.email) {
-      errors.email = "Required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-
-    return errors;
-  };
-
   const formik = useFormik({
     initialValues: {
       name: "",
       email: "",
     },
-    validate,
+    validationSchema: Yup.object({
+      name: Yup.string().required("Required"),
+      email: Yup.string().email("Invalid email address").required("Required"),
+    }),
     onSubmit: (event, values) => {
       console.log(values.name, values.email);
       setIsSubmitConfirmationVisible(true);
