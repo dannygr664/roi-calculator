@@ -1,9 +1,6 @@
-import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { areInputsValid } from "../utilities";
-
-import ErrorMessage from "./ErrorMessage";
+import FeedbackForm from "./FeedbackForm";
 
 import "./ROICalculationResults.css";
 
@@ -15,34 +12,6 @@ function ROICalculationResults({
   selectedRole,
   hrRecommendation,
 }) {
-  const [feedback, setFeedback] = useState("");
-  const [isSubmitConfirmationVisible, setIsSubmitConfirmationVisible] =
-    useState(false);
-
-  const [errors, setErrors] = useState({});
-
-  const getValidationErrors = () => {
-    const newErrors = {};
-
-    if (!feedback) newErrors.feedback = "Please enter your feedback";
-
-    return newErrors;
-  };
-
-  const handleFeedbackChange = (event) => {
-    setFeedback(event.target.value);
-  };
-
-  const submitFeedback = () => {
-    if (!areInputsValid(getValidationErrors, setErrors)) {
-      setIsSubmitConfirmationVisible(false);
-      return;
-    }
-
-    console.log(feedback);
-    setIsSubmitConfirmationVisible(true);
-  };
-
   return (
     <div className="roi-calculation-results">
       <h4>Your Result: {surveyScore.toFixed(1)}/5.0</h4>
@@ -56,23 +25,7 @@ function ROICalculationResults({
             <b>Feedback: </b>
             {feedbackIntro}
           </p>
-          <label htmlFor={`feedback-${surveyId}`} hidden></label>
-          <textarea
-            id={`feedback-${surveyId}`}
-            name="feedback"
-            onChange={handleFeedbackChange}
-          ></textarea>
-          <ErrorMessage message={errors.feedback} />
-          <div className="submit-feedback-button-container">
-            <button type="submit" onClick={() => submitFeedback()}>
-              Submit
-            </button>
-          </div>
-          {isSubmitConfirmationVisible && (
-            <p className="submit-confirmation">
-              Submitted! Thank you for your feedback.
-            </p>
-          )}
+          <FeedbackForm surveyId={surveyId} />
         </>
       )}
       {selectedRole === "HR Professional" && (
