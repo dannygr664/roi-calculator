@@ -80,11 +80,9 @@ function TrainingCostsPanel({
           }}
           validationSchema={Yup.object({
             [numberOfEmployeesId]: Yup.number()
-              .min(0, "Please enter a valid number of employees")
+              .min(0, "Invalid number of employees")
               .required("Required"),
-            [costId]: Yup.number()
-              .min(0, "Please enter a valid cost, without commas")
-              .required("Required"),
+            [costId]: Yup.number().min(0, "Invalid cost").required("Required"),
             [includeLostProductivityCostsId]: Yup.boolean(),
             [creditOptionId]: Yup.string().when(
               "include-lost-productivity-costs",
@@ -108,9 +106,7 @@ function TrainingCostsPanel({
               {
                 is: true,
                 then: (schema) =>
-                  schema
-                    .min(0, "Please enter a valid wage, without commas")
-                    .required("Required"),
+                  schema.min(0, "Invalid wage").required("Required"),
               }
             ),
           })}
@@ -132,7 +128,7 @@ function TrainingCostsPanel({
 
               <div className="form-element">
                 <FormikTextInput
-                  label="Cost per Employee"
+                  label="Cost per Employee ($)"
                   name={costId}
                   type="number"
                 />
