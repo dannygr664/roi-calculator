@@ -40,8 +40,9 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
           <li>Click &quot;Get Results &amp; Calculate ROI&quot;</li>
         </ol>
         <div className="form-element">
-          <label htmlFor="roi-metric">ROI Metric</label>
           <CustomSelect
+            label="ROI Metric"
+            name="roi-metric"
             options={ROI_METRICS}
             selectedOption={selectedRoiMetric}
             setSelectedOption={setSelectedRoiMetric}

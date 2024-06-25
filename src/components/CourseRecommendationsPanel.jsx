@@ -25,8 +25,9 @@ function CourseRecommendationsPanel({ selectedIndustry, setSelectedIndustry }) {
           <li>Click &quot;Get Course Recommendations.&quot;</li>
         </ol>
         <div className="form-element">
-          <label htmlFor="industry">Industry</label>
           <CustomSelect
+            label="Industry"
+            name="industry"
             options={INDUSTRIES}
             selectedOption={selectedIndustry}
             setSelectedOption={setSelectedIndustry}

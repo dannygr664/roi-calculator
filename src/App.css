@@ -164,6 +164,27 @@ button:hover {
   align-items: center;
 }
 
+select {
+  width: 100%;
+  padding: 0 10px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #828282;
+  background: #fff url("../images/arrow-down.svg") no-repeat right 10px center;
+  background-size: 10px 10px;
+  appearance: none; /* Hide default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #666;
+}
+
 textarea {
   padding: 10px 10px;
   height: 200px;

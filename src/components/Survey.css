@@ -40,6 +40,6 @@
   font-size: 1em;
 }
 
-.role-label {
+label[htmlFor$="role"] {
   font-size: 1em;
 }

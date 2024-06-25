@@ -66,10 +66,9 @@ function SurveyQuestions({
         </div>
       ))}
       <div id={`survey${surveyId}-role`} className="survey-question">
-        <label htmlFor={`survey${surveyId}-role`} className="role-label">
-          What best describes you?
-        </label>
         <CustomSelect
+          label="What best describes you?"
+          name={`survey${surveyId}-role`}
           options={ROLES}
           selectedOption={selectedRole}
           setSelectedOption={setSelectedRole}
