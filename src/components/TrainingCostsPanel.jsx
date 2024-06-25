@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import PropTypes from "prop-types";
 
-import { areInputsValid } from "../utilities";
 import {
   CREDIT_OPTIONS,
   CREDIT_OPTIONS_TO_METADATA,
@@ -9,8 +9,9 @@ import {
   WORKING_HOURS_IN_A_YEAR,
 } from "../constants";
 
-import CustomSelect from "./CustomSelect";
-import ErrorMessage from "./ErrorMessage";
+import FormikTextInput from "./FormikTextInput";
+import FormikCheckbox from "./FormikCheckbox";
+import FormikSelect from "./FormikSelect";
 import OutputDisplay from "./OutputDisplay";
 
 import "./TrainingCostsPanel.css";
@@ -22,68 +23,32 @@ function TrainingCostsPanel({
   setTrainingCosts,
   setIsTrainingCostsCalculated,
 }) {
-  const [numberOfEmployees, setNumberOfEmployees] = useState("0");
-  const [cost, setCost] = useState("0");
-  const [includeLostProductivityCosts, setIncludeLostProductivityCosts] =
-    useState(false);
-  const [selectedCreditOption, setSelectedCreditOption] = useState("");
-  const [selectedWageType, setSelectedWageType] = useState("");
-  const [averageWage, setAverageWage] = useState("0");
-  const [errors, setErrors] = useState({});
+  const numberOfEmployeesId = "number-of-employees";
+  const costId = "cost";
+  const includeLostProductivityCostsId = "include-lost-productivity-costs";
+  const creditOptionId = "credit-option";
+  const wageTypeId = "wage-type";
+  const averageWageId = "average-wage";
 
-  const handleNumberOfEmployeesChange = (event) => {
-    setNumberOfEmployees(event.target.value);
-  };
-
-  const handleCostChange = (event) => {
-    setCost(event.target.value);
-  };
-
-  const handleAverageWageChange = (event) => {
-    setAverageWage(event.target.value);
-  };
-
-  const getValidationErrors = () => {
-    const newErrors = {};
-    if (
-      isNaN(parseInt(numberOfEmployees, 10)) ||
-      parseInt(numberOfEmployees, 10) < 0
-    )
-      newErrors.numberOfEmployees = "Please enter a valid number of employees";
-    if (isNaN(parseFloat(cost)) || parseFloat(cost) < 0)
-      newErrors.cost = "Please enter a valid cost, without commas";
-
-    if (includeLostProductivityCosts) {
-      if (!selectedCreditOption)
-        newErrors.selectedCreditOption = "Please select a credit option";
-      if (!selectedWageType)
-        newErrors.selectedWageType = "Please select a wage type";
-      if (isNaN(parseFloat(averageWage)) || parseFloat(averageWage) < 0)
-        newErrors.averageWage = "Please enter a valid wage, without commas";
-    }
-
-    return newErrors;
-  };
-
-  const calculateTrainingCosts = () => {
-    if (!areInputsValid(getValidationErrors, setErrors)) {
-      setIsTrainingCostsCalculated(false);
-      return 0;
-    }
+  const calculateTrainingCosts = (values) => {
+    const numberOfEmployees = values[numberOfEmployeesId];
+    const cost = values[costId];
+    const includeLostProductivityCosts = values[includeLostProductivityCostsId];
+    const creditOption = values[creditOptionId];
+    const wageType = values[wageTypeId];
+    const averageWage = values[averageWageId];
 
     const costOfCourse = parseFloat(cost);
-
-    setIsTrainingCostsCalculated(true);
-
     let averageHourlyWage = 0;
     let hoursToCompleteCourse = 0;
+
     if (includeLostProductivityCosts) {
       hoursToCompleteCourse =
-        CREDIT_OPTIONS_TO_METADATA[selectedCreditOption].hoursToComplete;
+        CREDIT_OPTIONS_TO_METADATA[creditOption].hoursToComplete;
 
-      if (selectedWageType === "Hourly") {
+      if (wageType === "Hourly") {
         averageHourlyWage = averageWage;
-      } else if (selectedWageType === "Annual") {
+      } else if (wageType === "Annual") {
         averageHourlyWage = averageWage / WORKING_HOURS_IN_A_YEAR;
       }
     }
@@ -104,97 +69,124 @@ function TrainingCostsPanel({
           registered.
         </p>
 
-        <div className="form-element">
-          <label htmlFor="employees">Number of Employees</label>
-          <input
-            type="number"
-            id="employees"
-            name="employees"
-            value={numberOfEmployees}
-            onChange={handleNumberOfEmployeesChange}
-          />
-          <ErrorMessage message={errors.numberOfEmployees} />
-        </div>
-
-        <div className="form-element">
-          <label htmlFor="cost">Cost per Employee ($)</label>
-          <input
-            type="number"
-            id="cost"
-            name="cost"
-            value={cost}
-            onChange={handleCostChange}
-          />
-          <ErrorMessage message={errors.cost} />
-        </div>
-
-        <div className="form-element">
-          <div className="checkbox-container">
-            <input
-              type="checkbox"
-              id="include-lost-productivity-costs"
-              name="include-lost-productivity-costs"
-              checked={includeLostProductivityCosts}
-              onChange={() =>
-                setIncludeLostProductivityCosts(!includeLostProductivityCosts)
+        <Formik
+          initialValues={{
+            [numberOfEmployeesId]: "0",
+            [costId]: "0",
+            [includeLostProductivityCostsId]: false,
+            [creditOptionId]: "",
+            [wageTypeId]: "",
+            [averageWageId]: "0",
+          }}
+          validationSchema={Yup.object({
+            [numberOfEmployeesId]: Yup.number()
+              .min(0, "Please enter a valid number of employees")
+              .required("Required"),
+            [costId]: Yup.number()
+              .min(0, "Please enter a valid cost, without commas")
+              .required("Required"),
+            [includeLostProductivityCostsId]: Yup.boolean(),
+            [creditOptionId]: Yup.string().when(
+              "include-lost-productivity-costs",
+              {
+                is: true,
+                then: (schema) =>
+                  schema
+                    .oneOf(CREDIT_OPTIONS, "Invalid credit option")
+                    .required("Required"),
               }
-            />
-            <label htmlFor="include-lost-productivity-costs">
-              Include lost productivity costs
-            </label>
-          </div>
-
-          <p className="input-description">
-            Selecting this option will include the additional cost associated
-            with lost productivity. This is equal to the average hourly employee
-            wage multiplied by the number of hours needed to take the course.
-          </p>
-        </div>
-        {includeLostProductivityCosts && (
-          <>
-            <div className="form-element">
-              <label htmlFor="credit-option">Credit Option</label>
-              <CustomSelect
-                options={CREDIT_OPTIONS}
-                selectedOption={selectedCreditOption}
-                setSelectedOption={setSelectedCreditOption}
-              />
-              <p className="input-description">
-                This will determine the number of hours needed to complete the
-                program.
-              </p>
-              <ErrorMessage message={errors.selectedCreditOption} />
-            </div>
-
-            <div className="form-element">
-              <label htmlFor="wage-type">Average Employee Wage ($)</label>
-              <CustomSelect
-                options={WAGE_TYPES}
-                selectedOption={selectedWageType}
-                setSelectedOption={setSelectedWageType}
-              />
-              <ErrorMessage message={errors.selectedWageType} />
-            </div>
-            <div className="form-element">
-              <label htmlFor="wage"></label>
-              <input
-                type="number"
-                id="wage"
-                name="wage"
-                value={averageWage}
-                onChange={handleAverageWageChange}
-              />
-              <ErrorMessage message={errors.averageWage} />
-            </div>
-          </>
-        )}
-
-        <button
-          type="submit"
-          onClick={() => setTrainingCosts(calculateTrainingCosts().toString())}
+            ),
+            [wageTypeId]: Yup.string().when("include-lost-productivity-costs", {
+              is: true,
+              then: (schema) =>
+                schema
+                  .oneOf(WAGE_TYPES, "Invalid wage type")
+                  .required("Required"),
+            }),
+            [averageWageId]: Yup.number().when(
+              "include-lost-productivity-costs",
+              {
+                is: true,
+                then: (schema) =>
+                  schema
+                    .min(0, "Please enter a valid wage, without commas")
+                    .required("Required"),
+              }
+            ),
+          })}
+          onSubmit={(values) => {
+            const totalCosts = calculateTrainingCosts(values);
+            setTrainingCosts(totalCosts.toString());
+            setIsTrainingCostsCalculated(true);
+          }}
         >
-          Calculate Training Costs
-        </button>
+          {({ values }) => (
+            <Form className="form-container">
+              <div className="form-element">
+                <FormikTextInput
+                  label="Number of Employees"
+                  name={numberOfEmployeesId}
+                  type="number"
+                />
+              </div>
+
+              <div className="form-element">
+                <FormikTextInput
+                  label="Cost per Employee"
+                  name={costId}
+                  type="number"
+                />
+              </div>
+
+              <div className="form-element">
+                <FormikCheckbox name={includeLostProductivityCostsId}>
+                  Include lost productivity costs
+                </FormikCheckbox>
+
+                <p className="input-description">
+                  Selecting this option will include the additional cost
+                  associated with lost productivity. This is equal to the
+                  average hourly employee wage multiplied by the number of hours
+                  needed to take the course.
+                </p>
+              </div>
+
+              {values[includeLostProductivityCostsId] && (
+                <>
+                  <div className="form-element">
+                    <FormikSelect
+                      label="Credit Option"
+                      name={creditOptionId}
+                      options={CREDIT_OPTIONS}
+                    />
+                    <p className="input-description">
+                      This will determine the number of hours needed to complete
+                      the program.
+                    </p>
+                  </div>
+
+                  <div className="form-element">
+                    <FormikSelect
+                      label="Wage Type"
+                      name={wageTypeId}
+                      options={WAGE_TYPES}
+                    />
+                  </div>
+
+                  <div className="form-element">
+                    <FormikTextInput
+                      label="Average Employee Wage ($)"
+                      name={averageWageId}
+                      type="number"
+                    />
+                  </div>
+                </>
+              )}
+
+              <button type="submit">Calculate Training Costs</button>
+            </Form>
+          )}
+        </Formik>
 
         <OutputDisplay
           tag="training-costs"
