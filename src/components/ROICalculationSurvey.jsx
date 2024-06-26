@@ -1,15 +1,16 @@
-import { useState, useId, useRef } from "react";
+import { useState, useId } from "react";
 import PropTypes from "prop-types";
 
-import { areInputsValid, scale } from "../utilities";
+import { scale } from "../utilities";
 
 import SurveyIntro from "./SurveyIntro";
-import SurveyQuestions from "./SurveyQuestions";
+import SurveyForm from "./SurveyForm";
 import OutputDisplay from "./OutputDisplay";
 import ROICalculationResults from "./ROICalculationResults";
 
 import "./Survey.css";
 import "./ROICalculationSurvey.css";
+import { STANDARD_ANSWERS } from "../surveys/roiCalculationSurveys/constants";
 
 function ROICalculationSurvey({
   title,
@@ -21,13 +22,8 @@ function ROICalculationSurvey({
   hrRecommendations,
 }) {
   const surveyId = useId();
-  const firstErrorRef = useRef(null);
 
-  const [selectedAnswers, setSelectedAnswers] = useState({});
   const [selectedRole, setSelectedRole] = useState("");
-  const [employeeJobTitle, setEmployeeJobTitle] = useState("");
-  const [otherRole, setOtherRole] = useState("");
-  const [errors, setErrors] = useState({});
 
   const [surveyScore, setSurveyScore] = useState(0);
   const [netReturn, setNetReturn] = useState("0");
@@ -38,63 +34,25 @@ function ROICalculationSurvey({
   const [hrRecommendation, setHrRecommendation] = useState("");
   const [areResultsVisible, setAreResultsVisible] = useState(false);
 
-  const getValidationErrors = () => {
-    const newErrors = {};
-
-    questionsAndAnswers.forEach((_, questionIndex) => {
-      if (selectedAnswers[questionIndex] === undefined) {
-        newErrors[`question-${questionIndex}`] = "Please select an answer";
-        if (!firstErrorRef.current) {
-          firstErrorRef.current = document.getElementById(
-            `survey${surveyId}-q${questionIndex}`
-          );
-        }
-      }
-    });
-
-    if (!selectedRole) {
-      newErrors.selectedRole = "Please select a role";
-      if (!firstErrorRef.current) {
-        firstErrorRef.current = document.getElementById(
-          `survey${surveyId}-role`
-        );
-      }
-    }
-    if (selectedRole === "Employee" && !employeeJobTitle) {
-      newErrors.employeeJobTitle = "Please enter a job title";
-      if (!firstErrorRef.current) {
-        firstErrorRef.current = document.getElementById(
-          `survey${surveyId}-employee-job-title`
-        );
-      }
-    }
-    if (selectedRole === "Other" && !otherRole) {
-      newErrors.otherRole = "Please enter a role";
-      if (!firstErrorRef.current) {
-        firstErrorRef.current = document.getElementById(
-          `survey${surveyId}-other-role`
-        );
-      }
-    }
-
-    return newErrors;
-  };
-
   const isQuestionIncluded = (questionAndAnswers) => {
     return questionAndAnswers.answers.length === 5;
   };
 
-  const scoreQuestion = (questionIndex) => {
-    return selectedAnswers[questionIndex] + 1;
+  const scoreQuestion = (answer) => {
+    const score = STANDARD_ANSWERS.indexOf(answer) + 1;
+    if (score === 0) {
+      throw new RangeError("Invalid answer choice");
+    }
+    return score;
   };
 
-  const calculateSurveyScore = () => {
+  const calculateSurveyScore = (values) => {
     let rawScore = 0;
     let numQuestionsIncludedInScore = 0;
 
     questionsAndAnswers.forEach((questionAndAnswers, questionIndex) => {
       if (isQuestionIncluded(questionAndAnswers)) {
-        rawScore += scoreQuestion(questionIndex);
+        rawScore += scoreQuestion(values[`question-${questionIndex}`]);
         numQuestionsIncludedInScore++;
       }
     });
@@ -126,18 +84,10 @@ function ROICalculationSurvey({
     }
   };
 
-  const showResults = () => {
-    firstErrorRef.current = null; // Reset the ref before validation
+  const showResults = (values) => {
+    setSelectedRole(values.selectedRole);
 
-    if (!areInputsValid(getValidationErrors, setErrors)) {
-      if (firstErrorRef.current) {
-        firstErrorRef.current.scrollIntoView({ behavior: "smooth" });
-      }
-      setAreResultsVisible(false);
-      return;
-    }
-
-    const surveyScore = calculateSurveyScore();
+    const surveyScore = calculateSurveyScore(values);
     const percentageReturn = calculatePercentageReturn(surveyScore);
     const netReturn = calculateNetReturn(percentageReturn);
 
@@ -160,23 +110,12 @@ function ROICalculationSurvey({
     <div className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
-        <SurveyQuestions
+        <SurveyForm
           surveyId={surveyId}
           questionsAndAnswers={questionsAndAnswers}
-          selectedAnswers={selectedAnswers}
-          setSelectedAnswers={setSelectedAnswers}
-          selectedRole={selectedRole}
-          setSelectedRole={setSelectedRole}
-          employeeJobTitle={employeeJobTitle}
-          setEmployeeJobTitle={setEmployeeJobTitle}
-          otherRole={otherRole}
-          setOtherRole={setOtherRole}
-          errors={errors}
+          submitButtonLabel="Get Results & Calculate ROI"
+          handleSubmit={showResults}
         />
-
-        <button type="submit" onClick={() => showResults()}>
-          Get Results & Calculate ROI
-        </button>
 
         <OutputDisplay
           tag={`net-return-${surveyId}`}

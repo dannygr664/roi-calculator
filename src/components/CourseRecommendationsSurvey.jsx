@@ -1,10 +1,8 @@
 import { useState, useId } from "react";
 import PropTypes from "prop-types";
 
-import { areInputsValid } from "../utilities";
-
 import SurveyIntro from "./SurveyIntro";
-import SurveyQuestions from "./SurveyQuestions";
+import SurveyForm from "./SurveyForm";
 import CourseRecommendationsResults from "./CourseRecommendationsResults";
 
 import "./Survey.css";
@@ -18,38 +16,9 @@ function CourseRecommendationsSurvey({
 }) {
   const surveyId = useId();
 
-  const [selectedAnswers, setSelectedAnswers] = useState({});
-  const [selectedRole, setSelectedRole] = useState("");
-  const [employeeJobTitle, setEmployeeJobTitle] = useState("");
-  const [otherRole, setOtherRole] = useState("");
-  const [errors, setErrors] = useState({});
-
   const [areResultsVisible, setAreResultsVisible] = useState(false);
 
-  const getValidationErrors = () => {
-    const newErrors = {};
-
-    questionsAndAnswers.forEach((_, questionIndex) => {
-      if (selectedAnswers[questionIndex] === undefined) {
-        newErrors[`question-${questionIndex}`] = "Please select an answer";
-      }
-    });
-
-    if (!selectedRole) newErrors.selectedRole = "Please select a role";
-    if (selectedRole === "Employee" && !employeeJobTitle)
-      newErrors.employeeJobTitle = "Please enter a job title";
-    if (selectedRole === "Other" && !otherRole)
-      newErrors.otherRole = "Please enter a role";
-
-    return newErrors;
-  };
-
   const showResults = () => {
-    if (!areInputsValid(getValidationErrors, setErrors)) {
-      setAreResultsVisible(false);
-      return;
-    }
-
     setAreResultsVisible(true);
   };
 
@@ -57,23 +26,12 @@ function CourseRecommendationsSurvey({
     <div className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
-        <SurveyQuestions
+        <SurveyForm
           surveyId={surveyId}
           questionsAndAnswers={questionsAndAnswers}
-          selectedAnswers={selectedAnswers}
-          setSelectedAnswers={setSelectedAnswers}
-          selectedRole={selectedRole}
-          setSelectedRole={setSelectedRole}
-          employeeJobTitle={employeeJobTitle}
-          setEmployeeJobTitle={setEmployeeJobTitle}
-          otherRole={otherRole}
-          setOtherRole={setOtherRole}
-          errors={errors}
+          submitButtonLabel="Get Course Recommendations"
+          handleSubmit={showResults}
         />
-
-        <button type="submit" onClick={() => showResults()}>
-          Get Course Recommendations
-        </button>
       </div>
 
       {areResultsVisible && (

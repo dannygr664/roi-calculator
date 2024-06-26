@@ -3,11 +3,13 @@ import PropTypes from "prop-types";
 
 import "./FormikTextInput.css";
 
-function FormikTextInput({ label, ...props }) {
+function FormikTextInput({ label, isLabelHidden, ...props }) {
   const [field, meta] = useField(props);
   return (
     <>
-      <label htmlFor={props.name}>{label}</label>
+      <label htmlFor={props.name} hidden={isLabelHidden ? true : undefined}>
+        {label}
+      </label>
       <input {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error-message">{meta.error}</div>
@@ -18,6 +20,7 @@ function FormikTextInput({ label, ...props }) {
 
 FormikTextInput.propTypes = {
   label: PropTypes.string.isRequired,
+  isLabelHidden: PropTypes.bool,
   name: PropTypes.string.isRequired,
   type: PropTypes.oneOf(["text", "number", "email"]).isRequired,
   placeholder: PropTypes.string,
