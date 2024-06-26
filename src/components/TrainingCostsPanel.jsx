@@ -30,6 +30,30 @@ function TrainingCostsPanel({
   const wageTypeId = "wage-type";
   const averageWageId = "average-wage";
 
+  const validationSchema = Yup.object({
+    [numberOfEmployeesId]: Yup.number()
+      .min(0, "Invalid number of employees")
+      .required("Required"),
+    [costId]: Yup.number().min(0, "Invalid cost").required("Required"),
+    [includeLostProductivityCostsId]: Yup.boolean(),
+    [creditOptionId]: Yup.string().when("include-lost-productivity-costs", {
+      is: true,
+      then: (schema) =>
+        schema
+          .oneOf(CREDIT_OPTIONS, "Invalid credit option")
+          .required("Required"),
+    }),
+    [wageTypeId]: Yup.string().when("include-lost-productivity-costs", {
+      is: true,
+      then: (schema) =>
+        schema.oneOf(WAGE_TYPES, "Invalid wage type").required("Required"),
+    }),
+    [averageWageId]: Yup.number().when("include-lost-productivity-costs", {
+      is: true,
+      then: (schema) => schema.min(0, "Invalid wage").required("Required"),
+    }),
+  });
+
   const calculateTrainingCosts = (values) => {
     const numberOfEmployees = values[numberOfEmployeesId];
     const cost = values[costId];
@@ -78,38 +102,7 @@ function TrainingCostsPanel({
             [wageTypeId]: "",
             [averageWageId]: "0",
           }}
-          validationSchema={Yup.object({
-            [numberOfEmployeesId]: Yup.number()
-              .min(0, "Invalid number of employees")
-              .required("Required"),
-            [costId]: Yup.number().min(0, "Invalid cost").required("Required"),
-            [includeLostProductivityCostsId]: Yup.boolean(),
-            [creditOptionId]: Yup.string().when(
-              "include-lost-productivity-costs",
-              {
-                is: true,
-                then: (schema) =>
-                  schema
-                    .oneOf(CREDIT_OPTIONS, "Invalid credit option")
-                    .required("Required"),
-              }
-            ),
-            [wageTypeId]: Yup.string().when("include-lost-productivity-costs", {
-              is: true,
-              then: (schema) =>
-                schema
-                  .oneOf(WAGE_TYPES, "Invalid wage type")
-                  .required("Required"),
-            }),
-            [averageWageId]: Yup.number().when(
-              "include-lost-productivity-costs",
-              {
-                is: true,
-                then: (schema) =>
-                  schema.min(0, "Invalid wage").required("Required"),
-              }
-            ),
-          })}
+          validationSchema={validationSchema}
           onSubmit={(values) => {
             const totalCosts = calculateTrainingCosts(values);
             setTrainingCosts(totalCosts.toString());
