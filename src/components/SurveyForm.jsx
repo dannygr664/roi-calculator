@@ -7,6 +7,7 @@ import { ROLES } from "../constants";
 import FormikRadioGroup from "./FormikRadioGroup";
 import FormikSelect from "./FormikSelect";
 import FormikTextInput from "./FormikTextInput";
+import FormikScrollToError from "./FormikScrollToError";
 
 import "./Survey.css";
 import "./SurveyForm.css";
@@ -17,7 +18,6 @@ function SurveyForm({
   submitButtonLabel,
   handleSubmit,
 }) {
-  // Generate initial values
   const initialValues = {
     selectedRole: "",
     employeeJobTitle: "",
@@ -96,6 +96,8 @@ function SurveyForm({
               />
             )}
           </div>
+
+          <FormikScrollToError />
 
           <button type="submit">{submitButtonLabel}</button>
         </Form>
