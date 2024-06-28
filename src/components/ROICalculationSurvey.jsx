@@ -1,4 +1,4 @@
-import { useState, useId } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 import { scale } from "../utilities";
@@ -13,6 +13,7 @@ import "./ROICalculationSurvey.css";
 import { STANDARD_ANSWERS } from "../surveys/roiCalculationSurveys/constants";
 
 function ROICalculationSurvey({
+  formId,
   title,
   instructions,
   questionsAndAnswers,
@@ -21,8 +22,6 @@ function ROICalculationSurvey({
   feedbackIntros,
   hrRecommendations,
 }) {
-  const surveyId = useId();
-
   const [selectedRole, setSelectedRole] = useState("");
 
   const [surveyScore, setSurveyScore] = useState(0);
@@ -107,24 +106,24 @@ function ROICalculationSurvey({
   };
 
   return (
-    <div className="survey">
+    <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
         <SurveyForm
-          surveyId={surveyId}
+          formId={formId}
           questionsAndAnswers={questionsAndAnswers}
           submitButtonLabel="Get Results & Calculate ROI"
           handleSubmit={showResults}
         />
 
         <OutputDisplay
-          tag={`net-return-${surveyId}`}
+          tag={`net-return-${formId}`}
           label="Net Return"
           format="currency"
           outputValue={netReturn}
         />
         <OutputDisplay
-          tag={`percentage-return-${surveyId}`}
+          tag={`percentage-return-${formId}`}
           label="% Return"
           format="percentage"
           outputValue={percentageReturn}
@@ -133,7 +132,7 @@ function ROICalculationSurvey({
 
       {areResultsVisible && (
         <ROICalculationResults
-          surveyId={surveyId}
+          formId={formId}
           surveyScore={surveyScore}
           resultDescription={resultDescription}
           feedbackIntro={feedbackIntro}
@@ -146,6 +145,7 @@ function ROICalculationSurvey({
 }
 
 ROICalculationSurvey.propTypes = {
+  formId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
   questionsAndAnswers: PropTypes.arrayOf(

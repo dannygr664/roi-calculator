@@ -7,11 +7,11 @@ import FormikTextArea from "./FormikTextArea";
 
 import "./FeedbackForm.css";
 
-function FeedbackForm({ surveyId }) {
+function FeedbackForm({ formId }) {
   const [isSubmitConfirmationVisible, setIsSubmitConfirmationVisible] =
     useState(false);
 
-  const feedbackId = `survey${surveyId}-feedback`;
+  const feedbackId = `${formId}-feedback`;
 
   return (
     <Formik
@@ -45,7 +45,7 @@ function FeedbackForm({ surveyId }) {
 }
 
 FeedbackForm.propTypes = {
-  surveyId: PropTypes.string.isRequired,
+  formId: PropTypes.string.isRequired,
 };
 
 export default FeedbackForm;

@@ -4,7 +4,7 @@ import LearnMoreForm from "./LearnMoreForm";
 
 import "./CourseRecommendationsResults.css";
 
-function CourseRecommendationsResults({ surveyId, results }) {
+function CourseRecommendationsResults({ formId, results }) {
   return (
     <div className="course-recommendations-results">
       <h4>Recommended Courses</h4>
@@ -54,13 +54,13 @@ function CourseRecommendationsResults({ surveyId, results }) {
         custom designed program to your employees, input your name and email
         below and a member from our team will contact you in 24 hours.
       </p>
-      <LearnMoreForm surveyId={surveyId} />
+      <LearnMoreForm formId={formId} />
     </div>
   );
 }
 
 CourseRecommendationsResults.propTypes = {
-  surveyId: PropTypes.string.isRequired,
+  formId: PropTypes.string.isRequired,
   results: PropTypes.shape({
     zschoolCourse: PropTypes.shape({
       name: PropTypes.string.isRequired,

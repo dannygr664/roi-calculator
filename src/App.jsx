@@ -47,6 +47,7 @@ function App() {
             selectedRoiMetric === roiMetric && (
               <ROICalculationSurvey
                 key={roiMetric}
+                formId={survey.id}
                 title={survey.title}
                 instructions={survey.instructions}
                 questionsAndAnswers={survey.questionsAndAnswers}
@@ -71,6 +72,7 @@ function App() {
             selectedIndustry === industry && (
               <CourseRecommendationsSurvey
                 key={industry}
+                formId={survey.id}
                 title={survey.title}
                 instructions={survey.instructions}
                 questionsAndAnswers={survey.questionsAndAnswers}

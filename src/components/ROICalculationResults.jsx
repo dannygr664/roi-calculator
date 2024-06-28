@@ -5,7 +5,7 @@ import FeedbackForm from "./FeedbackForm";
 import "./ROICalculationResults.css";
 
 function ROICalculationResults({
-  surveyId,
+  formId,
   surveyScore,
   resultDescription,
   feedbackIntro,
@@ -25,7 +25,7 @@ function ROICalculationResults({
             <b>Feedback: </b>
             {feedbackIntro}
           </p>
-          <FeedbackForm surveyId={surveyId} />
+          <FeedbackForm formId={formId} />
         </>
       )}
       {selectedRole === "HR Professional" && (
@@ -39,7 +39,7 @@ function ROICalculationResults({
 }
 
 ROICalculationResults.propTypes = {
-  surveyId: PropTypes.string.isRequired,
+  formId: PropTypes.string.isRequired,
   surveyScore: PropTypes.number.isRequired,
   resultDescription: PropTypes.string.isRequired,
   feedbackIntro: PropTypes.string.isRequired,

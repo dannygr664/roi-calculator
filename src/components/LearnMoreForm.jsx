@@ -7,12 +7,12 @@ import FormikTextInput from "./FormikTextInput";
 
 import "./LearnMoreForm.css";
 
-function LearnMoreForm({ surveyId }) {
+function LearnMoreForm({ formId }) {
   const [isSubmitConfirmationVisible, setIsSubmitConfirmationVisible] =
     useState(false);
 
-  const nameId = `survey${surveyId}-name`;
-  const emailId = `survey${surveyId}-email`;
+  const nameId = `${formId}-name`;
+  const emailId = `${formId}-email`;
 
   return (
     <Formik
@@ -54,7 +54,7 @@ function LearnMoreForm({ surveyId }) {
 }
 
 LearnMoreForm.propTypes = {
-  surveyId: PropTypes.string.isRequired,
+  formId: PropTypes.string.isRequired,
 };
 
 export default LearnMoreForm;

@@ -13,7 +13,7 @@ import "./Survey.css";
 import "./SurveyForm.css";
 
 function SurveyForm({
-  surveyId,
+  formId,
   questionsAndAnswers,
   submitButtonLabel,
   handleSubmit,
@@ -57,8 +57,8 @@ function SurveyForm({
         <Form className="survey-questions">
           {questionsAndAnswers.map(({ question, answers }, questionIndex) => (
             <div
-              key={`survey${surveyId}-q${questionIndex}`}
-              id={`survey${surveyId}-q${questionIndex}`}
+              key={`${formId}-q${questionIndex}`}
+              id={`${formId}-q${questionIndex}`}
               className="survey-question"
             >
               <p>
@@ -72,7 +72,7 @@ function SurveyForm({
               />
             </div>
           ))}
-          <div id={`survey${surveyId}-role`} className="survey-question">
+          <div id={`${formId}-role`} className="survey-question">
             <FormikSelect
               label="What best describes you?"
               name="selectedRole"
@@ -97,7 +97,7 @@ function SurveyForm({
             )}
           </div>
 
-          <FormikScrollToError />
+          <FormikScrollToError formId={formId} />
 
           <button type="submit">{submitButtonLabel}</button>
         </Form>
@@ -107,7 +107,7 @@ function SurveyForm({
 }
 
 SurveyForm.propTypes = {
-  surveyId: PropTypes.string.isRequired,
+  formId: PropTypes.string.isRequired,
   questionsAndAnswers: PropTypes.arrayOf(
     PropTypes.shape({
       question: PropTypes.string.isRequired,

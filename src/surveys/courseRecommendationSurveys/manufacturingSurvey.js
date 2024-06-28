@@ -1,3 +1,5 @@
+const ID = "manufacturing-industry-survey";
+
 const TITLE =
   "1-Minute Survey for Manufacturing Industry Service Professionals";
 
@@ -59,6 +61,7 @@ const RESULTS = {
 };
 
 export const MANUFACTURING_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

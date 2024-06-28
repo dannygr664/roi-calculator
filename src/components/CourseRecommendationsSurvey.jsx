@@ -1,4 +1,4 @@
-import { useState, useId } from "react";
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 import SurveyIntro from "./SurveyIntro";
@@ -9,13 +9,12 @@ import "./Survey.css";
 import "./CourseRecommendationsSurvey.css";
 
 function CourseRecommendationsSurvey({
+  formId,
   title,
   instructions,
   questionsAndAnswers,
   results,
 }) {
-  const surveyId = useId();
-
   const [areResultsVisible, setAreResultsVisible] = useState(false);
 
   const showResults = () => {
@@ -23,11 +22,11 @@ function CourseRecommendationsSurvey({
   };
 
   return (
-    <div className="survey">
+    <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
         <SurveyForm
-          surveyId={surveyId}
+          formId={formId}
           questionsAndAnswers={questionsAndAnswers}
           submitButtonLabel="Get Course Recommendations"
           handleSubmit={showResults}
@@ -35,13 +34,14 @@ function CourseRecommendationsSurvey({
       </div>
 
       {areResultsVisible && (
-        <CourseRecommendationsResults surveyId={surveyId} results={results} />
+        <CourseRecommendationsResults formId={formId} results={results} />
       )}
     </div>
   );
 }
 
 CourseRecommendationsSurvey.propTypes = {
+  formId: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   instructions: PropTypes.string.isRequired,
   questionsAndAnswers: PropTypes.arrayOf(

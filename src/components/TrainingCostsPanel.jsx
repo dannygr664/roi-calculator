@@ -85,7 +85,7 @@ function TrainingCostsPanel({
 
   return (
     <section className="panel-container">
-      <section className="form-container">
+      <section id="training-costs-form" className="form-container">
         <h2>Training Costs</h2>
         <p>
           First, we will estimate the total cost of training. Training Costs
