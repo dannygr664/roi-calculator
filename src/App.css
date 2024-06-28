@@ -197,6 +197,12 @@ textarea {
   resize: none;
 }
 
+.formik-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .error-message {
   position: relative;
   color: #ed1b24;
