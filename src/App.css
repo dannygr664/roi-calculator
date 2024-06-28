@@ -197,15 +197,6 @@ textarea {
   resize: none;
 }
 
-.section-header {
-  padding: 0 10px;
-  cursor: pointer;
-  background-color: #000000;
-  color: #fff;
-  transition: 0.3s;
-  border: solid white 1px;
-}
-
 .error-message {
   position: relative;
   color: #ed1b24;
