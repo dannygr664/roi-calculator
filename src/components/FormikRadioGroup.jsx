@@ -1,6 +1,8 @@
 import { useField } from "formik";
 import PropTypes from "prop-types";
 
+import ErrorMessage from "./ErrorMessage";
+
 import "./FormikRadioGroup.css";
 
 function FormikRadioGroup({ name, options, touched, error }) {
@@ -19,7 +21,7 @@ function FormikRadioGroup({ name, options, touched, error }) {
           {option}
         </label>
       ))}
-      {touched && error ? <div className="error-message">{error}</div> : null}
+      {touched && error ? <ErrorMessage message={error} /> : null}
     </div>
   );
 }

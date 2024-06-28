@@ -1,6 +1,8 @@
 import { useField } from "formik";
 import PropTypes from "prop-types";
 
+import ErrorMessage from "./ErrorMessage";
+
 import "./FormikSelect.css";
 
 function FormikSelect({ label, options, ...props }) {
@@ -20,7 +22,7 @@ function FormikSelect({ label, options, ...props }) {
         ))}
       </select>
       {meta.touched && meta.error ? (
-        <div className="error-message">{meta.error}</div>
+        <ErrorMessage message={meta.error} />
       ) : null}
     </div>
   );

@@ -1,6 +1,8 @@
 import { useField } from "formik";
 import PropTypes from "prop-types";
 
+import ErrorMessage from "./ErrorMessage";
+
 import "./FormikTextInput.css";
 
 function FormikTextInput({ label, isLabelHidden, ...props }) {
@@ -12,7 +14,7 @@ function FormikTextInput({ label, isLabelHidden, ...props }) {
       </label>
       <input {...field} {...props} />
       {meta.touched && meta.error ? (
-        <div className="error-message">{meta.error}</div>
+        <ErrorMessage message={meta.error} />
       ) : null}
     </>
   );
