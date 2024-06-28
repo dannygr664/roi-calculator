@@ -59,16 +59,13 @@ function App() {
             )
           );
         })}
-        {isTrainingCostsCalculated && (
-          <CourseRecommendationsPanel
-            selectedIndustry={selectedIndustry}
-            setSelectedIndustry={setSelectedIndustry}
-          />
-        )}
+        <CourseRecommendationsPanel
+          selectedIndustry={selectedIndustry}
+          setSelectedIndustry={setSelectedIndustry}
+        />
         {INDUSTRIES.map((industry) => {
           const survey = INDUSTRIES_TO_SURVEYS[industry];
           return (
-            isTrainingCostsCalculated &&
             selectedIndustry === industry && (
               <CourseRecommendationsSurvey
                 key={industry}
