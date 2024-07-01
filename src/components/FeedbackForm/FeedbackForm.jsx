@@ -26,7 +26,7 @@ function FeedbackForm({ formId }) {
         setIsSubmitConfirmationVisible(true);
       }}
     >
-      <Form>
+      <Form className="feedback-form">
         <FormikTextArea
           label="Feedback"
           name={feedbackId}
