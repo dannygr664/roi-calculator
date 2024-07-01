@@ -13,4 +13,8 @@ export default defineConfig({
       "@components": path.resolve(__dirname, "src/components"),
     },
   },
+  test: {
+    global: true,
+    environment: "jsdom",
+  },
 });
