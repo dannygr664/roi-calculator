@@ -2,19 +2,17 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 
-import {
-  CREDIT_OPTIONS,
-  CREDIT_OPTIONS_TO_METADATA,
-  WAGE_TYPES,
-  WORKING_HOURS_IN_A_YEAR,
-} from "@/utils/constants";
+import { CREDIT_OPTIONS, WAGE_TYPES } from "@/utils/constants";
 
 import {
   FormikTextInput,
   FormikCheckbox,
   FormikSelect,
 } from "@components/forms";
+
 import OutputDisplay from "@components/OutputDisplay/OutputDisplay";
+
+import { calculateTrainingCosts } from "@components/trainingCosts";
 
 import "./TrainingCostsPanel.css";
 
@@ -25,65 +23,29 @@ function TrainingCostsPanel({
   setTrainingCosts,
   setIsTrainingCostsCalculated,
 }) {
-  const numberOfEmployeesId = "number-of-employees";
-  const costId = "cost";
-  const includeLostProductivityCostsId = "include-lost-productivity-costs";
-  const creditOptionId = "credit-option";
-  const wageTypeId = "wage-type";
-  const averageWageId = "average-wage";
-
   const validationSchema = Yup.object({
-    [numberOfEmployeesId]: Yup.number()
+    numberOfEmployees: Yup.number()
       .min(0, "Invalid number of employees")
       .required("Required"),
-    [costId]: Yup.number().min(0, "Invalid cost").required("Required"),
-    [includeLostProductivityCostsId]: Yup.boolean(),
-    [creditOptionId]: Yup.string().when("include-lost-productivity-costs", {
+    cost: Yup.number().min(0, "Invalid cost").required("Required"),
+    includeLostProductivityCosts: Yup.boolean(),
+    creditOption: Yup.string().when("includeLostProductivityCosts", {
       is: true,
       then: (schema) =>
         schema
           .oneOf(CREDIT_OPTIONS, "Invalid credit option")
           .required("Required"),
     }),
-    [wageTypeId]: Yup.string().when("include-lost-productivity-costs", {
+    wageType: Yup.string().when("includeLostProductivityCosts", {
       is: true,
       then: (schema) =>
         schema.oneOf(WAGE_TYPES, "Invalid wage type").required("Required"),
     }),
-    [averageWageId]: Yup.number().when("include-lost-productivity-costs", {
+    averageWage: Yup.number().when("includeLostProductivityCosts", {
       is: true,
       then: (schema) => schema.min(0, "Invalid wage").required("Required"),
     }),
   });
-
-  const calculateTrainingCosts = (values) => {
-    const numberOfEmployees = values[numberOfEmployeesId];
-    const cost = values[costId];
-    const includeLostProductivityCosts = values[includeLostProductivityCostsId];
-    const creditOption = values[creditOptionId];
-    const wageType = values[wageTypeId];
-    const averageWage = values[averageWageId];
-
-    const costOfCourse = parseFloat(cost);
-    let averageHourlyWage = 0;
-    let hoursToCompleteCourse = 0;
-
-    if (includeLostProductivityCosts) {
-      hoursToCompleteCourse =
-        CREDIT_OPTIONS_TO_METADATA[creditOption].hoursToComplete;
-
-      if (wageType === "Hourly") {
-        averageHourlyWage = averageWage;
-      } else if (wageType === "Annual") {
-        averageHourlyWage = averageWage / WORKING_HOURS_IN_A_YEAR;
-      }
-    }
-
-    return (
-      (costOfCourse + averageHourlyWage * hoursToCompleteCourse) *
-      parseInt(numberOfEmployees, 10)
-    );
-  };
 
   return (
     <section className="panel-container">
@@ -97,12 +59,12 @@ function TrainingCostsPanel({
 
         <Formik
           initialValues={{
-            [numberOfEmployeesId]: "0",
-            [costId]: "0",
-            [includeLostProductivityCostsId]: false,
-            [creditOptionId]: "",
-            [wageTypeId]: "",
-            [averageWageId]: "0",
+            numberOfEmployees: "0",
+            cost: "0",
+            includeLostProductivityCosts: false,
+            creditOption: "",
+            wageType: "",
+            averageWage: "0",
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
@@ -116,7 +78,7 @@ function TrainingCostsPanel({
               <div className="form-element">
                 <FormikTextInput
                   label="Number of Employees"
-                  name={numberOfEmployeesId}
+                  name="numberOfEmployees"
                   type="number"
                 />
               </div>
@@ -124,13 +86,13 @@ function TrainingCostsPanel({
               <div className="form-element">
                 <FormikTextInput
                   label="Cost per Employee ($)"
-                  name={costId}
+                  name="cost"
                   type="number"
                 />
               </div>
 
               <div className="form-element">
-                <FormikCheckbox name={includeLostProductivityCostsId}>
+                <FormikCheckbox name="includeLostProductivityCosts">
                   Include lost productivity costs
                 </FormikCheckbox>
 
@@ -142,12 +104,12 @@ function TrainingCostsPanel({
                 </p>
               </div>
 
-              {values[includeLostProductivityCostsId] && (
+              {values.includeLostProductivityCosts && (
                 <>
                   <div className="form-element">
                     <FormikSelect
                       label="Credit Option"
-                      name={creditOptionId}
+                      name="creditOption"
                       options={CREDIT_OPTIONS}
                     />
                     <p className="input-description">
@@ -159,7 +121,7 @@ function TrainingCostsPanel({
                   <div className="form-element">
                     <FormikSelect
                       label="Wage Type"
-                      name={wageTypeId}
+                      name="wageType"
                       options={WAGE_TYPES}
                     />
                   </div>
@@ -167,7 +129,7 @@ function TrainingCostsPanel({
                   <div className="form-element">
                     <FormikTextInput
                       label="Average Employee Wage ($)"
-                      name={averageWageId}
+                      name="averageWage"
                       type="number"
                     />
                   </div>
