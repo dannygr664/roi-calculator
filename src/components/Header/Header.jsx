@@ -1,6 +1,6 @@
 import "./Header.css";
 
-import logoImgUrl from "../../images/zschool-logo.png";
+import logoImgUrl from "@assets/images/zschool-logo.png";
 
 function Header() {
   return (

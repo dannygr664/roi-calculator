@@ -1,7 +1,7 @@
 import { useField } from "formik";
 import PropTypes from "prop-types";
 
-import ErrorMessage from "./ErrorMessage";
+import ErrorMessage from "@components/ErrorMessage/ErrorMessage";
 
 import "./FormikTextInput.css";
 

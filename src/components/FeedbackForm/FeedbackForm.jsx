@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 
-import FormikTextArea from "./FormikTextArea";
+import { FormikTextArea } from "@components/forms";
 
 import "./FeedbackForm.css";
 

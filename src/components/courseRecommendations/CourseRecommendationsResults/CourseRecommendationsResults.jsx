@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import LearnMoreForm from "./LearnMoreForm";
+import LearnMoreForm from "@components/LearnMoreForm/LearnMoreForm";
 
 import "./CourseRecommendationsResults.css";
 

@@ -1,11 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import SurveyIntro from "./SurveyIntro";
-import SurveyForm from "./SurveyForm";
-import CourseRecommendationsResults from "./CourseRecommendationsResults";
+import { SurveyIntro, SurveyForm } from "@components/surveys";
+import { CourseRecommendationsResults } from "@components/courseRecommendations";
 
-import "./Survey.css";
+import "@components/surveys/Survey.css";
 import "./CourseRecommendationsSurvey.css";
 
 function CourseRecommendationsSurvey({

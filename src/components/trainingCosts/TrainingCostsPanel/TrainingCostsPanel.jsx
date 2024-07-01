@@ -7,16 +7,18 @@ import {
   CREDIT_OPTIONS_TO_METADATA,
   WAGE_TYPES,
   WORKING_HOURS_IN_A_YEAR,
-} from "../constants";
+} from "@/utils/constants";
 
-import FormikTextInput from "./FormikTextInput";
-import FormikCheckbox from "./FormikCheckbox";
-import FormikSelect from "./FormikSelect";
-import OutputDisplay from "./OutputDisplay";
+import {
+  FormikTextInput,
+  FormikCheckbox,
+  FormikSelect,
+} from "@components/forms";
+import OutputDisplay from "@components/OutputDisplay/OutputDisplay";
 
 import "./TrainingCostsPanel.css";
 
-import roiTrainingCostsImgUrl from "../../images/roi-training-costs.jpg";
+import roiTrainingCostsImgUrl from "@assets/images/roi-training-costs.jpg";
 
 function TrainingCostsPanel({
   trainingCosts,

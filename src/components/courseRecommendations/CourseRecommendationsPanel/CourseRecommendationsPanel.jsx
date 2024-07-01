@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-import { INDUSTRIES } from "../constants";
+import { INDUSTRIES } from "@/utils/constants";
 
-import CustomSelect from "./CustomSelect";
+import { CustomSelect } from "@components/forms";
 
 import "./CourseRecommendationsPanel.css";
 
-import courseRecommendationsImgUrl from "../../images/course-recommendations.jpg";
+import courseRecommendationsImgUrl from "@assets/images/course-recommendations.jpg";
 
 function CourseRecommendationsPanel({ selectedIndustry, setSelectedIndustry }) {
   return (

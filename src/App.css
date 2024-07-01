@@ -172,7 +172,8 @@ select {
   border-radius: 5px;
   font-size: 1em;
   color: #828282;
-  background: #fff url("../images/arrow-down.svg") no-repeat right 10px center;
+  background: #fff url("@assets/images/arrow-down.svg") no-repeat right 10px
+    center;
   background-size: 10px 10px;
   appearance: none; /* Hide default dropdown arrow */
   -webkit-appearance: none;

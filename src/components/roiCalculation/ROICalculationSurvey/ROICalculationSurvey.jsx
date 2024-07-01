@@ -1,16 +1,15 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { scale } from "../utilities";
+import { scale } from "@/utils/utilities/utilities";
 
-import SurveyIntro from "./SurveyIntro";
-import SurveyForm from "./SurveyForm";
-import OutputDisplay from "./OutputDisplay";
-import ROICalculationResults from "./ROICalculationResults";
+import { SurveyIntro, SurveyForm } from "@components/surveys";
+import OutputDisplay from "@components/OutputDisplay/OutputDisplay";
+import { ROICalculationResults } from "@components/roiCalculation";
 
-import "./Survey.css";
+import "@components/surveys/Survey.css";
 import "./ROICalculationSurvey.css";
-import { STANDARD_ANSWERS } from "../surveys/roiCalculationSurveys/constants";
+import { STANDARD_ANSWERS } from "@/surveys/roiCalculationSurveys/constants";
 
 function ROICalculationSurvey({
   formId,

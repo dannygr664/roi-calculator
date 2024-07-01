@@ -3,7 +3,7 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 
-import FormikTextInput from "./FormikTextInput";
+import { FormikTextInput } from "@components/forms";
 
 import "./LearnMoreForm.css";
 

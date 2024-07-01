@@ -1,12 +1,17 @@
 import { useState } from "react";
 
-import Header from "./components/Header";
-import Wave from "./components/Wave";
-import TrainingCostsPanel from "./components/TrainingCostsPanel";
-import ROICalculationPanel from "./components/ROICalculationPanel";
-import ROICalculationSurvey from "./components/ROICalculationSurvey";
-import CourseRecommendationsPanel from "./components/CourseRecommendationsPanel";
-import CourseRecommendationsSurvey from "./components/CourseRecommendationsSurvey";
+import Header from "@components/Header/Header";
+import Wave from "@components/Wave/Wave";
+import { TrainingCostsPanel } from "@components/trainingCosts";
+import {
+  ROICalculationPanel,
+  ROICalculationSurvey,
+} from "@components/roiCalculation";
+import {
+  CourseRecommendationsPanel,
+  CourseRecommendationsSurvey,
+} from "@components/courseRecommendations";
+
 import "./App.css";
 
 import {
@@ -14,7 +19,7 @@ import {
   ROI_METRICS_TO_SURVEYS,
   INDUSTRIES,
   INDUSTRIES_TO_SURVEYS,
-} from "./constants.js";
+} from "@/utils/constants";
 
 function App() {
   const [trainingCosts, setTrainingCosts] = useState("0");

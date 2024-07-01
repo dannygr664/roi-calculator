@@ -1,14 +1,14 @@
-import { LEARNING_SURVEY } from "./surveys/roiCalculationSurveys/learningSurvey";
-import { TRAINEE_SATISFACTION_SURVEY } from "./surveys/roiCalculationSurveys/traineeSatisfactionSurvey";
-import { WORKPLACE_BEHAVIOR_SURVEY } from "./surveys/roiCalculationSurveys/workplaceBehaviorSurvey";
+import { LEARNING_SURVEY } from "@/surveys/roiCalculationSurveys/learningSurvey";
+import { TRAINEE_SATISFACTION_SURVEY } from "@/surveys/roiCalculationSurveys/traineeSatisfactionSurvey";
+import { WORKPLACE_BEHAVIOR_SURVEY } from "@/surveys/roiCalculationSurveys/workplaceBehaviorSurvey";
 
-import { BANKING_AND_FINANCE_SURVEY } from "./surveys/courseRecommendationSurveys/bankingAndFinanceSurvey";
-import { ENTERTAINMENT_SURVEY } from "./surveys/courseRecommendationSurveys/entertainmentSurvey";
-import { FOOD_AND_BEVERAGE_SURVEY } from "./surveys/courseRecommendationSurveys/foodAndBeverageSurvey";
-import { HEALTHCARE_SURVEY } from "./surveys/courseRecommendationSurveys/healthcareSurvey";
-import { HUMAN_RESOURCES_SURVEY } from "./surveys/courseRecommendationSurveys/humanResourcesSurvey";
-import { MANUFACTURING_SURVEY } from "./surveys/courseRecommendationSurveys/manufacturingSurvey";
-import { RETAIL_SURVEY } from "./surveys/courseRecommendationSurveys/retailSurvey";
+import { BANKING_AND_FINANCE_SURVEY } from "@/surveys/courseRecommendationSurveys/bankingAndFinanceSurvey";
+import { ENTERTAINMENT_SURVEY } from "@/surveys/courseRecommendationSurveys/entertainmentSurvey";
+import { FOOD_AND_BEVERAGE_SURVEY } from "@/surveys/courseRecommendationSurveys/foodAndBeverageSurvey";
+import { HEALTHCARE_SURVEY } from "@/surveys/courseRecommendationSurveys/healthcareSurvey";
+import { HUMAN_RESOURCES_SURVEY } from "@/surveys/courseRecommendationSurveys/humanResourcesSurvey";
+import { MANUFACTURING_SURVEY } from "@/surveys/courseRecommendationSurveys/manufacturingSurvey";
+import { RETAIL_SURVEY } from "@/surveys/courseRecommendationSurveys/retailSurvey";
 
 export const CREDIT_OPTIONS = [
   "Non-Credit: 32 Hours",

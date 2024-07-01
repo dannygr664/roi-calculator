@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 
-import { ROI_METRICS } from "../constants";
+import { ROI_METRICS } from "@/utils/constants";
 
-import CustomSelect from "./CustomSelect";
+import { CustomSelect } from "@components/forms";
 
 import "./ROICalculationPanel.css";
 
-import roiCalculationImgUrl from "../../images/roi-calculator.jpg";
+import roiCalculationImgUrl from "@assets/images/roi-calculator.jpg";
 
 function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
   return (

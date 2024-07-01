@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-import FeedbackForm from "./FeedbackForm";
+import FeedbackForm from "@components/FeedbackForm/FeedbackForm";
 
 import "./ROICalculationResults.css";
 

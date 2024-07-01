@@ -2,14 +2,16 @@ import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
 
-import { ROLES } from "../constants";
+import { ROLES } from "@/utils/constants";
 
-import FormikRadioGroup from "./FormikRadioGroup";
-import FormikSelect from "./FormikSelect";
-import FormikTextInput from "./FormikTextInput";
-import FormikScrollToError from "./FormikScrollToError";
+import {
+  FormikRadioGroup,
+  FormikSelect,
+  FormikTextInput,
+  FormikScrollToError,
+} from "@components/forms";
 
-import "./Survey.css";
+import "../Survey.css";
 import "./SurveyForm.css";
 
 function SurveyForm({
