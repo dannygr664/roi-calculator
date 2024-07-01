@@ -1,14 +1,14 @@
-import { expect, test } from "vitest";
+import { expect, it } from "vitest";
 import { scale } from "./utilities";
 
-test("scale with number = inMin to equal outMin", () => {
+it("equals outMin when number equals inMin", () => {
   expect(scale(1, 1, 5, -100, 100)).toBe(-100);
 });
 
-test("scale with number = inMax to equal outMax", () => {
+it("equals outMax when number equals inMax", () => {
   expect(scale(5, 1, 5, -100, 100)).toBe(100);
 });
 
-test("scale with number = avg(inMin, inMax) to equal avg(outMin, outMax)", () => {
+it("equals avg(outMin, outMax) when number equals avg(inMin, inMax)", () => {
   expect(scale(3, 1, 5, -100, 100)).toBe(0);
 });
