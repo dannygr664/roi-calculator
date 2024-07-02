@@ -14,10 +14,13 @@ function ScrollToError({ formId }) {
         errorElement?.parentElement?.parentElement ??
         errorElement?.parentElement ??
         errorElement;
-      elementToScrollTo.scrollIntoView({
-        behavior: "smooth",
-      });
-      elementToScrollTo.focus();
+
+      if (elementToScrollTo) {
+        elementToScrollTo.scrollIntoView({
+          behavior: "smooth",
+        });
+        elementToScrollTo.focus();
+      }
     }
   }, [formId, errors, isSubmitting]);
   return null;
