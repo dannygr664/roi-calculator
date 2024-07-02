@@ -1,15 +1,18 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { scale } from "@/utils/utilities/utilities";
-
 import { SurveyIntro, SurveyForm } from "@components/surveys";
+import {
+  calculateSurveyScore,
+  calculatePercentageReturn,
+  calculateNetReturn,
+  getScoreBucketName,
+  ROICalculationResults,
+} from "@components/roiCalculation";
 import OutputDisplay from "@components/OutputDisplay/OutputDisplay";
-import { ROICalculationResults } from "@components/roiCalculation";
 
 import "@components/surveys/Survey.css";
 import "./ROICalculationSurvey.css";
-import { STANDARD_ANSWERS } from "@/surveys/roiCalculationSurveys/constants";
 
 function ROICalculationSurvey({
   formId,
@@ -32,68 +35,18 @@ function ROICalculationSurvey({
   const [hrRecommendation, setHrRecommendation] = useState("");
   const [areResultsVisible, setAreResultsVisible] = useState(false);
 
-  const isQuestionIncluded = (questionAndAnswers) => {
-    return questionAndAnswers.answers.length === 5;
-  };
-
-  const scoreQuestion = (answer) => {
-    const score = STANDARD_ANSWERS.indexOf(answer) + 1;
-    if (score === 0) {
-      throw new RangeError("Invalid answer choice");
-    }
-    return score;
-  };
-
-  const calculateSurveyScore = (values) => {
-    let rawScore = 0;
-    let numQuestionsIncludedInScore = 0;
-
-    questionsAndAnswers.forEach((questionAndAnswers, questionIndex) => {
-      if (isQuestionIncluded(questionAndAnswers)) {
-        rawScore += scoreQuestion(values[`question-${questionIndex}`]);
-        numQuestionsIncludedInScore++;
-      }
-    });
-
-    return Math.round((rawScore / numQuestionsIncludedInScore) * 10) / 10;
-  };
-
-  const calculatePercentageReturn = (surveyScore) => {
-    return scale(surveyScore, 1, 5, -100, 100);
-  };
-
-  const calculateNetReturn = (percentageReturn) => {
-    return (1 + percentageReturn / 100) * parseFloat(trainingCosts);
-  };
-
-  const getScoreBucketName = () => {
-    if (4.5 <= surveyScore && surveyScore <= 5.0) {
-      return "highest";
-    } else if (3.5 <= surveyScore && surveyScore < 4.5) {
-      return "high";
-    } else if (2.5 <= surveyScore && surveyScore < 3.5) {
-      return "average";
-    } else if (1.5 <= surveyScore && surveyScore < 2.5) {
-      return "low";
-    } else if (1.0 <= surveyScore && surveyScore < 1.5) {
-      return "lowest";
-    } else {
-      throw new RangeError("Survey score is out of range");
-    }
-  };
-
   const showResults = (values) => {
     setSelectedRole(values.selectedRole);
 
-    const surveyScore = calculateSurveyScore(values);
+    const surveyScore = calculateSurveyScore(questionsAndAnswers, values);
     const percentageReturn = calculatePercentageReturn(surveyScore);
-    const netReturn = calculateNetReturn(percentageReturn);
+    const netReturn = calculateNetReturn(percentageReturn, trainingCosts);
 
     setSurveyScore(surveyScore);
     setNetReturn(netReturn.toString());
     setPercentageReturn(percentageReturn.toString());
 
-    const scoreBucketName = getScoreBucketName();
+    const scoreBucketName = getScoreBucketName(surveyScore);
 
     setResultDescription(resultDescriptions[scoreBucketName]);
     if (feedbackIntros) {
