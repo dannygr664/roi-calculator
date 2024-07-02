@@ -1,3 +1,5 @@
+const ID = "hr-industry-survey";
+
 const TITLE = "1-Minute Survey for HR Professionals";
 
 const INSTRUCTIONS =
@@ -58,6 +60,7 @@ const RESULTS = {
 };
 
 export const HUMAN_RESOURCES_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

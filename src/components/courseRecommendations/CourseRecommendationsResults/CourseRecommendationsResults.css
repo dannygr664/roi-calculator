@@ -1,0 +1,11 @@
+.course-recommendations-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.course-recommendations {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}

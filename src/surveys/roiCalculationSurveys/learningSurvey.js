@@ -1,5 +1,7 @@
 import { STANDARD_ANSWERS, PERCENTAGE_ANSWERS } from "./constants";
 
+const ID = "learning-roi-survey";
+
 const TITLE = "Post Learning Professional Development Survey";
 
 const INSTRUCTIONS =
@@ -138,6 +140,7 @@ const HR_RECOMMENDATIONS = {
 };
 
 export const LEARNING_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

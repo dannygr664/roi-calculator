@@ -1,5 +1,7 @@
 import { STANDARD_ANSWERS } from "./constants";
 
+const ID = "workplace-behavior-roi-survey";
+
 const TITLE = "Post-Training Survey on Workplace Behavior";
 
 const INSTRUCTIONS =
@@ -91,6 +93,7 @@ const HR_RECOMMENDATIONS = {
 };
 
 export const WORKPLACE_BEHAVIOR_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

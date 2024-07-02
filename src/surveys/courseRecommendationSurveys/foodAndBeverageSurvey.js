@@ -1,3 +1,5 @@
+const ID = "food-and-beverage-industry-survey";
+
 const TITLE = "1-Minute Survey for Food and Beverage Industry Professionals";
 
 const INSTRUCTIONS =
@@ -58,6 +60,7 @@ const RESULTS = {
 };
 
 export const FOOD_AND_BEVERAGE_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

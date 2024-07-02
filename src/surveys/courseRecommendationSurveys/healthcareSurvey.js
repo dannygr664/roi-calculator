@@ -1,3 +1,5 @@
+const ID = "healthcare-industry-survey";
+
 const TITLE = "1-Minute Survey for Healthcare Industry Professionals";
 
 const INSTRUCTIONS =
@@ -58,6 +60,7 @@ const RESULTS = {
 };
 
 export const HEALTHCARE_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

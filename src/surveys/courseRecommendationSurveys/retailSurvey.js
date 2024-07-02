@@ -1,3 +1,5 @@
+const ID = "retail-industry-survey";
+
 const TITLE = "1-Minute Survey for Retail Professionals";
 
 const INSTRUCTIONS =
@@ -58,6 +60,7 @@ const RESULTS = {
 };
 
 export const RETAIL_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

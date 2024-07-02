@@ -164,8 +164,30 @@ button:hover {
   align-items: center;
 }
 
-textarea {
+select {
+  width: 100%;
   padding: 0 10px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1em;
+  color: #828282;
+  background: #fff url("@assets/images/arrow-down.svg") no-repeat right 10px
+    center;
+  background-size: 10px 10px;
+  appearance: none; /* Hide default dropdown arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none;
+  border-color: #666;
+}
+
+textarea {
+  padding: 10px 10px;
   height: 200px;
   width: 100%;
   border: 1px solid #ccc;
@@ -176,17 +198,29 @@ textarea {
   resize: none;
 }
 
-.section-header {
-  padding: 0 10px;
-  cursor: pointer;
-  background-color: #000000;
-  color: #fff;
-  transition: 0.3s;
-  border: solid white 1px;
+.formik-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.error-message {
+  position: relative;
+  color: #ed1b24;
+  font-size: 0.75em;
+  padding: 5px 0;
+  top: 0;
+  z-index: -1;
 }
 
 div.whitespace {
   height: 10px;
+}
+
+.submit-confirmation {
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
 }
 
 main {

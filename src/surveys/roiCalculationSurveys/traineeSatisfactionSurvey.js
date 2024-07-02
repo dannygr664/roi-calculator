@@ -1,5 +1,7 @@
 import { STANDARD_ANSWERS } from "./constants";
 
+const ID = "trainee-satisfaction-roi-survey";
+
 const TITLE = "Internal Training Satisfaction Survey";
 
 const INSTRUCTIONS =
@@ -86,6 +88,7 @@ const HR_RECOMMENDATIONS = {
 };
 
 export const TRAINEE_SATISFACTION_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,

@@ -1,3 +1,5 @@
+const ID = "banking-and-finance-industry-survey";
+
 const TITLE =
   "1-Minute Survey for Financial Technology and Banking Industry Professionals";
 
@@ -59,6 +61,7 @@ const RESULTS = {
 };
 
 export const BANKING_AND_FINANCE_SURVEY = {
+  id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
   questionsAndAnswers: QUESTIONS_AND_ANSWERS,
