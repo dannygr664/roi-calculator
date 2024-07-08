@@ -11,6 +11,7 @@ import {
   CourseRecommendationsPanel,
   CourseRecommendationsSurvey,
 } from "@components/courseRecommendations";
+import Footer from "@components/Footer/Footer";
 
 import "./App.css";
 
@@ -84,6 +85,7 @@ function App() {
           );
         })}
       </main>
+      <Footer />
     </>
   );
 }
