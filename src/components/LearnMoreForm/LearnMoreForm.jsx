@@ -33,13 +33,8 @@ function LearnMoreForm({ formId }) {
     >
       <Form className="learn-more-form">
         <div className="learn-more-form-inputs-container">
-          <div className="form-element">
-            <FormikTextInput label="Name" name={nameId} type="text" />
-          </div>
-
-          <div className="form-element">
-            <FormikTextInput label="Email" name={emailId} type="email" />
-          </div>
+          <FormikTextInput label="Name" name={nameId} type="text" />
+          <FormikTextInput label="Email" name={emailId} type="email" />
         </div>
 
         <button type="submit">Submit</button>

@@ -8,7 +8,7 @@ import "./FormikTextInput.css";
 function FormikTextInput({ label, isLabelHidden, ...props }) {
   const [field, meta] = useField(props);
   return (
-    <>
+    <div className="form-element">
       <label htmlFor={props.name} hidden={isLabelHidden ? true : undefined}>
         {label}
       </label>
@@ -16,7 +16,7 @@ function FormikTextInput({ label, isLabelHidden, ...props }) {
       {meta.touched && meta.error ? (
         <ErrorMessage message={meta.error} />
       ) : null}
-    </>
+    </div>
   );
 }
 

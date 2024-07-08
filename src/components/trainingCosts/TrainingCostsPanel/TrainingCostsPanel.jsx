@@ -75,21 +75,17 @@ function TrainingCostsPanel({
         >
           {({ values }) => (
             <Form className="form-container">
-              <div className="form-element">
-                <FormikTextInput
-                  label="Number of Employees"
-                  name="numberOfEmployees"
-                  type="number"
-                />
-              </div>
+              <FormikTextInput
+                label="Number of Employees"
+                name="numberOfEmployees"
+                type="number"
+              />
 
-              <div className="form-element">
-                <FormikTextInput
-                  label="Cost per Employee ($)"
-                  name="cost"
-                  type="number"
-                />
-              </div>
+              <FormikTextInput
+                label="Cost per Employee ($)"
+                name="cost"
+                type="number"
+              />
 
               <div className="form-element">
                 <FormikCheckbox name="includeLostProductivityCosts">
@@ -126,13 +122,11 @@ function TrainingCostsPanel({
                     />
                   </div>
 
-                  <div className="form-element">
-                    <FormikTextInput
-                      label="Average Employee Wage ($)"
-                      name="averageWage"
-                      type="number"
-                    />
-                  </div>
+                  <FormikTextInput
+                    label="Average Employee Wage ($)"
+                    name="averageWage"
+                    type="number"
+                  />
                 </>
               )}
 
