@@ -1,6 +1,6 @@
-const ID = "retail-industry-survey";
+const ID = "specialty-retail-industry-survey";
 
-const TITLE = "1-Minute Survey for Retail Professionals";
+const TITLE = "1-Minute Survey for Specialty Retail Professionals";
 
 const INSTRUCTIONS =
   "Please answer the following questions about the training needs in your industry sector.";
@@ -61,7 +61,7 @@ const RESULTS = {
   },
 };
 
-export const RETAIL_SURVEY = {
+export const SPECIALTY_RETAIL_SURVEY = {
   id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,

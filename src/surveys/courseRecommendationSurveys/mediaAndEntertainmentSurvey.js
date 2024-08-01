@@ -1,6 +1,7 @@
-const ID = "entertainment-industry-survey";
+const ID = "media-and-entertainment-industry-survey";
 
-const TITLE = "1-Minute Survey for Entertainment Industry Professionals";
+const TITLE =
+  "1-Minute Survey for Media and Entertainment Industry Professionals";
 
 const INSTRUCTIONS =
   "Please answer the following questions about the training needs in your industry sector.";
@@ -61,7 +62,7 @@ const RESULTS = {
   },
 };
 
-export const ENTERTAINMENT_SURVEY = {
+export const MEDIA_AND_ENTERTAINMENT_SURVEY = {
   id: ID,
   title: TITLE,
   instructions: INSTRUCTIONS,
