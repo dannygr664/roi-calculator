@@ -42,7 +42,7 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourses: ["Personal Finance", "Strategic AI"],
+  zschoolCourses: ["Big Data", "Personal Finance", "Strategic AI"],
   additionalCourse: {
     name: "IT and Cybersecurity Leadership",
     school: "Harrisburg University",

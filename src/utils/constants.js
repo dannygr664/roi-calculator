@@ -68,12 +68,18 @@ export const INDUSTRIES_TO_SURVEYS = {
 export const ZSCHOOL_COURSES_TO_DESCRIPTIONS = {
   "AI and Healthcare":
     "Focuses on the application of AI in healthcare, improving patient outcomes, and understanding AI's impact on healthcare operations.",
+  "Big Data":
+    "Guides participants in using data analytics to gain insights, improve business decisions, and leverage big data infrastructure.",
   "Customer Experience":
     "Focuses on creating effective customer experience strategies, developing customer personas, and improving customer journeys.",
   "Digital Marketing":
     "Empowers participants with integrated marketing strategies, content marketing, social media strategies, and digital transformation.",
   "Disruptive Leadership":
     "Teaches participants how to challenge the status quo, drive transformative change, and inspire innovation within their organizations.",
+  "Innovative Collaboration":
+    "Covers strategic innovation, customer experience of emerging media, design thinking, and data analytics for emerging media.",
+  "Innovative Manufacturing Strategies":
+    "Addresses supply chain resilience, workforce development, technological advancements, regulatory compliance, and sustainable manufacturing practices.",
   "IT and Cybersecurity Leadership":
     "Teaches addressing cybersecurity from a business perspective, understanding regulations, and developing comprehensive cybersecurity strategies.",
   "Managing a Remote Workforce":

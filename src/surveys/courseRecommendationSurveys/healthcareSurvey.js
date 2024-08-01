@@ -43,7 +43,7 @@ const QUESTIONS_AND_ANSWERS = [
 const RESULTS = {
   zschoolCourses: [
     "Strategic HR",
-    "AJ and Healthcare",
+    "AI and Healthcare",
     "IT and Cybersecurity Leadership",
   ],
   additionalCourse: {

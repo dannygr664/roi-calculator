@@ -42,7 +42,11 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourses: ["Disruptive Leadership", "Strategic AI"],
+  zschoolCourses: [
+    "Disruptive Leadership",
+    "Innovative Manufacturing Strategies",
+    "Strategic AI",
+  ],
   additionalCourse: {
     name: "Engineering Leadership",
     school: "Ashland University",

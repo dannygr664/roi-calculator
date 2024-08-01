@@ -45,6 +45,7 @@ const RESULTS = {
   zschoolCourses: [
     "Digital Marketing",
     "Disruptive Leadership",
+    "Innovative Collaboration",
     "Strategic AI",
   ],
   additionalCourse: {
