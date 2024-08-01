@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import { ZSCHOOL_COURSES_TO_DESCRIPTIONS } from "@/utils/constants";
+
 import LearnMoreForm from "@components/LearnMoreForm/LearnMoreForm";
 
 import "./CourseRecommendationsResults.css";
@@ -19,11 +21,11 @@ function CourseRecommendationsResults({ formId, results }) {
         {results.zschoolCourses.map((zschoolCourse, index) => (
           <li key={index}>
             <b>Zschool Course: </b>
-            &quot;{zschoolCourse.name}&quot;
+            &quot;{zschoolCourse}&quot;
             <ul>
               <li>
                 <b>Description: </b>
-                {zschoolCourse.description}
+                {ZSCHOOL_COURSES_TO_DESCRIPTIONS[zschoolCourse]}
               </li>
             </ul>
           </li>
@@ -66,12 +68,7 @@ function CourseRecommendationsResults({ formId, results }) {
 CourseRecommendationsResults.propTypes = {
   formId: PropTypes.string.isRequired,
   results: PropTypes.shape({
-    zschoolCourses: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      })
-    ),
+    zschoolCourses: PropTypes.arrayOf(PropTypes.string),
     additionalCourse: PropTypes.shape({
       name: PropTypes.string.isRequired,
       school: PropTypes.string.isRequired,

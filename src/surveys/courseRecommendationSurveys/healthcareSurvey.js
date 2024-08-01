@@ -42,11 +42,9 @@ const QUESTIONS_AND_ANSWERS = [
 
 const RESULTS = {
   zschoolCourses: [
-    {
-      name: "Strategic AI for Healthcare Professionals",
-      description:
-        "Focuses on the application of AI in healthcare, improving patient outcomes, and understanding AI's impact on healthcare operations.",
-    },
+    "Strategic HR",
+    "AJ and Healthcare",
+    "IT and Cybersecurity Leadership",
   ],
   additionalCourse: {
     name: "Strategic AI in Healthcare",

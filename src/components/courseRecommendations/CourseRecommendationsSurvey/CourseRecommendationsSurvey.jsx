@@ -50,12 +50,7 @@ CourseRecommendationsSurvey.propTypes = {
     })
   ).isRequired,
   results: PropTypes.shape({
-    zschoolCourses: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        description: PropTypes.string.isRequired,
-      })
-    ),
+    zschoolCourses: PropTypes.arrayOf(PropTypes.string),
     additionalCourse: PropTypes.shape({
       name: PropTypes.string.isRequired,
       school: PropTypes.string.isRequired,

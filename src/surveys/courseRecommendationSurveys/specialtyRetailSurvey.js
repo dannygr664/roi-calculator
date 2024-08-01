@@ -41,13 +41,7 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourses: [
-    {
-      name: "Customer Experience Program",
-      description:
-        "Focuses on creating effective customer experience strategies, developing customer personas, and improving customer journeys.",
-    },
-  ],
+  zschoolCourses: ["Customer Experience", "Digital Marketing", "Sales and AI"],
   additionalCourse: {
     name: "Transformative Leadership",
     school: "Ashland University",

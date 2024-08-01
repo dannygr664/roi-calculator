@@ -43,11 +43,9 @@ const QUESTIONS_AND_ANSWERS = [
 
 const RESULTS = {
   zschoolCourses: [
-    {
-      name: "Innovative Collaboration",
-      description:
-        "Covers strategic innovation, customer experience of emerging media, design thinking, and data analytics for emerging media.",
-    },
+    "Digital Marketing",
+    "Disruptive Leadership",
+    "Strategic AI",
   ],
   additionalCourse: {
     name: "Strategic AI",
