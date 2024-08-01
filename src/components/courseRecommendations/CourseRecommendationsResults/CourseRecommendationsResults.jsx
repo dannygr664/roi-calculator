@@ -28,17 +28,19 @@ function CourseRecommendationsResults({ formId, results }) {
             </ul>
           </li>
         ))}
-        <li>
-          <b>Additional Course: </b>
-          &quot;{results.additionalCourse.name}&quot; by{" "}
-          {results.additionalCourse.school}
-          <ul>
-            <li>
-              <b>Description: </b>
-              {results.additionalCourse.description}
-            </li>
-          </ul>
-        </li>
+        {results.additionalCourse && (
+          <li>
+            <b>Additional Course: </b>
+            &quot;{results.additionalCourse.name}&quot; by{" "}
+            {results.additionalCourse.school}
+            <ul>
+              <li>
+                <b>Description: </b>
+                {results.additionalCourse.description}
+              </li>
+            </ul>
+          </li>
+        )}
         <li>
           <b>Personalized Course: </b>
           &quot;{results.personalizedCourse.name}&quot;
