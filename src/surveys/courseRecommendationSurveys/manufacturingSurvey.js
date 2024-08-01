@@ -42,11 +42,13 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourse: {
-    name: "Innovative Manufacturing Strategies",
-    description:
-      "Addresses supply chain resilience, workforce development, technological advancements, regulatory compliance, and sustainable manufacturing practices.",
-  },
+  zschoolCourses: [
+    {
+      name: "Innovative Manufacturing Strategies",
+      description:
+        "Addresses supply chain resilience, workforce development, technological advancements, regulatory compliance, and sustainable manufacturing practices.",
+    },
+  ],
   additionalCourse: {
     name: "Engineering Leadership",
     school: "Ashland University",

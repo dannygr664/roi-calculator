@@ -41,11 +41,13 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourse: {
-    name: "Innovative Collaboration",
-    description:
-      "Covers strategic innovation, customer experience of emerging media, design thinking, and data analytics for emerging media.",
-  },
+  zschoolCourses: [
+    {
+      name: "Innovative Collaboration",
+      description:
+        "Covers strategic innovation, customer experience of emerging media, design thinking, and data analytics for emerging media.",
+    },
+  ],
   additionalCourse: {
     name: "Strategic AI",
     school: "University of San Francisco",

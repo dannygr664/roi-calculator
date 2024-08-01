@@ -16,16 +16,18 @@ function CourseRecommendationsResults({ formId, results }) {
       </p>
 
       <ul className="course-recommendations">
-        <li>
-          <b>Zschool Course: </b>
-          &quot;{results.zschoolCourse.name}&quot;
-          <ul>
-            <li>
-              <b>Description: </b>
-              {results.zschoolCourse.description}
-            </li>
-          </ul>
-        </li>
+        {results.zschoolCourses.map((zschoolCourse, index) => (
+          <li key={index}>
+            <b>Zschool Course: </b>
+            &quot;{zschoolCourse.name}&quot;
+            <ul>
+              <li>
+                <b>Description: </b>
+                {zschoolCourse.description}
+              </li>
+            </ul>
+          </li>
+        ))}
         <li>
           <b>Additional Course: </b>
           &quot;{results.additionalCourse.name}&quot; by{" "}
@@ -62,10 +64,12 @@ function CourseRecommendationsResults({ formId, results }) {
 CourseRecommendationsResults.propTypes = {
   formId: PropTypes.string.isRequired,
   results: PropTypes.shape({
-    zschoolCourse: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
+    zschoolCourses: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        description: PropTypes.string.isRequired,
+      })
+    ),
     additionalCourse: PropTypes.shape({
       name: PropTypes.string.isRequired,
       school: PropTypes.string.isRequired,

@@ -41,11 +41,13 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourse: {
-    name: "Digital Marketing Program",
-    description:
-      "Empowers participants with integrated marketing strategies, content marketing, social media strategies, and digital transformation.",
-  },
+  zschoolCourses: [
+    {
+      name: "Digital Marketing Program",
+      description:
+        "Empowers participants with integrated marketing strategies, content marketing, social media strategies, and digital transformation.",
+    },
+  ],
   additionalCourse: {
     name: "Generative AI for Value Creation",
     school: "Ashland University",

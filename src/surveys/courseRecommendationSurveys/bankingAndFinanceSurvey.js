@@ -42,11 +42,13 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourse: {
-    name: "Big Data",
-    description:
-      "Guides participants in using data analytics to gain insights, improve business decisions, and leverage big data infrastructure.",
-  },
+  zschoolCourses: [
+    {
+      name: "Big Data",
+      description:
+        "Guides participants in using data analytics to gain insights, improve business decisions, and leverage big data infrastructure.",
+    },
+  ],
   additionalCourse: {
     name: "IT and Cybersecurity Leadership",
     school: "Harrisburg University",

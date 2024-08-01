@@ -41,11 +41,13 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourse: {
-    name: "Strategic AI for Healthcare Professionals",
-    description:
-      "Focuses on the application of AI in healthcare, improving patient outcomes, and understanding AI's impact on healthcare operations.",
-  },
+  zschoolCourses: [
+    {
+      name: "Strategic AI for Healthcare Professionals",
+      description:
+        "Focuses on the application of AI in healthcare, improving patient outcomes, and understanding AI's impact on healthcare operations.",
+    },
+  ],
   additionalCourse: {
     name: "Strategic AI in Healthcare",
     school: "Ashland University",

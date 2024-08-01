@@ -41,11 +41,13 @@ const QUESTIONS_AND_ANSWERS = [
 ];
 
 const RESULTS = {
-  zschoolCourse: {
-    name: "Strategic HR",
-    description:
-      "Covers the fundamentals of HR, employee experience management, and strategic HR planning.",
-  },
+  zschoolCourses: [
+    {
+      name: "Strategic HR",
+      description:
+        "Covers the fundamentals of HR, employee experience management, and strategic HR planning.",
+    },
+  ],
   additionalCourse: {
     name: "Women in Leadership",
     school: "Harrisburg University",
