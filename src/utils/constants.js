@@ -64,3 +64,26 @@ export const INDUSTRIES_TO_SURVEYS = {
   "Media and Entertainment": MEDIA_AND_ENTERTAINMENT_SURVEY,
   "Specialty Retail": SPECIALTY_RETAIL_SURVEY,
 };
+
+export const ZSCHOOL_COURSES_TO_DESCRIPTIONS = {
+  "AI and Healthcare":
+    "Focuses on the application of AI in healthcare, improving patient outcomes, and understanding AI's impact on healthcare operations.",
+  "Customer Experience":
+    "Focuses on creating effective customer experience strategies, developing customer personas, and improving customer journeys.",
+  "Digital Marketing":
+    "Empowers participants with integrated marketing strategies, content marketing, social media strategies, and digital transformation.",
+  "Disruptive Leadership":
+    "Teaches participants how to challenge the status quo, drive transformative change, and inspire innovation within their organizations.",
+  "IT and Cybersecurity Leadership":
+    "Teaches addressing cybersecurity from a business perspective, understanding regulations, and developing comprehensive cybersecurity strategies.",
+  "Managing a Remote Workforce":
+    "Provides participants with strategies and tools to effectively lead, motivate, and support a distributed team, ensuring productivity and collaboration.",
+  "Personal Finance":
+    "Guides participants in mastering financial principles to manage their money, make informed decisions, and achieve long-term financial stability.",
+  "Sales and AI":
+    "Guides participants in integrating artificial intelligence into sales processes to enhance customer engagement, streamline operations, and boost revenue growth.",
+  "Strategic AI":
+    "Equips participants with the knowledge to harness artificial intelligence for strategic planning, fostering innovation, and enhancing business performance.",
+  "Strategic HR":
+    "Covers the fundamentals of HR, employee experience management, and strategic HR planning.",
+};
