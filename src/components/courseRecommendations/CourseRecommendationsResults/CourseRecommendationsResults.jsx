@@ -45,7 +45,7 @@ function CourseRecommendationsResults({ formId, results }) {
         )}
         {results.personalizedCourse && (
           <li>
-            <b>Personalized Course: </b>
+            <b>Custom Course Suggestion: </b>
             &quot;{results.personalizedCourse.name}&quot;
             <ul>
               <li>
