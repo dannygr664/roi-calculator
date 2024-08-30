@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
 
+import { ZSCHOOL_COURSES_TO_DESCRIPTIONS } from "@/utils/constants";
+
 import LearnMoreForm from "@components/LearnMoreForm/LearnMoreForm";
 
 import "./CourseRecommendationsResults.css";
@@ -16,37 +18,47 @@ function CourseRecommendationsResults({ formId, results }) {
       </p>
 
       <ul className="course-recommendations">
-        <li>
-          <b>Zschool Course: </b>
-          &quot;{results.zschoolCourse.name}&quot;
-          <ul>
-            <li>
-              <b>Description: </b>
-              {results.zschoolCourse.description}
-            </li>
-          </ul>
-        </li>
-        <li>
-          <b>Additional Course: </b>
-          &quot;{results.additionalCourse.name}&quot; by{" "}
-          {results.additionalCourse.school}
-          <ul>
-            <li>
-              <b>Description: </b>
-              {results.additionalCourse.description}
-            </li>
-          </ul>
-        </li>
-        <li>
-          <b>Personalized Course: </b>
-          &quot;{results.personalizedCourse.name}&quot;
-          <ul>
-            <li>
-              <b>Description: </b>
-              {results.personalizedCourse.description}
-            </li>
-          </ul>
-        </li>
+        {results.zschoolCourses.map((zschoolCourse, index) => (
+          <li key={index}>
+            <b>Zschool Course: </b>
+            &quot;{zschoolCourse}&quot;
+            {ZSCHOOL_COURSES_TO_DESCRIPTIONS[zschoolCourse] && (
+              <ul>
+                <li>
+                  <b>Description: </b>
+                  {ZSCHOOL_COURSES_TO_DESCRIPTIONS[zschoolCourse]}
+                </li>
+              </ul>
+            )}
+          </li>
+        ))}
+        {results.additionalCourse && (
+          <li>
+            <b>Additional Course: </b>
+            &quot;{results.additionalCourse.name}&quot; by{" "}
+            {results.additionalCourse.school}
+            {results.additionalCourse.description && (
+              <ul>
+                <li>
+                  <b>Description: </b>
+                  {results.additionalCourse.description}
+                </li>
+              </ul>
+            )}
+          </li>
+        )}
+        {results.personalizedCourse && (
+          <li>
+            <b>Custom Course Suggestion: </b>
+            &quot;{results.personalizedCourse.name}&quot;
+            <ul>
+              <li>
+                <b>Description: </b>
+                {results.personalizedCourse.description}
+              </li>
+            </ul>
+          </li>
+        )}
       </ul>
 
       <p>
@@ -62,10 +74,7 @@ function CourseRecommendationsResults({ formId, results }) {
 CourseRecommendationsResults.propTypes = {
   formId: PropTypes.string.isRequired,
   results: PropTypes.shape({
-    zschoolCourse: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      description: PropTypes.string.isRequired,
-    }),
+    zschoolCourses: PropTypes.arrayOf(PropTypes.string),
     additionalCourse: PropTypes.shape({
       name: PropTypes.string.isRequired,
       school: PropTypes.string.isRequired,
