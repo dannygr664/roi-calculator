@@ -43,16 +43,18 @@ function CourseRecommendationsResults({ formId, results }) {
             </ul>
           </li>
         )}
-        <li>
-          <b>Personalized Course: </b>
-          &quot;{results.personalizedCourse.name}&quot;
-          <ul>
-            <li>
-              <b>Description: </b>
-              {results.personalizedCourse.description}
-            </li>
-          </ul>
-        </li>
+        {results.personalizedCourse && (
+          <li>
+            <b>Personalized Course: </b>
+            &quot;{results.personalizedCourse.name}&quot;
+            <ul>
+              <li>
+                <b>Description: </b>
+                {results.personalizedCourse.description}
+              </li>
+            </ul>
+          </li>
+        )}
       </ul>
 
       <p>
