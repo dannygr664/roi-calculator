@@ -22,12 +22,14 @@ function CourseRecommendationsResults({ formId, results }) {
           <li key={index}>
             <b>Zschool Course: </b>
             &quot;{zschoolCourse}&quot;
-            <ul>
-              <li>
-                <b>Description: </b>
-                {ZSCHOOL_COURSES_TO_DESCRIPTIONS[zschoolCourse]}
-              </li>
-            </ul>
+            {ZSCHOOL_COURSES_TO_DESCRIPTIONS[zschoolCourse] && (
+              <ul>
+                <li>
+                  <b>Description: </b>
+                  {ZSCHOOL_COURSES_TO_DESCRIPTIONS[zschoolCourse]}
+                </li>
+              </ul>
+            )}
           </li>
         ))}
         {results.additionalCourse && (
@@ -35,12 +37,14 @@ function CourseRecommendationsResults({ formId, results }) {
             <b>Additional Course: </b>
             &quot;{results.additionalCourse.name}&quot; by{" "}
             {results.additionalCourse.school}
-            <ul>
-              <li>
-                <b>Description: </b>
-                {results.additionalCourse.description}
-              </li>
-            </ul>
+            {results.additionalCourse.description && (
+              <ul>
+                <li>
+                  <b>Description: </b>
+                  {results.additionalCourse.description}
+                </li>
+              </ul>
+            )}
           </li>
         )}
         {results.personalizedCourse && (
