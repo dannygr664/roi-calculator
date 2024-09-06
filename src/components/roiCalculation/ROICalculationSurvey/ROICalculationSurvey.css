@@ -1,0 +1,9 @@
+#sidenote-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#sidenote-container > p {
+  font-size: 1em;
+}

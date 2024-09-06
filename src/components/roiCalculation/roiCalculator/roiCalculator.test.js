@@ -1,8 +1,10 @@
 import { describe, expect, it } from "vitest";
 import {
   calculateSurveyScore,
-  calculatePercentageReturn,
+  calculateFirstRoiEstimate,
+  calculateSecondRoiEstimate,
   calculateNetReturn,
+  calculatePercentageReturn,
   getScoreBucketName,
 } from "./roiCalculator";
 import {
@@ -113,59 +115,67 @@ describe("calculateSurveyScore", () => {
   });
 });
 
-describe("calculatePercentageReturn", () => {
-  it("returns -100 for a survey score of 1.0", () => {
-    expect(calculatePercentageReturn(1.0)).toBe(-100);
+describe("calculateFirstRoiEstimate", () => {
+  it("returns 10% of training costs for a survey score of 1.0", () => {
+    expect(calculateFirstRoiEstimate("100", 1.0)).toBeCloseTo(10, 5);
   });
 
-  it("returns -75 for a survey score of 1.5", () => {
-    expect(calculatePercentageReturn(1.5)).toBe(-75);
+  it("returns 15% of training costs for a survey score of 3.0", () => {
+    expect(calculateFirstRoiEstimate("100", 3.0)).toBeCloseTo(15, 5);
   });
 
-  it("returns -50 for a survey score of 2.0", () => {
-    expect(calculatePercentageReturn(2.0)).toBe(-50);
+  it("returns 20% of training costs for a survey score of 5.0", () => {
+    expect(calculateFirstRoiEstimate("100", 5.0)).toBeCloseTo(20, 5);
   });
 
-  it("returns -25 for a survey score of 2.5", () => {
-    expect(calculatePercentageReturn(2.5)).toBe(-25);
+  it("returns 0 if training costs are $0", () => {
+    expect(calculateFirstRoiEstimate("0", 5.0)).toBeCloseTo(0, 5);
+  });
+});
+
+describe("calculateSecondRoiEstimate", () => {
+  it("returns $2000 times the number of employees for a survey score of 1.0", () => {
+    expect(calculateSecondRoiEstimate("2", 1.0)).toBeCloseTo(4000, 5);
   });
 
-  it("returns 0 for a survey score of 3.0", () => {
-    expect(calculatePercentageReturn(3.0)).toBe(0);
+  it("returns $3500 times the number of employees for a survey score of 3.0", () => {
+    expect(calculateSecondRoiEstimate("2", 3.0)).toBeCloseTo(7000, 5);
   });
 
-  it("returns 25 for a survey score of 3.5", () => {
-    expect(calculatePercentageReturn(3.5)).toBe(25);
+  it("returns $5000 times the number of employees for a survey score of 5.0", () => {
+    expect(calculateSecondRoiEstimate("2", 5.0)).toBeCloseTo(10000, 5);
   });
 
-  it("returns 50 for a survey score of 4.0", () => {
-    expect(calculatePercentageReturn(4.0)).toBe(50);
-  });
-
-  it("returns 75 for a survey score of 4.5", () => {
-    expect(calculatePercentageReturn(4.5)).toBe(75);
-  });
-
-  it("returns 100 for a survey score of 5.0", () => {
-    expect(calculatePercentageReturn(5.0)).toBe(100);
-  });
-
-  it("returns 65 for a survey score of 4.3", () => {
-    expect(calculatePercentageReturn(4.3)).toBe(65);
+  it("returns $0 if number of employees is 0", () => {
+    expect(calculateSecondRoiEstimate("0", 5.0)).toBeCloseTo(0, 5);
   });
 });
 
 describe("calculateNetReturn", () => {
-  it("returns 0 when percentage return is -100", () => {
-    expect(calculateNetReturn(-100, "100")).toBe(0);
+  it("returns average of first and second ROI estimates if training costs and number of employees are non-zero", () => {
+    expect(calculateNetReturn("5000", "2", 5.0)).toBeCloseTo(5500, 5);
   });
 
-  it("returns training costs when percentage return is 0", () => {
-    expect(calculateNetReturn(0, "100")).toBe(100);
+  it("returns 0 if training costs and number of employees are 0", () => {
+    expect(calculateNetReturn("0", "0", 5.0)).toBeCloseTo(0, 5);
   });
 
-  it("returns doubled training costs when percentage return is 100", () => {
-    expect(calculateNetReturn(100, "100")).toBe(200);
+  it("returns average of second ROI estimate and 0 if training costs are 0 and number of employees is non-zero", () => {
+    expect(calculateNetReturn("0", "2", 5.0)).toBeCloseTo(5000, 5);
+  });
+});
+
+describe("calculatePercentageReturn", () => {
+  it("returns net return divided by training costs times 100 plus 100 if training costs are non-zero", () => {
+    expect(calculatePercentageReturn("100", 20)).toBeCloseTo(120, 5);
+  });
+
+  it("returns NaN if training costs and net return are 0", () => {
+    expect(calculatePercentageReturn("0", 0)).toBeNaN();
+  });
+
+  it("returns Infinity if training costs are 0 and net return is non-zero", () => {
+    expect(calculatePercentageReturn("0", 20)).toBe(Infinity);
   });
 });
 

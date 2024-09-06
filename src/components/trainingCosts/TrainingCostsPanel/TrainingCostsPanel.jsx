@@ -21,6 +21,7 @@ import roiTrainingCostsImgUrl from "@assets/images/roi-training-costs.jpg";
 function TrainingCostsPanel({
   trainingCosts,
   setTrainingCosts,
+  setNumberOfEmployees,
   setIsTrainingCostsCalculated,
 }) {
   const validationSchema = Yup.object({
@@ -59,7 +60,7 @@ function TrainingCostsPanel({
 
         <Formik
           initialValues={{
-            numberOfEmployees: "0",
+            numberOfEmployees: 0,
             cost: "0",
             includeLostProductivityCosts: false,
             creditOption: "",
@@ -68,6 +69,7 @@ function TrainingCostsPanel({
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
+            setNumberOfEmployees(values.numberOfEmployees);
             const totalCosts = calculateTrainingCosts(values);
             setTrainingCosts(totalCosts.toString());
             setIsTrainingCostsCalculated(true);
@@ -156,6 +158,7 @@ function TrainingCostsPanel({
 TrainingCostsPanel.propTypes = {
   trainingCosts: PropTypes.string.isRequired,
   setTrainingCosts: PropTypes.func.isRequired,
+  setNumberOfEmployees: PropTypes.func.isRequired,
   setIsTrainingCostsCalculated: PropTypes.func.isRequired,
 };
 

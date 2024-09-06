@@ -28,12 +28,34 @@ export const calculateSurveyScore = (questionsAndAnswers, values) => {
   return Math.round((rawScore / numQuestionsIncludedInScore) * 10) / 10;
 };
 
-export const calculatePercentageReturn = (surveyScore) => {
-  return scale(surveyScore, 1, 5, -100, 100);
+export const calculateFirstRoiEstimate = (trainingCosts, surveyScore) => {
+  const scaleFactor = scale(surveyScore, 1, 5, 0.1, 0.2);
+  return trainingCosts * scaleFactor;
 };
 
-export const calculateNetReturn = (percentageReturn, trainingCosts) => {
-  return (1 + percentageReturn / 100) * parseFloat(trainingCosts);
+export const calculateSecondRoiEstimate = (numberOfEmployees, surveyScore) => {
+  const roiPerEmployee = scale(surveyScore, 1, 5, 2000, 5000);
+  return roiPerEmployee * numberOfEmployees;
+};
+
+export const calculateNetReturn = (
+  trainingCosts,
+  numberOfEmployees,
+  surveyScore
+) => {
+  const firstRoiEstimate = calculateFirstRoiEstimate(
+    trainingCosts,
+    surveyScore
+  );
+  const secondRoiEstimate = calculateSecondRoiEstimate(
+    numberOfEmployees,
+    surveyScore
+  );
+  return (firstRoiEstimate + secondRoiEstimate) / 2;
+};
+
+export const calculatePercentageReturn = (trainingCosts, netReturn) => {
+  return (netReturn / trainingCosts) * 100 + 100;
 };
 
 export const getScoreBucketName = (surveyScore) => {
