@@ -88,6 +88,9 @@ function ROICalculationSurvey({
           format="percentage"
           outputValue={percentageReturn}
         />
+        <div id="sidenote-container">
+          <p>*Potential is up to 415%.</p>
+        </div>
       </div>
 
       {areResultsVisible && (
