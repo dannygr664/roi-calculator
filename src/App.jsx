@@ -24,7 +24,7 @@ import {
 
 function App() {
   const [trainingCosts, setTrainingCosts] = useState("0");
-  const [numberOfEmployees, setNumberOfEmployees] = useState("0");
+  const [numberOfEmployees, setNumberOfEmployees] = useState(0);
   const [isTrainingCostsCalculated, setIsTrainingCostsCalculated] =
     useState(false);
   const [selectedRoiMetric, setSelectedRoiMetric] = useState("");

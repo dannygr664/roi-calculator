@@ -60,7 +60,7 @@ function TrainingCostsPanel({
 
         <Formik
           initialValues={{
-            numberOfEmployees: "0",
+            numberOfEmployees: 0,
             cost: "0",
             includeLostProductivityCosts: false,
             creditOption: "",

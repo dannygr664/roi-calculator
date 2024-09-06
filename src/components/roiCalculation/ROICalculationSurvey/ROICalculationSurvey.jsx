@@ -115,7 +115,7 @@ ROICalculationSurvey.propTypes = {
     })
   ).isRequired,
   trainingCosts: PropTypes.string.isRequired,
-  numberOfEmployees: PropTypes.string.isRequired,
+  numberOfEmployees: PropTypes.number.isRequired,
   resultDescriptions: PropTypes.objectOf(PropTypes.string).isRequired,
   feedbackIntros: PropTypes.objectOf(PropTypes.string),
   hrRecommendations: PropTypes.objectOf(PropTypes.string).isRequired,
