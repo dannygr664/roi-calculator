@@ -20,6 +20,7 @@ function ROICalculationSurvey({
   instructions,
   questionsAndAnswers,
   trainingCosts,
+  numberOfEmployees,
   resultDescriptions,
   feedbackIntros,
   hrRecommendations,
@@ -39,8 +40,15 @@ function ROICalculationSurvey({
     setSelectedRole(values.selectedRole);
 
     const surveyScore = calculateSurveyScore(questionsAndAnswers, values);
-    const percentageReturn = calculatePercentageReturn(surveyScore);
-    const netReturn = calculateNetReturn(percentageReturn, trainingCosts);
+    const netReturn = calculateNetReturn(
+      trainingCosts,
+      numberOfEmployees,
+      surveyScore
+    );
+    const percentageReturn = calculatePercentageReturn(
+      trainingCosts,
+      netReturn
+    );
 
     setSurveyScore(surveyScore);
     setNetReturn(netReturn.toString());
@@ -107,6 +115,7 @@ ROICalculationSurvey.propTypes = {
     })
   ).isRequired,
   trainingCosts: PropTypes.string.isRequired,
+  numberOfEmployees: PropTypes.string.isRequired,
   resultDescriptions: PropTypes.objectOf(PropTypes.string).isRequired,
   feedbackIntros: PropTypes.objectOf(PropTypes.string),
   hrRecommendations: PropTypes.objectOf(PropTypes.string).isRequired,

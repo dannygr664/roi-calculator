@@ -11,7 +11,14 @@ function OutputDisplay({ tag, label, format, outputValue }) {
   };
 
   const formatPercentage = (value) => {
-    return `${parseFloat(value).toFixed(2)}%`;
+    const percentage = parseFloat(value).toFixed(2);
+    if (isNaN(percentage)) {
+      return "0.00%";
+    } else if (!isFinite(percentage)) {
+      return "N/A (training was free!)";
+    } else {
+      return `${percentage}%`;
+    }
   };
 
   const formatOutput = (value) => {

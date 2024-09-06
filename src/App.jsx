@@ -24,6 +24,7 @@ import {
 
 function App() {
   const [trainingCosts, setTrainingCosts] = useState("0");
+  const [numberOfEmployees, setNumberOfEmployees] = useState("0");
   const [isTrainingCostsCalculated, setIsTrainingCostsCalculated] =
     useState(false);
   const [selectedRoiMetric, setSelectedRoiMetric] = useState("");
@@ -37,6 +38,7 @@ function App() {
         <TrainingCostsPanel
           trainingCosts={trainingCosts}
           setTrainingCosts={setTrainingCosts}
+          setNumberOfEmployees={setNumberOfEmployees}
           setIsTrainingCostsCalculated={setIsTrainingCostsCalculated}
         />
         {isTrainingCostsCalculated && (
@@ -58,6 +60,7 @@ function App() {
                 instructions={survey.instructions}
                 questionsAndAnswers={survey.questionsAndAnswers}
                 trainingCosts={trainingCosts}
+                numberOfEmployees={numberOfEmployees}
                 resultDescriptions={survey.resultDescriptions}
                 feedbackIntros={survey.feedbackIntros}
                 hrRecommendations={survey.hrRecommendations}
