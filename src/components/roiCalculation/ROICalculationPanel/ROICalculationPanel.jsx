@@ -76,7 +76,7 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
         <ol>
           <li>Select the metric you would like to use.</li>
           <li>Fill out the accompanying survey.</li>
-          <li>Click &quot;Get Results &amp; Calculate ROI&quot;</li>
+          <li>Click &quot;Get Results &amp; Calculate ROI&quot;.</li>
         </ol>
         <div className="form-element">
           <CustomSelect
