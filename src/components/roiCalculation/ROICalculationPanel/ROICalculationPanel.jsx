@@ -48,8 +48,9 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
               The ROI calculation is based on data indicating that well-designed
               training programs can lead to productivity gains of 10–20%, and
               that a conservative ROI estimate for Fortune 500 and Inc.
-              companies is around $2,000–$5,000 per employee, annually. The
-              calculation consists of 3 steps:
+              companies is around $2,000–$5,000 per employee, annually.
+              Additionally, one study observed a 29% ROI 3 months after
+              training. The calculation consists of 3 steps:
             </p>
             <ol>
               <li>
@@ -66,6 +67,11 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
               <li>
                 <b>Averaging the ROI estimates:</b> The two estimates are
                 averaged together to obtain a net ROI.
+              </li>
+              <li>
+                <b>Increased ROI for new hires (optional):</b> If employees took
+                the training within 3 months of employment, an additional 29%
+                increase in ROI is applied.
               </li>
             </ol>
           </>

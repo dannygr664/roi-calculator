@@ -12,9 +12,9 @@ import {
 } from "@components/forms";
 
 import "../Survey.css";
-import "./SurveyForm.css";
+import "../SurveyForm/SurveyForm.css";
 
-function SurveyForm({
+function CourseRecommendationsSurveyForm({
   formId,
   questionsAndAnswers,
   submitButtonLabel,
@@ -108,7 +108,7 @@ function SurveyForm({
   );
 }
 
-SurveyForm.propTypes = {
+CourseRecommendationsSurveyForm.propTypes = {
   formId: PropTypes.string.isRequired,
   questionsAndAnswers: PropTypes.arrayOf(
     PropTypes.shape({
@@ -120,4 +120,4 @@ SurveyForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
 };
 
-export default SurveyForm;
+export default CourseRecommendationsSurveyForm;

@@ -1,4 +1,9 @@
-import SurveyForm from "./SurveyForm/SurveyForm";
+import CourseRecommendationsSurveyForm from "./CourseRecommendationsSurveyForm/CourseRecommendationsSurveyForm";
+import ROICalculationSurveyForm from "./ROICalculationSurveyForm/ROICalculationSurveyForm";
 import SurveyIntro from "./SurveyIntro/SurveyIntro";
 
-export { SurveyForm, SurveyIntro };
+export {
+  CourseRecommendationsSurveyForm,
+  ROICalculationSurveyForm,
+  SurveyIntro,
+};

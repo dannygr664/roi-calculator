@@ -152,16 +152,28 @@ describe("calculateSecondRoiEstimate", () => {
 });
 
 describe("calculateNetReturn", () => {
-  it("returns average of first and second ROI estimates if training costs and number of employees are non-zero", () => {
-    expect(calculateNetReturn("5000", "2", 5.0)).toBeCloseTo(5500, 5);
+  it("returns average of first and second ROI estimates if training costs and number of employees are non-zero and recentlyHired is false", () => {
+    expect(calculateNetReturn("5000", "2", 5.0, false)).toBeCloseTo(5500, 5);
   });
 
-  it("returns 0 if training costs and number of employees are 0", () => {
-    expect(calculateNetReturn("0", "0", 5.0)).toBeCloseTo(0, 5);
+  it("returns 0 if training costs and number of employees are 0 and recentlyHired is false", () => {
+    expect(calculateNetReturn("0", "0", 5.0, false)).toBeCloseTo(0, 5);
   });
 
-  it("returns average of second ROI estimate and 0 if training costs are 0 and number of employees is non-zero", () => {
-    expect(calculateNetReturn("0", "2", 5.0)).toBeCloseTo(5000, 5);
+  it("returns average of second ROI estimate and 0 if training costs are 0 and number of employees is non-zero and recentlyHired is false", () => {
+    expect(calculateNetReturn("0", "2", 5.0, false)).toBeCloseTo(5000, 5);
+  });
+
+  it("returns average of first and second ROI estimates times 1.29 if training costs and number of employees are non-zero and recentlyHired is true", () => {
+    expect(calculateNetReturn("5000", "2", 5.0, true)).toBeCloseTo(7095, 5);
+  });
+
+  it("returns 0 if training costs and number of employees are 0 and recentlyHired is true", () => {
+    expect(calculateNetReturn("0", "0", 5.0, true)).toBeCloseTo(0, 5);
+  });
+
+  it("returns average of second ROI estimate and 0 times 1.29 if training costs are 0 and number of employees is non-zero and recentlyHired is true", () => {
+    expect(calculateNetReturn("0", "2", 5.0, true)).toBeCloseTo(6450, 5);
   });
 });
 

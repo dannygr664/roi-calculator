@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { SurveyIntro, SurveyForm } from "@components/surveys";
+import { SurveyIntro, ROICalculationSurveyForm } from "@components/surveys";
 import {
   calculateSurveyScore,
   calculatePercentageReturn,
@@ -43,7 +43,8 @@ function ROICalculationSurvey({
     const netReturn = calculateNetReturn(
       trainingCosts,
       numberOfEmployees,
-      surveyScore
+      surveyScore,
+      values.recentlyHired
     );
     const percentageReturn = calculatePercentageReturn(
       trainingCosts,
@@ -65,11 +66,13 @@ function ROICalculationSurvey({
     setAreResultsVisible(true);
   };
 
+  const SIDE_NOTE_COST_CUTOFF = 1100;
+
   return (
     <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
-        <SurveyForm
+        <ROICalculationSurveyForm
           formId={formId}
           questionsAndAnswers={questionsAndAnswers}
           submitButtonLabel="Get Results & Calculate ROI"
@@ -88,9 +91,11 @@ function ROICalculationSurvey({
           format="percentage"
           outputValue={percentageReturn}
         />
-        <div id="sidenote-container">
-          <p>*Annualized potential ROI is up to 415%.</p>
-        </div>
+        {trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
+          <div id="sidenote-container">
+            <p>*Annualized potential ROI is up to 415%.</p>
+          </div>
+        )}
       </div>
 
       {areResultsVisible && (
