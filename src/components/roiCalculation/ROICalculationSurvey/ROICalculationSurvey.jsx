@@ -43,7 +43,8 @@ function ROICalculationSurvey({
     const netReturn = calculateNetReturn(
       trainingCosts,
       numberOfEmployees,
-      surveyScore
+      surveyScore,
+      values.recentlyHired
     );
     const percentageReturn = calculatePercentageReturn(
       trainingCosts,

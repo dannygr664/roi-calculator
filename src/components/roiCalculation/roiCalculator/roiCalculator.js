@@ -41,7 +41,8 @@ export const calculateSecondRoiEstimate = (numberOfEmployees, surveyScore) => {
 export const calculateNetReturn = (
   trainingCosts,
   numberOfEmployees,
-  surveyScore
+  surveyScore,
+  recentlyHired
 ) => {
   const firstRoiEstimate = calculateFirstRoiEstimate(
     trainingCosts,
@@ -51,7 +52,15 @@ export const calculateNetReturn = (
     numberOfEmployees,
     surveyScore
   );
-  return (firstRoiEstimate + secondRoiEstimate) / 2;
+  const averageRoiEstimate = (firstRoiEstimate + secondRoiEstimate) / 2;
+
+  const RECENTLY_HIRED_SCALE_FACTOR = 1.29;
+
+  if (recentlyHired) {
+    return averageRoiEstimate * RECENTLY_HIRED_SCALE_FACTOR;
+  } else {
+    return averageRoiEstimate;
+  }
 };
 
 export const calculatePercentageReturn = (trainingCosts, netReturn) => {

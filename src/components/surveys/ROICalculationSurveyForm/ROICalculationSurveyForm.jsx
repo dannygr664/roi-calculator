@@ -8,6 +8,7 @@ import {
   FormikRadioGroup,
   FormikSelect,
   FormikTextInput,
+  FormikCheckbox,
   FormikScrollToError,
 } from "@components/forms";
 
@@ -24,6 +25,7 @@ function ROICalculationSurveyForm({
     selectedRole: "",
     employeeJobTitle: "",
     otherRole: "",
+    recentlyHired: false,
   };
 
   questionsAndAnswers.forEach((_, index) => {
@@ -47,6 +49,7 @@ function ROICalculationSurveyForm({
       is: "Other",
       then: (schema) => schema.required("Required"),
     }),
+    recentlyHired: Yup.bool(),
   });
 
   return (
@@ -97,6 +100,12 @@ function ROICalculationSurveyForm({
                 type="text"
               />
             )}
+          </div>
+
+          <div className="survey-question">
+            <FormikCheckbox name="recentlyHired">
+              Employees took training within 3 months of employment
+            </FormikCheckbox>
           </div>
 
           <FormikScrollToError formId={formId} />
