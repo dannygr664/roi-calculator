@@ -91,7 +91,7 @@ function ROICalculationSurvey({
           format="percentage"
           outputValue={percentageReturn}
         />
-        {numberOfEmployees != 0 &&
+        {numberOfEmployees !== 0 &&
           trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
             <div id="sidenote-container">
               <p>*Annualized potential ROI is up to 415%.</p>
