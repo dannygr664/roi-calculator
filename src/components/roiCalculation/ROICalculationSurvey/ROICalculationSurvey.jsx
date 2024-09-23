@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { SurveyIntro, SurveyForm } from "@components/surveys";
+import { SurveyIntro, ROICalculationSurveyForm } from "@components/surveys";
 import {
   calculateSurveyScore,
   calculatePercentageReturn,
@@ -69,7 +69,7 @@ function ROICalculationSurvey({
     <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
-        <SurveyForm
+        <ROICalculationSurveyForm
           formId={formId}
           questionsAndAnswers={questionsAndAnswers}
           submitButtonLabel="Get Results & Calculate ROI"

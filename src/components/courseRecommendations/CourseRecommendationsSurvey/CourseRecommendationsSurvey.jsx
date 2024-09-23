@@ -1,7 +1,10 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-import { SurveyIntro, SurveyForm } from "@components/surveys";
+import {
+  SurveyIntro,
+  CourseRecommendationsSurveyForm,
+} from "@components/surveys";
 import { CourseRecommendationsResults } from "@components/courseRecommendations";
 
 import "@components/surveys/Survey.css";
@@ -24,7 +27,7 @@ function CourseRecommendationsSurvey({
     <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
       <div className="survey-questions-submit-button-and-output-displays">
-        <SurveyForm
+        <CourseRecommendationsSurveyForm
           formId={formId}
           questionsAndAnswers={questionsAndAnswers}
           submitButtonLabel="Get Course Recommendations"
