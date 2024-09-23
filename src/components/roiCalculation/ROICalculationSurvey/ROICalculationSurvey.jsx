@@ -91,11 +91,12 @@ function ROICalculationSurvey({
           format="percentage"
           outputValue={percentageReturn}
         />
-        {trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
-          <div id="sidenote-container">
-            <p>*Annualized potential ROI is up to 415%.</p>
-          </div>
-        )}
+        {numberOfEmployees !== 0 &&
+          trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
+            <div id="sidenote-container">
+              <p>*Annualized potential ROI is up to 415%.</p>
+            </div>
+          )}
       </div>
 
       {areResultsVisible && (

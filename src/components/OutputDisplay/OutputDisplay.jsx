@@ -22,9 +22,9 @@ function OutputDisplay({ tag, label, format, outputValue }) {
   };
 
   const formatOutput = (value) => {
-    if (format == "currency") {
+    if (format === "currency") {
       return formatCurrency(value);
-    } else if (format == "percentage") {
+    } else if (format === "percentage") {
       return formatPercentage(value);
     } else {
       return value;
