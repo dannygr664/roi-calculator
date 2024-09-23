@@ -66,6 +66,8 @@ function ROICalculationSurvey({
     setAreResultsVisible(true);
   };
 
+  const SIDE_NOTE_COST_CUTOFF = 1100;
+
   return (
     <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
@@ -89,9 +91,11 @@ function ROICalculationSurvey({
           format="percentage"
           outputValue={percentageReturn}
         />
-        <div id="sidenote-container">
-          <p>*Annualized potential ROI is up to 415%.</p>
-        </div>
+        {trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
+          <div id="sidenote-container">
+            <p>*Annualized potential ROI is up to 415%.</p>
+          </div>
+        )}
       </div>
 
       {areResultsVisible && (
