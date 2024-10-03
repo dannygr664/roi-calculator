@@ -8,8 +8,7 @@ export const calculateTrainingCosts = ({
   cost,
   includeLostProductivityCosts,
   creditOption,
-  wageType,
-  averageWage,
+  wageRowData,
 }) => {
   const costOfCourse = parseFloat(cost);
   let averageHourlyWage = 0;
@@ -19,10 +18,24 @@ export const calculateTrainingCosts = ({
     hoursToCompleteCourse =
       CREDIT_OPTIONS_TO_METADATA[creditOption].hoursToComplete;
 
-    if (wageType === "Hourly") {
-      averageHourlyWage = averageWage;
-    } else if (wageType === "Annual") {
-      averageHourlyWage = averageWage / WORKING_HOURS_IN_A_YEAR;
+    let numberOfEmployeesWithWageData = 0;
+    let totalWages = 0;
+
+    for (let i = 0; i < wageRowData.length; i++) {
+      const wageType = wageRowData[i].wageType;
+      let wage = wageRowData[i].wage;
+      const numberOfEmployeesWithWage = wageRowData[i].numberOfEmployees;
+
+      if (wageType === "Annual") {
+        wage /= WORKING_HOURS_IN_A_YEAR;
+      }
+
+      totalWages += wage * numberOfEmployeesWithWage;
+      numberOfEmployeesWithWageData += numberOfEmployeesWithWage;
+    }
+
+    if (numberOfEmployeesWithWageData > 0) {
+      averageHourlyWage = totalWages / numberOfEmployeesWithWageData;
     }
   }
 

@@ -1,0 +1,16 @@
+#ag-table-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+#ag-table-buttons button {
+  font-size: 0.75em;
+  font-weight: bold;
+  height: 30px;
+  width: 30%;
+}
+
+.ag-theme-quartz {
+  --ag-font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
