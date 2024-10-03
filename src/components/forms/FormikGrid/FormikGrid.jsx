@@ -56,6 +56,7 @@ function FormikGrid({
           rowData={rowData}
           columnDefs={colDefs}
           rowSelection={{ mode: "multiRow" }}
+          selectionColumnDef={{ width: 40, maxWidth: 40 }}
           ref={gridRef}
           stopEditingWhenCellsLoseFocus="true"
           onCellValueChanged={() => handleCellValueChanged()}

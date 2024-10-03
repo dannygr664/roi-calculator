@@ -80,7 +80,7 @@ function TrainingCostsPanel({
     {
       headerName: "Wage ($)",
       field: "wage",
-      flex: 7,
+      flex: 8,
       cellDataType: "number",
       editable: true,
       cellEditor: "agNumberCellEditor",
@@ -95,7 +95,7 @@ function TrainingCostsPanel({
     {
       headerName: "Number of Employees",
       field: "numberOfEmployees",
-      flex: 11,
+      flex: 10,
       cellDataType: "number",
       editable: true,
       cellEditor: "agNumberCellEditor",
