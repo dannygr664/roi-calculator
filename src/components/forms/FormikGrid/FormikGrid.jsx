@@ -59,6 +59,8 @@ function FormikGrid({
           selectionColumnDef={{ width: 40, maxWidth: 40 }}
           ref={gridRef}
           stopEditingWhenCellsLoseFocus="true"
+          suppressMovableColumns="true"
+          suppressDragLeaveHidesColumns="true"
           onCellValueChanged={() => handleCellValueChanged()}
         />
       </div>
