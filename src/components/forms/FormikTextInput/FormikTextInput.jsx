@@ -12,7 +12,7 @@ function FormikTextInput({ label, isLabelHidden, ...props }) {
       <label htmlFor={props.name} hidden={isLabelHidden ? true : undefined}>
         {label}
       </label>
-      <input {...field} {...props} />
+      <input id={props.name} {...field} {...props} />
       {meta.touched && meta.error ? (
         <ErrorMessage message={meta.error} />
       ) : null}

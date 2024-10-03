@@ -16,7 +16,7 @@ function CustomSelect({
   return (
     <>
       <label htmlFor={name}>{label}</label>
-      <select value={selectedOption} onChange={handleChange}>
+      <select id={name} value={selectedOption} onChange={handleChange}>
         <option value="" disabled>
           Select
         </option>

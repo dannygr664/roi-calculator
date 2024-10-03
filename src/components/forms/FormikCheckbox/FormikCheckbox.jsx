@@ -10,7 +10,7 @@ function FormikCheckbox({ children, ...props }) {
   return (
     <div className="checkbox-container">
       <label htmlFor={props.name}>
-        <input type="checkbox" {...field} {...props} />
+        <input type="checkbox" id={props.name} {...field} {...props} />
         {children}
       </label>
       {meta.touched && meta.error ? (
