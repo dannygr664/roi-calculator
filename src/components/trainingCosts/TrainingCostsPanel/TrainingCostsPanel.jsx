@@ -66,7 +66,7 @@ function TrainingCostsPanel({
     {
       headerName: "Wage Type",
       field: "wageType",
-      flex: 3,
+      flex: 8,
       editable: true,
       cellEditor: "agSelectCellEditor",
       cellEditorParams: {
@@ -74,11 +74,13 @@ function TrainingCostsPanel({
       },
       singleClickEdit: true,
       resizable: false,
+      wrapHeaderText: true,
+      autoHeaderHeight: true,
     },
     {
       headerName: "Wage ($)",
       field: "wage",
-      flex: 2,
+      flex: 7,
       cellDataType: "number",
       editable: true,
       cellEditor: "agNumberCellEditor",
@@ -87,11 +89,13 @@ function TrainingCostsPanel({
       },
       singleClickEdit: true,
       resizable: false,
+      wrapHeaderText: true,
+      autoHeaderHeight: true,
     },
     {
       headerName: "Number of Employees",
       field: "numberOfEmployees",
-      flex: 4,
+      flex: 11,
       cellDataType: "number",
       editable: true,
       cellEditor: "agNumberCellEditor",
@@ -100,6 +104,8 @@ function TrainingCostsPanel({
       },
       singleClickEdit: true,
       resizable: false,
+      wrapHeaderText: true,
+      autoHeaderHeight: true,
     },
   ];
 
