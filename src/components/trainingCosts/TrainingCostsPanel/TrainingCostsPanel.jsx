@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import { Formik, Form } from "formik";
 import * as Yup from "yup";
 import PropTypes from "prop-types";
@@ -7,6 +8,7 @@ import { CREDIT_OPTIONS, WAGE_TYPES } from "@/utils/constants";
 import {
   FormikTextInput,
   FormikCheckbox,
+  FormikGrid,
   FormikSelect,
 } from "@components/forms";
 
@@ -37,16 +39,94 @@ function TrainingCostsPanel({
           .oneOf(CREDIT_OPTIONS, "Invalid credit option")
           .required("Required"),
     }),
-    wageType: Yup.string().when("includeLostProductivityCosts", {
+    wageRowData: Yup.array().when("includeLostProductivityCosts", {
       is: true,
       then: (schema) =>
-        schema.oneOf(WAGE_TYPES, "Invalid wage type").required("Required"),
-    }),
-    averageWage: Yup.number().when("includeLostProductivityCosts", {
-      is: true,
-      then: (schema) => schema.min(0, "Invalid wage").required("Required"),
+        schema.test({
+          name: "matchesNumberOfEmployees",
+          test: (value, { createError, parent: { numberOfEmployees } }) => {
+            let numberOfEmployeesAccountedFor = 0;
+            for (let wageRow of value) {
+              numberOfEmployeesAccountedFor += wageRow.numberOfEmployees;
+            }
+            return (
+              numberOfEmployeesAccountedFor == numberOfEmployees ||
+              createError({
+                message: `${numberOfEmployeesAccountedFor}/${numberOfEmployees} employees accounted for`,
+              })
+            );
+          },
+        }),
     }),
   });
+
+  const wageGridRef = useRef();
+  const [wageRowData, setWageRowData] = useState([]);
+  const wageColDefs = [
+    {
+      headerName: "Wage Type",
+      field: "wageType",
+      flex: 3,
+      editable: true,
+      cellEditor: "agSelectCellEditor",
+      cellEditorParams: {
+        values: WAGE_TYPES,
+      },
+      singleClickEdit: true,
+      resizable: false,
+    },
+    {
+      headerName: "Wage ($)",
+      field: "wage",
+      flex: 2,
+      cellDataType: "number",
+      editable: true,
+      cellEditor: "agNumberCellEditor",
+      cellEditorParams: {
+        min: 0,
+      },
+      singleClickEdit: true,
+      resizable: false,
+    },
+    {
+      headerName: "Number of Employees",
+      field: "numberOfEmployees",
+      flex: 4,
+      cellDataType: "number",
+      editable: true,
+      cellEditor: "agNumberCellEditor",
+      cellEditorParams: {
+        min: 1,
+      },
+      singleClickEdit: true,
+      resizable: false,
+    },
+  ];
+
+  const addWageRow = () => {
+    setWageRowData([
+      ...wageRowData,
+      { wageType: WAGE_TYPES[0], wage: 0, numberOfEmployees: 1 },
+    ]);
+  };
+
+  const removeSelectedWageRows = () => {
+    const selectedRows = wageGridRef.current.api.getSelectedRows();
+    const newWageRowData = [];
+    for (let i = 0; i < wageRowData.length; i++) {
+      let skip = false;
+      for (let j = 0; j < selectedRows.length; j++) {
+        if (wageRowData[i] === selectedRows[j]) {
+          skip = true;
+          break;
+        }
+      }
+      if (!skip) {
+        newWageRowData.push(wageRowData[i]);
+      }
+      setWageRowData(newWageRowData);
+    }
+  };
 
   return (
     <section className="panel-container">
@@ -64,8 +144,7 @@ function TrainingCostsPanel({
             cost: "0",
             includeLostProductivityCosts: false,
             creditOption: "",
-            wageType: "",
-            averageWage: "0",
+            wageRowData: [],
           }}
           validationSchema={validationSchema}
           onSubmit={(values) => {
@@ -116,18 +195,14 @@ function TrainingCostsPanel({
                     </p>
                   </div>
 
-                  <div className="form-element">
-                    <FormikSelect
-                      label="Wage Type"
-                      name="wageType"
-                      options={WAGE_TYPES}
-                    />
-                  </div>
-
-                  <FormikTextInput
-                    label="Average Employee Wage ($)"
-                    name="averageWage"
-                    type="number"
+                  <FormikGrid
+                    label="Employee Wages"
+                    rowData={wageRowData}
+                    colDefs={wageColDefs}
+                    gridRef={wageGridRef}
+                    addRow={addWageRow}
+                    removeSelectedRows={removeSelectedWageRows}
+                    name="wageRowData"
                   />
                 </>
               )}
