@@ -33,9 +33,7 @@ function OutputDisplay({ tag, label, format, outputValue }) {
 
   return (
     <div className="output-display">
-      <label id={tag} htmlFor={tag}>
-        {label}
-      </label>
+      <label htmlFor={tag}>{label}</label>
       <input id={tag} name={tag} value={formatOutput(outputValue)} readOnly />
     </div>
   );
