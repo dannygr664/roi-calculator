@@ -180,10 +180,11 @@ function TrainingCostsPanel({
                 </FormikCheckbox>
 
                 <p className="input-description">
-                  Selecting this option will include the additional cost
-                  associated with lost productivity. This is equal to the
-                  average hourly employee wage multiplied by the number of hours
-                  needed to take the course.
+                  Selecting this option will provide a more accurate picture of
+                  ROI by including the additional costs associated with lost
+                  productivity. This is equal to the average hourly employee
+                  wage multiplied by the number of hours needed to take the
+                  course.
                 </p>
               </div>
 
