@@ -26,7 +26,7 @@ function CourseRecommendationsSurvey({
   return (
     <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
-      <div className="survey-questions-submit-button-and-output-displays">
+      <div className="survey-questions-and-submit-button">
         <CourseRecommendationsSurveyForm
           formId={formId}
           questionsAndAnswers={questionsAndAnswers}

@@ -71,14 +71,16 @@ function ROICalculationSurvey({
   return (
     <div id={formId} className="survey">
       <SurveyIntro title={title} instructions={instructions} />
-      <div className="survey-questions-submit-button-and-output-displays">
+      <div className="survey-questions-and-submit-button">
         <ROICalculationSurveyForm
           formId={formId}
           questionsAndAnswers={questionsAndAnswers}
           submitButtonLabel="Get Results & Calculate ROI"
           handleSubmit={showResults}
         />
+      </div>
 
+      <div className="output-displays">
         <OutputDisplay
           tag={`net-return-${formId}`}
           label="Net Return"
@@ -91,13 +93,13 @@ function ROICalculationSurvey({
           format="percentage"
           outputValue={percentageReturn}
         />
-        {numberOfEmployees !== 0 &&
-          trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
-            <div id="sidenote-container">
-              <p>*Annualized potential ROI is up to 415%.</p>
-            </div>
-          )}
       </div>
+      {numberOfEmployees !== 0 &&
+        trainingCosts / numberOfEmployees >= SIDE_NOTE_COST_CUTOFF && (
+          <div id="sidenote-container">
+            <p>*Annualized potential ROI is up to 415%.</p>
+          </div>
+        )}
 
       {areResultsVisible && (
         <ROICalculationResults
