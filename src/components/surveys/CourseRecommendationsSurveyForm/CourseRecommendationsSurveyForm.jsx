@@ -21,6 +21,7 @@ function CourseRecommendationsSurveyForm({
   handleSubmit,
 }) {
   const initialValues = {
+    challenges: "",
     selectedRole: "",
     employeeJobTitle: "",
     otherRole: "",
@@ -38,6 +39,7 @@ function CourseRecommendationsSurveyForm({
 
   const validationSchema = Yup.object().shape({
     ...questionsAndAnswersValidationSchema,
+    challenges: Yup.string(),
     selectedRole: Yup.string().required("Required"),
     employeeJobTitle: Yup.string().when("selectedRole", {
       is: "Employee",
@@ -74,6 +76,14 @@ function CourseRecommendationsSurveyForm({
               />
             </div>
           ))}
+          <div id={`${formId}-challenges`} className="survey-question">
+            <FormikTextInput
+              label="What other challenges or pain points have you encountered at your organization? (optional)"
+              isLabelHidden={false}
+              name={`${formId}-challenges`}
+              type="text"
+            />
+          </div>
           <div id={`${formId}-role`} className="survey-question">
             <FormikSelect
               label="What best describes you?"

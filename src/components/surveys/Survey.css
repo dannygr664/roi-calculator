@@ -49,6 +49,7 @@
   font-size: 1em;
 }
 
-label[for$="Role"] {
+label[for$="Role"],
+label[for$="challenges"] {
   font-size: 1em;
 }
