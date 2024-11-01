@@ -57,6 +57,7 @@ function ROICalculationSurveyForm({
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      enableReinitialize={true}
     >
       {({ values, errors, touched }) => (
         <Form className="survey-questions">

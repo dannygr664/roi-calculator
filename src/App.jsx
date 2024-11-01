@@ -29,6 +29,7 @@ function App() {
     useState(false);
   const [selectedRoiMetric, setSelectedRoiMetric] = useState("");
   const [selectedIndustry, setSelectedIndustry] = useState("");
+  const [selectedSurveyLength, setSelectedSurveyLength] = useState("Full");
 
   return (
     <>
@@ -45,6 +46,8 @@ function App() {
           <ROICalculationPanel
             selectedRoiMetric={selectedRoiMetric}
             setSelectedRoiMetric={setSelectedRoiMetric}
+            selectedSurveyLength={selectedSurveyLength}
+            setSelectedSurveyLength={setSelectedSurveyLength}
           />
         )}
         {!selectedRoiMetric && <div className="whitespace"></div>}
@@ -58,7 +61,11 @@ function App() {
                 formId={survey.id}
                 title={survey.title}
                 instructions={survey.instructions}
-                questionsAndAnswers={survey.questionsAndAnswers}
+                questionsAndAnswers={
+                  selectedSurveyLength === "Full"
+                    ? survey.questionsAndAnswers
+                    : survey.questionsAndAnswers.slice(0, 5)
+                }
                 trainingCosts={trainingCosts}
                 numberOfEmployees={numberOfEmployees}
                 resultDescriptions={survey.resultDescriptions}
