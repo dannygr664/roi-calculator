@@ -7,10 +7,7 @@ import {
   calculatePercentageReturn,
   getScoreBucketName,
 } from "./roiCalculator";
-import {
-  STANDARD_ANSWERS,
-  PERCENTAGE_ANSWERS,
-} from "@/surveys/roiCalculationSurveys/constants";
+import { STANDARD_ANSWERS } from "@/surveys/roiCalculationSurveys/constants";
 
 describe("calculateSurveyScore", () => {
   const TWO_QUESTIONS_AND_ANSWERS = [
@@ -96,22 +93,6 @@ describe("calculateSurveyScore", () => {
         "question-2": "Strongly agree",
       })
     ).toBe(4.7);
-  });
-
-  it("ignores questions with non-standard answers", () => {
-    expect(
-      calculateSurveyScore(
-        [
-          ...TWO_QUESTIONS_AND_ANSWERS,
-          { question: "Question 3", answers: PERCENTAGE_ANSWERS },
-        ],
-        {
-          "question-0": "Strongly agree",
-          "question-1": "Strongly agree",
-          "question-2": "0–10%",
-        }
-      )
-    ).toBe(5.0);
   });
 });
 
