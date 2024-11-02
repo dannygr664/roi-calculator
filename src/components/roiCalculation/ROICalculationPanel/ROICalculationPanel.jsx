@@ -9,7 +9,12 @@ import "./ROICalculationPanel.css";
 
 import roiCalculationImgUrl from "@assets/images/roi-calculator.jpg";
 
-function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
+function ROICalculationPanel({
+  selectedRoiMetric,
+  setSelectedRoiMetric,
+  selectedSurveyLength,
+  setSelectedSurveyLength,
+}) {
   const [isRoiCalculationDetailsVisible, setIsRoiCalculationDetailsVisible] =
     useState(false);
 
@@ -93,6 +98,15 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
             setSelectedOption={setSelectedRoiMetric}
           />
         </div>
+        <div className="form-element">
+          <CustomSelect
+            label="Survey Length"
+            name="survey-length"
+            options={["Full", "Abridged"]}
+            selectedOption={selectedSurveyLength}
+            setSelectedOption={setSelectedSurveyLength}
+          />
+        </div>
       </section>
       <aside>
         <img
@@ -108,6 +122,8 @@ function ROICalculationPanel({ selectedRoiMetric, setSelectedRoiMetric }) {
 ROICalculationPanel.propTypes = {
   selectedRoiMetric: PropTypes.string.isRequired,
   setSelectedRoiMetric: PropTypes.func.isRequired,
+  selectedSurveyLength: PropTypes.string.isRequired,
+  setSelectedSurveyLength: PropTypes.func.isRequired,
 };
 
 export default ROICalculationPanel;
