@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 import "./OutputDisplay.css";
-
+// Adding a comment to trigger a rebuild/redeploy
 function OutputDisplay({ tag, label, format, outputValue }) {
   const formatCurrency = (value) => {
     return new Intl.NumberFormat("en-US", {
