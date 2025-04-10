@@ -3,28 +3,35 @@ name: Build and Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # Or main, depending on your default branch name
+      - main
+
+# Add these permissions
+permissions:
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v4 # Update to v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v1
-      with:
-        node-version: '20.12.1'  # Use whatever Node.js version your project requires
+      - name: Set up Node.js
+        uses: actions/setup-node@v3 # Update to v3
+        with:
+          node-version: "20.12.1"
+          cache: "npm" # Add caching
 
-    - name: Install Dependencies
-      run: npm install
+      - name: Install Dependencies
+        run: npm ci # Use ci instead of install for cleaner installs
 
-    - name: Build
-      run: npm run build  # Or your specific build command
+      - name: Build
+        run: npm run build
 
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@4.1.4
-      with:
-        branch: gh-pages  # The branch the action should deploy to.
-        folder: dist      # The folder the action should deploy.
-        token: ${{ secrets.GITHUB_TOKEN }}  # GitHub automatically creates this secret to authenticate in your workflow.
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4 # Update to v4
+        with:
+          branch: gh-pages
+          folder: dist
+          clean: true # Add this to clean up old files
